@@ -13,13 +13,16 @@ public class CStartStop implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
 		
 		if(sender instanceof Player) {
-			if(cmd.getName().equalsIgnoreCase("startuhcstop")) {
+			if(cmd.getName().equalsIgnoreCase("startainuruhcstop")) {
 				Player player = (Player)sender;
 				if(TimerTasks.starting == true) {
 					TimerTasks.stop = true;
 				}else {
 					player.sendMessage("§4 Game pas encore ou déjà lancer");
 				}
+				
+		
+			return true;
 	}
 		}
 		return false;

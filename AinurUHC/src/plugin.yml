@@ -2,3 +2,10 @@ name: AinurUHC
 version: 1.0
 author: Wolf_IV
 main: com.Wolf_IV.AnuirUHC.MainA
+commands: 
+  startainuruhc:
+    description: Starts Uhc
+    permission: startuhc.use
+  startainuruhcstop:
+    description: Stop Uhc start
+    permission: startuhcstop.use
