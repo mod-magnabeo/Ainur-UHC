@@ -16,14 +16,19 @@ import org.bukkit.scoreboard.ScoreboardManager;
 
 import com.Wolf_IV.AnuirUHC.AListener;
 import com.Wolf_IV.AnuirUHC.MainA;
+import com.Wolf_IV.AnuirUHC.Commands.CStart;
 
 public class TimerTasks extends BukkitRunnable {
 
 	private MainA main;
-	public TimerTasks(MainA mainA) {
+	private CStart p;
+	public TimerTasks(MainA mainA, CStart cstart) {
 	this.main =mainA;
+	this.p=cstart;
 	}
+	
 	public static int timerS=60;
+	public static int timerR=-1;
 	public static int timeSec=0;
 	public static int timeSDay=0;
 	public static int timeDay=1;
@@ -34,7 +39,7 @@ public class TimerTasks extends BukkitRunnable {
 	public static String timeA="0 : 0";
 	public static String AUhc="Ainur UHC";
 	public static String WolfS="-Wolf_IV";
-	public static String JourSay="§ePvp Jour 2⚙";
+	public static String JourSay="§eRole Jour 2⚙";
 	public static boolean AUhcb=false;
 	public static boolean pvp=false;
 	public static boolean Ingame=false;
@@ -97,7 +102,11 @@ public class TimerTasks extends BukkitRunnable {
 		if(timeSDay==1200) {
 			 timeSDay=0;
 			 timeDay++;
-			 if(timeDay==4) {
+			 if(timeDay==2) {
+				 JourSay="§ePvp Jour 4⚙";
+				 Bukkit.broadcastMessage("§eJour 2⚙  Role dans 10s"); 
+				 timerR=10;
+			 }else if(timeDay==4) {
 				 JourSay="§eBordur Jour 6⚙";
 				 Bukkit.broadcastMessage("§eJour 4⚙ PVP Activé"); 
 				 pvp=true;
@@ -118,7 +127,26 @@ public class TimerTasks extends BukkitRunnable {
 		
 	
 	
-		
+		if(timerR>=0) {
+			timerR--;
+			if(timerR==0) {
+				/*p.Melkor.sendMessage("A l’annonce des rôles tu obtient 3 coeur en plus tout le temps. lorsque qu’un méchant tue\r\n" + 
+						" un joueur qui a un silmarils le silmarils est envoyer dans son l'inventaire mais il ne recevra pas ces\r\n" + 
+						" effet. lorsqu’il aura les trois silmarils il pourra craft la couronne avec ces silmarils et en la mettant\r\n" +
+						" sur sa tête il obtient ( Ungoliant doit gagner seul, tout les balrog et sauron obtiennent l’effet force 1 la\r\n" +
+						"nuit, et melkor obtient force 1 et speed 1 la nuit et il peut infecter un joueur sauf eru . méchant");*/
+				p.Melkor.sendMessage("§3 Ton rôle est très important ta mission est simple. Récupérer les trois silmarils.\r\n" + 
+						"§3 Après les avoir récupérer tu gagne en étant le dernier vivant avec ton équipe.\r\n" + 
+						"§3 Les balrog et sauron sont avec toi, tu peut les identifier avec la command /team\r\n" + 
+						"§3 Dès qu'un de tes fidèle balrog ou bien sauron récupère un silmarils, il est directement\r\n" + 
+						"§3 envoyer dans ton inventaire. Tu ne peux pas te servir des silmarils. Quand tu a les trois\r\n" +
+						"§3 qu’il doit trahir son équipe c’est Ungoliant. Tous les balrogs et sauron obtienne force 1 la nuit\r\n" + 
+						"§3 tu obtiens force 1 et speed 1. Et tu pourra infecter un joueur gentil apart Eru Iluvatar.\r\n" + 
+						"§3 Si ton équipe obtient le planatìr elle peut s'en servir pour traquer les silmarils\r\n" + 
+						"§3 A ta mort sauron récupère tes silmarils et ton planatìr ou couronne.");
+				
+			}
+		}
 		
 	if(timerS>0) {
 			timerS--;
