@@ -7,12 +7,88 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Timers.TimerProt;
 
 public class AListener implements Listener {
+	
+	int i;
+	
+	private static CStart p;
+	public AListener(CStart cstart) {
+	this.p=cstart;
+	}
+
+	public void onPlayerJoin(PlayerJoinEvent event) {
+			Player player=event.getPlayer();
+		
+		
+		if(p.MelkorS.equalsIgnoreCase(player.getName())) {
+		p.Melkor = player;
+		}else if(p.sauronS.equalsIgnoreCase(player.getName())) {
+			p.sauron = player;
+		}else if(p.ungoliantS.equalsIgnoreCase(player.getName())) {
+			p.ungoliant = player;
+		}else if(p.balrog_infiltréS.equalsIgnoreCase(player.getName())) {
+			p.balrog_infiltré = player;
+		}else if(p.balrog_traceurS.equalsIgnoreCase(player.getName())) {
+			p.balrog_traceur = player;
+		}else if(p.FeanorS.equalsIgnoreCase(player.getName())) {
+			p.Feanor = player;
+		}else if(p.Eru_IluvatarS.equalsIgnoreCase(player.getName())) {
+			p.Eru_Iluvatar = player;
+		}else if(p.manwéS.equalsIgnoreCase(player.getName())) {
+			p.manwé = player;
+		}else if(p.oroméS.equalsIgnoreCase(player.getName())) {
+			p.oromé = player;
+		}else if(p.namoS.equalsIgnoreCase(player.getName())) {
+			p.namo = player;
+		}else if(p.saurumanS.equalsIgnoreCase(player.getName())) {
+			p.sauruman = player;
+		}else if(p.gandalfS.equalsIgnoreCase(player.getName())) {
+			p.gandalf = player;
+		}else if(p.lorienS.equalsIgnoreCase(player.getName())) {
+			p.lorien = player;
+		}else if(p.scorcier_bleu_1S.equalsIgnoreCase(player.getName())) {
+			p.scorcier_bleu_1 = player;
+		}else if(p.scorcier_bleu_2S.equalsIgnoreCase(player.getName())) {
+			p.scorcier_bleu_2 = player;
+		}else if(p.auléS.equalsIgnoreCase(player.getName())) {
+			p.aulé = player;
+		}else if(p.fingolfinS.equalsIgnoreCase(player.getName())) {
+			p.fingolfin = player;
+		}else if(p.vardaS.equalsIgnoreCase(player.getName())) {
+			p.varda = player;
+		}else if(p.maedhrosS.equalsIgnoreCase(player.getName())) {
+			p.maedhros = player;
+		}else if(p.tulkasS.equalsIgnoreCase(player.getName())) {
+			p.tulkas = player;
+		}
+		
+		if(p.OrcS.equalsIgnoreCase(player.getName())) {
+			p.Orc = player;
+		}
+		for(i=1;i<=24;i++) {
+			if(p.jouS[i].equalsIgnoreCase(player.getName())) {
+				p.jou[i] = player;
+			}
+			}
+		for(i=1;i<=9;i++) {
+			if(p.evilS[i].equalsIgnoreCase(player.getName())) {
+				p.evil[i] = player;
+			}
+			}
+		for(i=1;i<=7;i++) {
+			if(p.balrogS[i].equalsIgnoreCase(player.getName())) {
+				p.balrog[i] = player;
+			}
+			}
+		
+		
+	}
 	
 	
 }

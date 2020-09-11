@@ -7,11 +7,12 @@ import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Commands.CStartStop;
 
 public class MainA extends JavaPlugin implements Listener{
+	public CStart cstart =new CStart(this);
 	@Override
 	public void onEnable() {
 	getCommand("startainuruhc").setExecutor(new CStart(this));
 	getCommand("startainuruhcstop").setExecutor(new CStartStop());
-	getServer().getPluginManager().registerEvents(new AListener(), this);
+	getServer().getPluginManager().registerEvents(new AListener(cstart), this);
 	}
 	@Override
 	public void onDisable() {

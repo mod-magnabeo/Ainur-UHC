@@ -50,6 +50,32 @@ public class CStart implements CommandExecutor {
 	public Player varda;
 	public Player maedhros;
 	public Player tulkas;
+	public Player Orc;
+	
+	public String jouS[]=new String[24+1];
+	public String evilS[]=new String[9+1];
+	public String FeanorS;
+	public String MelkorS;
+	public String ungoliantS;
+	public String balrogS[]=new String[7+1];
+	public String balrog_infiltréS;
+	public String balrog_traceurS;
+	public String sauronS;
+	public String Eru_IluvatarS;
+	public String manwéS;
+	public String oroméS;
+	public String namoS;
+	public String saurumanS;
+	public String gandalfS;
+	public String lorienS;
+	public String scorcier_bleu_1S;
+	public String scorcier_bleu_2S;
+	public String auléS;
+	public String fingolfinS;
+	public String vardaS;
+	public String maedhrosS;
+	public String tulkasS;
+	public String OrcS;// A la creation de l'orc noublie pas de le co register
 	
 	
 	
@@ -169,7 +195,7 @@ public class CStart implements CommandExecutor {
 							jou[choose]=container;
 							}
 						
-						
+						RegisterString();
 						
 					}else {
 						if(args.length!=0) {
@@ -237,9 +263,6 @@ public class CStart implements CommandExecutor {
 										}else if(args[i].equalsIgnoreCase("oromé")) {
 											oromé=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Oromé");
-										}else if(args[i].equalsIgnoreCase("manwé")) {
-											manwé=playerO;
-											Bukkit.broadcastMessage(""+playerO.getName()+" est Manwé");
 										}else if(args[i].equalsIgnoreCase("namo")) {
 											namo=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Namo");
@@ -276,7 +299,7 @@ public class CStart implements CommandExecutor {
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Tulkas");
 										}
 									
-									
+										RegisterString();
 									
 									
 									}
@@ -291,6 +314,7 @@ public class CStart implements CommandExecutor {
 							Bukkit.broadcastMessage("§4Il n'y a pas assez de joueur");
 							return true;
 						}
+						
 					}
 					
 					
@@ -304,5 +328,54 @@ public class CStart implements CommandExecutor {
 			}
 			return false;
 		}
+		
+		public void RegisterString() {
+			
+			if(Melkor!=null)MelkorS=Melkor.getName();
+			if(sauron!=null)sauronS=sauron.getName();
+			if(ungoliant!=null)ungoliantS=ungoliant.getName();
+			
+			for(i=1;i<=7;i++) {
+				if(balrog[i]!=null) {
+			balrogS[i]=balrog[i].getName();
+				}
+			}
+			
+			for(i=1;i<=9;i++) {
+				if(evil[i]!=null) {
+				evilS[i]=evil[i].getName();
+				}
+			}
+			
+			
+			
+			if(balrog_infiltré!=null)balrog_infiltréS=balrog_infiltré.getName();
+			if(balrog_traceur!=null)balrog_traceurS=balrog_traceur.getName();
+			
+			
+			if(Feanor!=null)FeanorS=Feanor.getName();
+			if(Eru_Iluvatar!=null)Eru_IluvatarS=Eru_Iluvatar.getName();
+			if(manwé!=null)manwéS=manwé.getName();
+			if(oromé!=null)oroméS=oromé.getName();
+			if(namo!=null)namoS=namo.getName();
+			if(sauruman!=null)saurumanS=sauruman.getName();
+			if(gandalf!=null)gandalfS=gandalf.getName();
+			if(lorien!=null)lorienS=lorien.getName();
+			if(scorcier_bleu_1!=null)scorcier_bleu_1S=scorcier_bleu_1.getName();
+			if(scorcier_bleu_2!=null)scorcier_bleu_2S=scorcier_bleu_2.getName();
+			if(aulé!=null)auléS=aulé.getName();
+			if(fingolfin!=null)fingolfinS=fingolfin.getName();
+			if(varda!=null)vardaS=varda.getName();
+			if(maedhros!=null)maedhrosS=maedhros.getName();
+			if(tulkas!=null)tulkasS=tulkas.getName();
+			
+			for(i=1;i<=24;i++) {
+				if(jou[i]!=null) {
+				jouS[i]=jou[i].getName();
+				}
+				}
+		
+		}
+		
 
 	}
