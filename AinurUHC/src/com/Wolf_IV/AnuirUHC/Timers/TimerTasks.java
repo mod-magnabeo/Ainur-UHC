@@ -145,6 +145,18 @@ public class TimerTasks extends BukkitRunnable {
 						"§3 Si ton équipe obtient le planatìr elle peut s'en servir pour traquer les silmarils\r\n" + 
 						"§3 A ta mort sauron récupère tes silmarils et ton planatìr ou couronne.");
 				
+				
+	p.Feanor.sendMessage("§3 Tu est le protagonist de la partie. En début de game tu dois crafté trois\r\n" + 
+						"§3  silmarils vide. Tu doit les remplir de la lumière des arbres du\r\n" + 
+						"§3 valinor en 0 0. Tu devra alors distribuer tes silmarils a des\r\n" + 
+						"§3 joueurs grâce à la commande /donner <pseudo> et l’item dans la main.\r\n" + 
+						"§3 Si tu ne les a pas distribuer ou craft avant le jour 5 (quand les\r\n" +
+						"§3 arbres seront détruis) ils seront distribuées aléatoirement a des\r\n" + 
+						"§3 joueur. Tu peux pas te servir d’un silmarils avant de l’avoir donnés."
+						);
+	
+	
+				
 			}
 		}
 		
