@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.DisplaySlot;
@@ -102,6 +103,9 @@ public class TimerTasks extends BukkitRunnable {
 		if(timeSDay==1200) {
 			 timeSDay=0;
 			 timeDay++;
+			 for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
+					playerO.playSound(playerO.getLocation(), Sound.GHAST_SCREAM2, 10.0F, 0.0F);
+					}
 			 if(timeDay==2) {
 				 JourSay="§ePvp Jour 4⚙";
 				 Bukkit.broadcastMessage("§eJour 2⚙  Role dans 10s"); 
@@ -129,7 +133,22 @@ public class TimerTasks extends BukkitRunnable {
 	
 		if(timerR>=0) {
 			timerR--;
-			if(timerR==0) {
+			if(timerR==8) {
+				 Bukkit.broadcastMessage("§aVotre Type:");
+				
+			}else if(timerR==7) {
+				for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
+					playerO.playSound(playerO.getLocation(), Sound.CLICK, 10.0F, 5.0F);
+					}
+			}else if(timerR==2) {
+				for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
+					playerO.playSound(playerO.getLocation(), Sound.LEVEL_UP, 10.0F, 0.0F);
+					}
+			}else if(timerR==0) {
+				 
+				 for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
+							playerO.playSound(playerO.getLocation(), Sound.CLICK, 10.0F, 5.0F);
+						}
 				/*p.Melkor.sendMessage("A l’annonce des rôles tu obtient 3 coeur en plus tout le temps. lorsque qu’un méchant tue\r\n" + 
 						" un joueur qui a un silmarils le silmarils est envoyer dans son l'inventaire mais il ne recevra pas ces\r\n" + 
 						" effet. lorsqu’il aura les trois silmarils il pourra craft la couronne avec ces silmarils et en la mettant\r\n" +
@@ -140,10 +159,10 @@ public class TimerTasks extends BukkitRunnable {
 						"§3 Les balrog et sauron sont avec toi, tu peut les identifier avec la command /team\r\n" + 
 						"§3 Dès qu'un de tes fidèle balrog ou bien sauron récupère un silmarils, il est directement\r\n" + 
 						"§3 envoyer dans ton inventaire. Tu ne peux pas te servir des silmarils. Quand tu a les trois\r\n" +
-						"§3 qu’il doit trahir son équipe c’est Ungoliant. Tous les balrogs et sauron obtienne force 1 la nuit\r\n" + 
-						"§3 tu obtiens force 1 et speed 1. Et tu pourra infecter un joueur gentil apart Eru Iluvatar.\r\n" + 
-						"§3 Si ton équipe obtient le planatìr elle peut s'en servir pour traquer les silmarils\r\n" + 
-						"§3 A ta mort sauron récupère tes silmarils et ton planatìr ou couronne.");
+						"§3 qu’il doit trahir son équipe c’est Ungoliant(sauf si il est déjà mort). Tous les balrogs et\r\n" + 
+						"§3 sauron obtienne force 1 la nuit tu obtiens force 1 et speed 1. Et tu pourra infecter un joueur\r\n" + 
+						"§3 gentil apart Eru Iluvatar. Si ton équipe obtient le planatìr elle peut s'en servir pour traquer\r\n" + 
+						"§3 les silmarils A ta mort sauron récupère tes silmarils et ton planatìr ou couronne.");
 				
 				
 	p.Feanor.sendMessage("§3 Tu est le protagonist de la partie. En début de game tu dois crafté trois\r\n" + 

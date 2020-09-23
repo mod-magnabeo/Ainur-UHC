@@ -9,3 +9,6 @@ commands:
   startainuruhcstop:
     description: Stop Uhc start
     permission: startuhcstop.use
+  daypass:
+    description: Pass the day
+    permission: daypass.use
