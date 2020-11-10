@@ -140,6 +140,7 @@ public class TimerTasks extends BukkitRunnable {
 				for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
 					playerO.playSound(playerO.getLocation(), Sound.CLICK, 10.0F, 5.0F);
 					}
+				p.Melkor.sendMessage("§eValar");
 			}else if(timerR==2) {
 				for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
 					playerO.playSound(playerO.getLocation(), Sound.LEVEL_UP, 10.0F, 0.0F);
@@ -160,19 +161,56 @@ public class TimerTasks extends BukkitRunnable {
 						"§3 Dès qu'un de tes fidèle balrog ou bien sauron récupère un silmarils, il est directement\r\n" + 
 						"§3 envoyer dans ton inventaire. Tu ne peux pas te servir des silmarils. Quand tu a les trois\r\n" +
 						"§3 qu’il doit trahir son équipe c’est Ungoliant(sauf si il est déjà mort). Tous les balrogs et\r\n" + 
-						"§3 sauron obtienne force 1 la nuit tu obtiens force 1 et speed 1. Et tu pourra infecter un joueur\r\n" + 
+						"§3 sauron obtienne force 1 la nuit tu obtiens force 1 et speed 1.Ton pseudo est révéler Et tu pourra "
+						+ "infecter un joueur\r\n" + 
 						"§3 gentil apart Eru Iluvatar. Si ton équipe obtient le planatìr elle peut s'en servir pour traquer\r\n" + 
 						"§3 les silmarils A ta mort sauron récupère tes silmarils et ton planatìr ou couronne.");
 				
 				
-	p.Feanor.sendMessage("§3 Tu est le protagonist de la partie. En début de game tu dois crafté trois\r\n" + 
-						"§3  silmarils vide. Tu doit les remplir de la lumière des arbres du\r\n" + 
-						"§3 valinor en 0 0. Tu devra alors distribuer tes silmarils a des\r\n" + 
-						"§3 joueurs grâce à la commande /donner <pseudo> et l’item dans la main.\r\n" + 
-						"§3 Si tu ne les a pas distribuer ou craft avant le jour 5 (quand les\r\n" +
-						"§3 arbres seront détruis) ils seront distribuées aléatoirement a des\r\n" + 
+	p.Feanor.sendMessage("§3 Tu est le protagonist de la partie. En début de game tu dois crafté trois" + 
+						"§3 silmarils vide. Tu doit les remplir de la lumière des arbres du" + 
+						"§3 valinor en 0 0. Tu devra alors distribuer tes silmarils a des"+ 
+						"§3 joueurs grâce à la commande /donner <pseudo> et l’item dans la main." + 
+						"§3 Si tu ne les a pas distribuer ou craft avant le jour 5 (quand les" +
+						"§3 arbres seront détruis) ils seront distribuées aléatoirement a des" + 
 						"§3 joueur. Tu peux pas te servir d’un silmarils avant de l’avoir donnés."
 						);
+				for(int i=1;i<=7;i++) {
+					p.balrog[i].sendMessage("§3Ton rôle est simple. Avec ton équipe récupérer les trois silmarils(qui " + 
+							" arriveront directement dans l’inventaire de Melkor)." + 
+							" Après les avoir récupérer tu gagne en étant le dernier vivant avec ton équipe." + 
+							" Les autres balrog sauron et Melkor sont avec toi, tu peut les identifier avec la command /team" + 
+							" Quand vous avez les trois silmarils il se transformeront en couronne de fer, une fois porter par Melkor un "
+							+ "balrog sera informé qu’il doit trahir son équipe c’est Ungoliant(sauf si il est déjà mort). Tu obtiens force 1 "
+							+ "la nuit comme tous les autre balrogs et sauron. Un joueur choisi par Melkor rejoindra ton équipe. Si ton équipe obtient "
+							+ "le planatìr elle peut s'en servir pour traquer les silmarils. Tu a 1 chance sur 7 d’étre Ungoliant sa te sera rèvèler a "
+							+ "la construction de la couronne" 
+							);
+				}
+				p.balrog_infiltré.sendMessage("Tu est un Balrog spécial tu est Balrog infiltré contrairement à ce qu’on dit "
+						+ "ci-dessus tu ne connais pas ton équipe(tu ne peut pas faire /team). Mais si un role info cherche "
+						+ "à connaître ton rôle il sera dit que tu est gentil. Une fois par jour tu peux spec un joueur qui se "
+						+ "trouve à 15 blocs de toi. Mais celui ci prendra un dégât de un demi-coeur.");
+				
+				
+				p.balrog_traceur.sendMessage("Tu est un Balrog spécial tu est Balrog traceur. A chaque épisode tu peux choisir un "
+						+ "joueur que tu va tracer(/u pseudo). La boussole que tu va recevoir te pointera la direction du joueur "
+						+ "choisi(tu pourra l'actualité avec clique droit). La boussole sera reset au prochain épisode. Il ne "
+						+ "sera pas possible de tracer le même joueur 2 fois d’affilé."
+						);
+				
+				p.sauron.sendMessage("Ton rôle est simple. Avec ton équipe récupérer les trois silmarils(qui " + 
+						"arriveront directement dans l’inventaire de Melkor). " + 
+						"Après les avoir récupérer tu gagne en étant le dernier vivant avec ton équipe. " + 
+						"Les autres balrog et Melkor sont avec toi, tu peut les identifier avec la command /team " + 
+						"Quand vous avez les trois silmarils il se transformeront en couronne de fer, une fois porter "
+						+ "par Melkor un balrog sera informé qu’il doit trahir son équipe c’est Ungoliant(sauf si il est déjà mort)."
+						+ " Tu obtiens force 1 la nuit comme tous les balrogs. Un joueur choisi par Melkor rejoindra ton équipe. "
+						+ "Si ton équipe obtient le planatìr elle peut s'en servir pour traquer les silmarils. Tu bénéficie de 1 "
+						+ "coeur en plus. Si Melkor vient à mourir tu récupèrera tous ses objet spécial(Couronne,silmarils,planatir)."
+						+ " Tu passera a 13 coeur. Et ton pseudo est révélé dans le chat si Melkor avait obtenu la couronne. "
+						+ "Tu devra accomplir la mission abandonné par Melkor.");
+				
 	
 	
 				

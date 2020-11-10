@@ -33,6 +33,7 @@ public class CStart implements CommandExecutor {
 	public Player Melkor;
 	public Player ungoliant;
 	public Player balrog[]=new Player[7+1];
+	public Player balrogC[]=new Player[6+1];
 	public Player balrog_infiltré;
 	public Player balrog_traceur;
 	public Player sauron;
@@ -150,6 +151,12 @@ public class CStart implements CommandExecutor {
 						
 						balrog_infiltré=balrog[1];
 						balrog_traceur=balrog[2];
+						balrogC[1]=balrog[2];
+						balrogC[2]=balrog[3];
+						balrogC[3]=balrog[4];
+						balrogC[4]=balrog[5];
+						balrogC[5]=balrog[6];
+						balrogC[6]=balrog[7];
 						
 						rando=rand.nextInt(50)+10;
 						for(i=0;i<=rando;i++) {
