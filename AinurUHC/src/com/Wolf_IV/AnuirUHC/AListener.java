@@ -21,6 +21,13 @@ public class AListener implements Listener {
 	public AListener(CStart cstart) {
 	this.p=cstart;
 	}
+	
+	
+	/**
+	 *       |TODO| /!\ DeathMeassage option pour namo
+	 *       Variable:  DeathMeassage lastDeathMessage
+	 *                A sup quand fini
+	 */
 
 	public void onPlayerJoin(PlayerJoinEvent event) {
 			Player player=event.getPlayer();

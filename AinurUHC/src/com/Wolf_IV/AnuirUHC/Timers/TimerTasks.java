@@ -17,6 +17,7 @@ import org.bukkit.scoreboard.ScoreboardManager;
 
 import com.Wolf_IV.AnuirUHC.AListener;
 import com.Wolf_IV.AnuirUHC.MainA;
+import com.Wolf_IV.AnuirUHC.Search;
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 
 public class TimerTasks extends BukkitRunnable {
@@ -103,6 +104,7 @@ public class TimerTasks extends BukkitRunnable {
 		if(timeSDay==1200) {
 			 timeSDay=0;
 			 timeDay++;
+			 Search.dayRole(p);
 			 for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
 					playerO.playSound(playerO.getLocation(), Sound.GHAST_SCREAM2, 10.0F, 0.0F);
 					}
@@ -114,7 +116,7 @@ public class TimerTasks extends BukkitRunnable {
 				 JourSay="§eBordur Jour 6⚙";
 				 Bukkit.broadcastMessage("§eJour 4⚙ PVP Activé"); 
 				 pvp=true;
-				 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "gamerule keepInventory false");
+				 //Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "gamerule keepInventory false");
 			 }else if(timeDay==6){
 				 JourSay="§eFin Bordur Jour 7⚙";
 				 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "worldborder set 6000");
@@ -210,6 +212,57 @@ public class TimerTasks extends BukkitRunnable {
 						+ "coeur en plus. Si Melkor vient à mourir tu récupèrera tous ses objet spécial(Couronne,silmarils,planatir)."
 						+ " Tu passera a 13 coeur. Et ton pseudo est révélé dans le chat si Melkor avait obtenu la couronne. "
 						+ "Tu devra accomplir la mission abandonné par Melkor.");
+				
+				p.Eru_Iluvatar.sendMessage("Tout les joueur les joueur connaisent ton role. Tu ne peut pas avoir les effet des "
+						+ "silmarils et si tu en gagne un tu doit le donner avec la commande /donner pseudo dans les 3 min sinon "
+						+ "il sera donner aléatoirement a un joueur. Tu doit maintenant choisir entre deux chanson. Elle sont "
+						+ "expliquer en dessous.");
+				
+				p.manwé.sendMessage("Tout les joueur les joueur connaisent ton role. Tu ne peut pas avoir les effet des silmarils "
+						+ "et si tu en gagne un tu doit le donner avec la commande /donner pseudo dans les 3 min sinon il sera "
+						+ "donner aléatoirement a un joueur. Tu doit maintenant choisir entre deux chanson. Elle sont expliquer "
+						+ "en dessous.");
+						
+				p.oromé.sendMessage("Une fois par épisode pendant 5 minutes tu peut te transformer en mouton Gandalf te voit dans "
+						+ "ta vrai forme");
+				
+				p.namo.sendMessage("2 fois dans la game avec /u pseudo tu peut connaitre la raison de la mort d’un joueur dans "
+						+ "les 30s après sa mort. Tu peut savoir qui la tué si il est mort pvp. Mais quand tu t’en sert tu va "
+						+ "perdre 1 coeur permanent par utilisation. Si le tueur et le Balrog Infiltré tu vera le message en "
+						+ "brouiller.");
+				
+				p.sauruman.sendMessage("Pendant les 15 première minute d’un jour tu peut écrire un message avec /u msg qui sera "
+						+ "envoyé a tout le monde le debut du jour suivant. Tu restera anonyme.");
+				
+				p.gandalf.sendMessage(" trois fois dans la game tu peut inspecter 3 personnes a 10 block de toi. "
+						+ "il y a deux résultat possible au flaire: " + 
+						"suspect: 87,5%(7/8) méchant 12,5%(1/8) gentils" + 
+						"innocentés: 87,5%(7/8) gentils 12,5%(1/8) méchant" + 
+						"tu peut flairer plusieur fois la même personne." + 
+						"tu peut voir oromé même en forme de mouton.");
+				
+				p.lorien.sendMessage("A l’épisode 2 tu aura le x de l’emplacement du planatir, a l’épisode 3 tu aura le y "
+						+ "du planatir et à l’épisode 4 tu aura le z du planatir");
+				
+				p.scorcier_bleu_1.sendMessage("Tu a un scorcier bleu d’ont tu connais le non. Tu peut lui parler avec /u msg. "
+						+ "Si il vient a mourir tu recupérera tous ses objet sépcial (planatir, silmarils) et tu connaitra la raison "
+						+ "de sa mort.");
+				
+				p.scorcier_bleu_2.sendMessage("Tu a un scorcier bleu d’ont tu connais le non. Tu peut lui parler avec /u msg. "
+						+ "Si il vient a mourir tu recupérera tous ses objet sépcial (planatir, silmarils) et tu connaitra la raison "
+						+ "de sa mort.");
+				
+				p.aulé.sendMessage("Tu a un livre sharp 3 et un livre prot 3");
+				
+				p.fingolfin.sendMessage("Tu lorsque la moitié des joueur sont mort tu a 30s pour choisir un camps(balrog/valar).");
+				
+				p.varda.sendMessage("A chaque début d’episode avec /u pseudo1 pseudo2 tu peut savoir si deux joueur vivant ont "
+						+ "le même lien. Liens:Connaitre les liens avec la commande /lien");
+				
+				p.maedhros.sendMessage("Tu peut protéger une personne par épisode en lui donnant l’effet resistance avec /u pseudo. "
+						+ "Tu a droit de se protéger toi même que 2 fois dans la partie.");
+				
+				p.tulkas.sendMessage("Tu a un effet de force le jour et tu a deux coeur en plus.");
 				
 	
 	

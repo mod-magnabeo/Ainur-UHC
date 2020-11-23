@@ -106,6 +106,11 @@ public class CStart implements CommandExecutor {
 					TimerTasks tasks = new TimerTasks(main, this);
 					tasks.runTaskTimer(main, 0, 20);
 					TimerTasks.starting=true;
+					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "time set day");
+					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "gamerule naturalRegeneration false");
+					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "difficulty easy");
+					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "gamerule showDeathMessages false");
+					
 					
 					for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
 						nubPlayer++;

@@ -12,3 +12,5 @@ commands:
   daypass:
     description: Pass the day
     permission: daypass.use
+  u:
+    description: use power
