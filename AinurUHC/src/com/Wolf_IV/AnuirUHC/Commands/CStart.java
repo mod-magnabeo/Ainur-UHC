@@ -19,7 +19,7 @@ import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
 public class CStart implements CommandExecutor {
 	Random rand = new Random();
 	int rando;
-	int nubPlayer=0;
+	public int nubPlayer=0;
 	int nubjou=0;
 	Player container;
 	int choose;
@@ -28,6 +28,7 @@ public class CStart implements CommandExecutor {
 	
 	
 	public Player jou[]=new Player[24+1];
+	public Player jouHit[]=new Player[24+1];
 	public Player evil[]=new Player[9+1];
 	public Player Feanor;
 	public Player Melkor;
@@ -54,6 +55,7 @@ public class CStart implements CommandExecutor {
 	public Player Orc;
 	
 	public String jouS[]=new String[24+1];
+	public String jouHitS[]=new String[24+1];
 	public String evilS[]=new String[9+1];
 	public String FeanorS;
 	public String MelkorS;
@@ -310,6 +312,7 @@ public class CStart implements CommandExecutor {
 											tulkas=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Tulkas");
 										}
+										jou[i+1]=playerO;
 									
 										RegisterString();
 									

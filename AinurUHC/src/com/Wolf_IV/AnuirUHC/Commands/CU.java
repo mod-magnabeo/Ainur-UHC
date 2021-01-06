@@ -37,27 +37,27 @@ public class CU implements CommandExecutor {
 				}
 				
 				if(BalrogInfiltre.u(p, player, args)==true) {
-					
+					return true;
 				}else if(BalrogTraceur.u(p, player, args)==true) {
-					
+					return true;
 				}else if(EruIluvatar.u(p, player, args)==true) {
-					
+					return true;
 				}else if(Oromé.u(p, player, args)==true) {
-					
+					return true;
 				}else if(Namo.u(p, player, args)==true) {
-					
+					return true;
 				}else if(Saruman.u(p, player, args)==true) {
-					
+					return true;
 				}else if(Gandalf.u(p, player, args)==true) {
-					
+					return true;
 				}else if(Fingolfin.u(p, player, args)==true) {
-					
+					return true;
 				}else if(Varda.u(p, player, args)==true) {
-					
+					return true;
 				}else if(Maedhros.u(p, player, args)==true) {
-					
+					return true;
 				}
-				player.sendMessage("§4Vous ne pouver pas vous serivir de ctte command maintenant");
+				player.sendMessage("§4Vous ne pouver pas vous serivir de ctte command");
 				return true;
 			}
 		}

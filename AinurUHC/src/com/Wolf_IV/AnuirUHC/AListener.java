@@ -5,13 +5,17 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
+import com.Wolf_IV.AnuirUHC.Role.Namo;
 import com.Wolf_IV.AnuirUHC.Timers.TimerProt;
+import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
 
 public class AListener implements Listener {
 	
@@ -23,12 +27,27 @@ public class AListener implements Listener {
 	}
 	
 	
-	/**
-	 *       |TODO| /!\ DeathMeassage option pour namo
-	 *       Variable:  DeathMeassage lastDeathMessage
-	 *                A sup quand fini
-	 */
-
+	/*@EventHandler
+	  public void onEntityDeath(EntityDeathEvent event) {
+			if (!(event.getEntity() instanceof Player)) {
+			      return;
+			    }
+			 Player victim = (Player)event.getEntity();
+			 EntityDamageEvent e = event.getEntity().getLastDamageCause();
+			    if (!(e instanceof EntityDamageByEntityEvent)) {
+			      return;
+			    }
+			    EntityDamageByEntityEvent nEvent = (EntityDamageByEntityEvent)e;
+			 
+			    if (!(nEvent.getDamager() instanceof Player)) {
+			      return;
+			    }
+			    //Player killed
+			    
+			    Player killer = (Player)nEvent.getDamager();
+	}*/
+	
+	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
 			Player player=event.getPlayer();
 		
@@ -82,6 +101,10 @@ public class AListener implements Listener {
 			if(p.jouS[i].equalsIgnoreCase(player.getName())) {
 				p.jou[i] = player;
 			}
+			for(i=1;i<=24;i++) {
+				if(p.jouHitS[i].equalsIgnoreCase(player.getName())) {
+					p.jouHit[i] = player;
+				}
 			}
 		for(i=1;i<=9;i++) {
 			if(p.evilS[i].equalsIgnoreCase(player.getName())) {
@@ -95,6 +118,56 @@ public class AListener implements Listener {
 			}
 		
 		
+	}
+	}
+	@EventHandler
+    public void onTestEntityDamage(EntityDamageByEntityEvent event) {
+		if(TimerTasks.Ingame != true) {
+			return;
+		}
+	
+		if (!(event.getDamager() instanceof Player)){
+            if (!(event.getEntity() instanceof Player)) {
+            	return;
+            }
+		}
+	
+            	 Player victim = (Player)event.getEntity();
+            	 Player Damager = (Player)event.getDamager();
+            	 for(i = 1; i<=p.nubPlayer; i++) {
+         			if(victim == p.jou[i]) {
+         				p.jouHit[i]=Damager;
+         				p.jouHitS[i]=Damager.getName();
+         				
+         			
+            	 
+		}
+	}
+            	
+	
+}
+	
+	@SuppressWarnings("static-access")
+	@EventHandler
+	  public void onEntityDeath(EntityDeathEvent event) {
+		
+		if (!(event.getEntity() instanceof Player)) {
+		      return;
+		    }
+		      Player victim = (Player)event.getEntity();
+		      for(i = 1; i<=p.nubPlayer; i++) {
+       			if(victim == p.jou[i]) {
+       				
+       			
+       				
+       				if(p.jouHit[i] ==null) {
+       					Namo.lastDead = "§a"+victim.getName()+" est mort de PVE";
+       					return;
+       				}
+       			 Namo.lastDead = "§a"+p.jouHit[i].getName()+" est la derniere personne a avoir frapper "+victim.getName();
+       			
+       			}}
+		  
 	}
 	
 	

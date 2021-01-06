@@ -15,7 +15,7 @@ public class MainA extends JavaPlugin implements Listener{
 	@Override
 	public void onEnable() {
 	getCommand("daypass").setExecutor(new CDayPass(timert));
-	getCommand("startainuruhc").setExecutor(new CStart(this));
+	getCommand("startainuruhc").setExecutor(cstart);
 	getCommand("startainuruhcstop").setExecutor(new CStartStop());
 	getCommand("u").setExecutor(new CU(cstart));
 	getServer().getPluginManager().registerEvents(new AListener(cstart), this);
@@ -28,4 +28,5 @@ public class MainA extends JavaPlugin implements Listener{
 
 /**
  * Maedhros 23/11/2020
+ * Namo+ShowDeathMessage 24/11/2020
  */
