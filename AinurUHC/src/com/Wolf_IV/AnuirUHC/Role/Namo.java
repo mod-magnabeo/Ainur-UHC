@@ -21,7 +21,8 @@ public class Namo {
 		}
 		times--;
 		player.sendMessage(lastDead);
-		player.setMaxHealth(player.getMaxHealth()-2.0F);
+		player.setMaxHealth(player.getMaxHealth()-4.0F);
+		//pas toute a fait
 		
 		return true;
 	}

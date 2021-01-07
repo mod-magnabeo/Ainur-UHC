@@ -19,6 +19,7 @@ import com.Wolf_IV.AnuirUHC.AListener;
 import com.Wolf_IV.AnuirUHC.MainA;
 import com.Wolf_IV.AnuirUHC.Search;
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
+import com.Wolf_IV.AnuirUHC.Role.Maedhros;
 
 public class TimerTasks extends BukkitRunnable {
 
@@ -107,7 +108,10 @@ public class TimerTasks extends BukkitRunnable {
 		if(timeSDay==1200) {
 			 timeSDay=0;
 			 timeDay++;
-			 //Search.dayRole(p);
+			 /*Search search =new Search();
+			 search.dayRole(p);*/
+			/* Maedhros ma = new Maedhros();
+			 ma.nDay(p);*/
 			 
 			 for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
 					playerO.playSound(playerO.getLocation(), Sound.GHAST_SCREAM2, 10.0F, 0.0F);
@@ -288,7 +292,8 @@ public class TimerTasks extends BukkitRunnable {
 				p.tulkas.sendMessage("Tu a un effet de force le jour et tu a deux coeur en plus.");
 				}
 	
-	
+				Search search =new Search();
+				 search.dayRole(p);
 				
 			}
 		}

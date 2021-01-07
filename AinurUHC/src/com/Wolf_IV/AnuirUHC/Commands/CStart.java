@@ -27,14 +27,14 @@ public class CStart implements CommandExecutor {
 	int i;
 	
 	
-	public Player jou[]=new Player[24+1];
-	public Player jouHit[]=new Player[24+1];
-	public Player evil[]=new Player[9+1];
+	public Player jou[]=new Player[24+1+1];
+	public Player jouHit[]=new Player[24+1+1];
+	public Player evil[]=new Player[9+1+1];
 	public Player Feanor;
 	public Player Melkor;
 	public Player ungoliant;
-	public Player balrog[]=new Player[7+1];
-	public Player balrogC[]=new Player[6+1];
+	public Player balrog[]=new Player[7+1+1];
+	public Player balrogC[]=new Player[6+1+1];
 	public Player balrog_infiltré;
 	public Player balrog_traceur;
 	public Player sauron;
@@ -54,13 +54,13 @@ public class CStart implements CommandExecutor {
 	public Player tulkas;
 	public Player Orc;
 	
-	public String jouS[]=new String[24+1];
-	public String jouHitS[]=new String[24+1];
-	public String evilS[]=new String[9+1];
+	public String jouS[]=new String[24+1+1];
+	public String jouHitS[]=new String[24+1+1];
+	public String evilS[]=new String[9+1+1];
 	public String FeanorS;
 	public String MelkorS;
 	public String ungoliantS;
-	public String balrogS[]=new String[7+1];
+	public String balrogS[]=new String[7+1+1];
 	public String balrog_infiltréS;
 	public String balrog_traceurS;
 	public String sauronS;
@@ -115,6 +115,7 @@ public class CStart implements CommandExecutor {
 					
 					
 					for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
+						playerO.setMaxHealth(20.0F);
 						nubPlayer++;
 					}
 					if(nubPlayer==24) {
@@ -314,11 +315,13 @@ public class CStart implements CommandExecutor {
 										}
 										jou[i+1]=playerO;
 									
-										RegisterString();
+										
 									
-									
+									//Bukkit.broadcastMessage("1");
 									}
+									
 								}
+								RegisterString();
 							}else {
 								Bukkit.broadcastMessage("§4Trop de role pour "+nubPlayer+" joueur(s)");
 								return true;

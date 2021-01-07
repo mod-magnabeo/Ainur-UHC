@@ -52,45 +52,45 @@ public class AListener implements Listener {
 			Player player=event.getPlayer();
 		
 		
-		if(p.MelkorS.equalsIgnoreCase(player.getName())) {
+		if(p.MelkorS != null && p.MelkorS.equalsIgnoreCase(player.getName())) {
 		p.Melkor = player;
-		}else if(p.sauronS.equalsIgnoreCase(player.getName())) {
+		}else if(p.sauronS != null && p.sauronS.equalsIgnoreCase(player.getName())) {
 			p.sauron = player;
-		}else if(p.ungoliantS.equalsIgnoreCase(player.getName())) {
+		}else if(p.ungoliantS != null && p.ungoliantS.equalsIgnoreCase(player.getName())) {
 			p.ungoliant = player;
-		}else if(p.balrog_infiltréS.equalsIgnoreCase(player.getName())) {
+		}else if(p.balrog_infiltréS != null && p.balrog_infiltréS.equalsIgnoreCase(player.getName())) {
 			p.balrog_infiltré = player;
-		}else if(p.balrog_traceurS.equalsIgnoreCase(player.getName())) {
+		}else if(p.balrog_traceurS != null && p.balrog_traceurS.equalsIgnoreCase(player.getName())) {
 			p.balrog_traceur = player;
-		}else if(p.FeanorS.equalsIgnoreCase(player.getName())) {
+		}else if(p.FeanorS != null && p.FeanorS.equalsIgnoreCase(player.getName())) {
 			p.Feanor = player;
-		}else if(p.Eru_IluvatarS.equalsIgnoreCase(player.getName())) {
+		}else if(p.Eru_IluvatarS != null && p.Eru_IluvatarS.equalsIgnoreCase(player.getName())) {
 			p.Eru_Iluvatar = player;
-		}else if(p.manwéS.equalsIgnoreCase(player.getName())) {
+		}else if(p.manwéS != null && p.manwéS.equalsIgnoreCase(player.getName())) {
 			p.manwé = player;
-		}else if(p.oroméS.equalsIgnoreCase(player.getName())) {
+		}else if(p.oroméS != null && p.oroméS.equalsIgnoreCase(player.getName())) {
 			p.oromé = player;
-		}else if(p.namoS.equalsIgnoreCase(player.getName())) {
+		}else if(p.namoS != null && p.namoS.equalsIgnoreCase(player.getName())) {
 			p.namo = player;
-		}else if(p.saurumanS.equalsIgnoreCase(player.getName())) {
+		}else if(p.saurumanS != null && p.saurumanS.equalsIgnoreCase(player.getName())) {
 			p.sauruman = player;
-		}else if(p.gandalfS.equalsIgnoreCase(player.getName())) {
+		}else if(p.gandalfS != null && p.gandalfS.equalsIgnoreCase(player.getName())) {
 			p.gandalf = player;
-		}else if(p.lorienS.equalsIgnoreCase(player.getName())) {
+		}else if(p.lorienS != null && p.lorienS.equalsIgnoreCase(player.getName())) {
 			p.lorien = player;
-		}else if(p.scorcier_bleu_1S.equalsIgnoreCase(player.getName())) {
+		}else if(p.scorcier_bleu_1S != null && p.scorcier_bleu_1S.equalsIgnoreCase(player.getName())) {
 			p.scorcier_bleu_1 = player;
-		}else if(p.scorcier_bleu_2S.equalsIgnoreCase(player.getName())) {
+		}else if(p.scorcier_bleu_2S != null && p.scorcier_bleu_2S.equalsIgnoreCase(player.getName())) {
 			p.scorcier_bleu_2 = player;
-		}else if(p.auléS.equalsIgnoreCase(player.getName())) {
+		}else if(p.auléS != null && p.auléS.equalsIgnoreCase(player.getName())) {
 			p.aulé = player;
-		}else if(p.fingolfinS.equalsIgnoreCase(player.getName())) {
+		}else if(p.fingolfinS != null && p.fingolfinS.equalsIgnoreCase(player.getName())) {
 			p.fingolfin = player;
-		}else if(p.vardaS.equalsIgnoreCase(player.getName())) {
+		}else if(p.vardaS != null && p.vardaS.equalsIgnoreCase(player.getName())) {
 			p.varda = player;
-		}else if(p.maedhrosS.equalsIgnoreCase(player.getName())) {
+		}else if(p.maedhrosS != null && p.maedhrosS.equalsIgnoreCase(player.getName())) {
 			p.maedhros = player;
-		}else if(p.tulkasS.equalsIgnoreCase(player.getName())) {
+		}else if(p.tulkasS != null && p.tulkasS.equalsIgnoreCase(player.getName())) {
 			p.tulkas = player;
 		}
 		
@@ -131,14 +131,12 @@ public class AListener implements Listener {
             	return;
             }
 		}
-	
             	 Player victim = (Player)event.getEntity();
             	 Player Damager = (Player)event.getDamager();
             	 for(i = 1; i<=p.nubPlayer; i++) {
          			if(victim == p.jou[i]) {
          				p.jouHit[i]=Damager;
          				p.jouHitS[i]=Damager.getName();
-         				
          			
             	 
 		}
@@ -164,8 +162,8 @@ public class AListener implements Listener {
        					Namo.lastDead = "§a"+victim.getName()+" est mort de PVE";
        					return;
        				}
+       				
        			 Namo.lastDead = "§a"+p.jouHit[i].getName()+" est la derniere personne a avoir frapper "+victim.getName();
-       			
        			}}
 		  
 	}
