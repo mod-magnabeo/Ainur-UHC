@@ -44,6 +44,9 @@ public class Maedhros {
 	
 	
 	public static void nDay(CStart p) {
+		if(p.maedhros == null) {
+			return;
+		}
 		//executer quand un jour passe
 		p.maedhros.sendMessage("§9Vous pouver choisir une nouvelle personne a protéger");
 		

@@ -30,6 +30,7 @@ public class TimerTasks extends BukkitRunnable {
 	this.p=cstart;
 	}
 	
+	public static boolean role = false;
 	public static int timerS=10;
 	public static int timerR=-1;
 	public static int timeSec=0;
@@ -156,6 +157,7 @@ public class TimerTasks extends BukkitRunnable {
 					playerO.playSound(playerO.getLocation(), Sound.LEVEL_UP, 10.0F, 0.0F);
 					}
 			}else if(timerR==0) {
+				role = true;
 				 
 				 for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
 							playerO.playSound(playerO.getLocation(), Sound.CLICK, 10.0F, 5.0F);
@@ -290,6 +292,7 @@ public class TimerTasks extends BukkitRunnable {
 				
 				}else if(p.tulkas != null) {
 				p.tulkas.sendMessage("Tu a un effet de force le jour et tu a deux coeur en plus.");
+				p.tulkas.setMaxHealth(p.tulkas.getMaxHealth()+4.0F);
 				}
 	
 				Search search =new Search();
