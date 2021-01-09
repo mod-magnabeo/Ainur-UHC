@@ -149,6 +149,28 @@ public class AListener implements Listener {
 	
 }
 	
+	@EventHandler
+    public void onDamage(EntityDamageEvent event) {
+		if (event.getEntity() instanceof Player) {
+			Player player = (Player) event.getEntity();
+
+		if(player.getHealth()-event.getDamage() <=0 && p.Eru_Iluvatar == player && EruIluvatar.raise == true) {
+			 for(i = 1; i<=p.nubPlayer; i++) {
+	       			if(p.jou[i] != null && player == p.jou[i]) {
+	       				p.jouD[i]=false;
+	       			if(p.jouHit[i] ==null) {
+	       					return;
+	       				}
+	       			
+	       			event.setCancelled(true);
+	       				 EruIluvatar.onDead(p.jouHit[i], p);
+	       			 
+	       			}}
+		}
+			
+		}
+		}
+	
 	@SuppressWarnings("static-access")
 	@EventHandler
 	  public void onEntityDeath(EntityDeathEvent event) {
@@ -189,14 +211,15 @@ public class AListener implements Listener {
 		if(current.getItemMeta().getDisplayName().equals("§aRevive")) {
 			Search.Revive(player, p);
 			player.closeInventory();
+			EruIluvatar.raise = true;
 		}else if(current != null) {
-			
-			if(Bukkit.getPlayer(current.getItemMeta().getDisplayName().substring(20)) != null) {
-				Player killer = Bukkit.getPlayer(current.getItemMeta().getDisplayName().substring(20));
-				killer.setMaxHealth(killer.getMaxHealth()-5.0F);
+			if(Bukkit.getPlayer(current.getItemMeta().getDisplayName().substring(21)) != null) {
+				Player killer = Bukkit.getPlayer(current.getItemMeta().getDisplayName().substring(21));
+				killer.setMaxHealth(killer.getMaxHealth()-10.0F);
 				killer.sendMessage("§bEru Iluvatar vous retire 5 coeur permanent");
 				player.closeInventory();
 				player.sendMessage("§bVous avez retirer 5 coeur à "+killer.getDisplayName());
+				EruIluvatar.raise = true;
 			}else {
 				player.sendMessage("§4Joueur déconnecter");
 			}

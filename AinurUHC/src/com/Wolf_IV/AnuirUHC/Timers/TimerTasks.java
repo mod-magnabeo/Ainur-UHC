@@ -1,8 +1,10 @@
 package com.Wolf_IV.AnuirUHC.Timers;
 
+import java.awt.TextComponent;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -20,6 +22,11 @@ import com.Wolf_IV.AnuirUHC.MainA;
 import com.Wolf_IV.AnuirUHC.Search;
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Role.Maedhros;
+
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
 
 public class TimerTasks extends BukkitRunnable {
 
@@ -109,6 +116,7 @@ public class TimerTasks extends BukkitRunnable {
 		if(timeSDay==1200) {
 			 timeSDay=0;
 			 timeDay++;
+			 
 			 /*Search search =new Search();
 			 search.dayRole(p);*/
 			/* Maedhros ma = new Maedhros();
@@ -138,6 +146,7 @@ public class TimerTasks extends BukkitRunnable {
 			 
 				 Bukkit.broadcastMessage("§eJour "+timeDay+"⚙"); 
 			 }
+			 
 			 }
 		
 	
@@ -234,6 +243,16 @@ public class TimerTasks extends BukkitRunnable {
 						+ "silmarils et si tu en gagne un tu doit le donner avec la commande /donner pseudo dans les 3 min sinon "
 						+ "il sera donner aléatoirement a un joueur. Tu doit maintenant choisir entre deux chanson. Elle sont "
 						+ "expliquer en dessous.");
+				BaseComponent[] page = new ComponentBuilder("§d[§bChanson de Revelation§d]")
+						.event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/u revelation"))
+				        .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§aTu peut dévoiler a tous le monde le role d'un joueur situé a 10 blocks de toi avec /u [joueur]").create()))
+				        .create();
+				BaseComponent[] page2 = new ComponentBuilder("§d[§bChanson de Soul§d]")
+						.event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/u soul"))
+				        .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§aSi tu meurt d'un joueur tu peut entre qu'il perds 5 coeurs ou que tu reprenne vie").create()))
+				        .create();
+				p.Eru_Iluvatar.spigot().sendMessage(page);
+				p.Eru_Iluvatar.spigot().sendMessage(page2);
 				}
 				else if(p.manwé != null) {
 				p.manwé.sendMessage("Tout les joueur les joueur connaisent ton role. Tu ne peut pas avoir les effet des silmarils "
@@ -296,7 +315,7 @@ public class TimerTasks extends BukkitRunnable {
 				}
 	
 				Search search =new Search();
-				 search.dayRole(p);
+				 search.dayRole(p);//PENSER A LE METTRE EN HAUT
 				 
 				
 			}

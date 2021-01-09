@@ -2,6 +2,7 @@ package com.Wolf_IV.AnuirUHC.Role;
 
 import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -69,6 +70,7 @@ public class EruIluvatar {
 	}
 	public static void onDead(Player killer, CStart p) {
 		if(raise == true) {
+			p.Eru_Iluvatar.closeInventory();
 			Inventory inv = Bukkit.createInventory(null, 27, "§bChoisir:");
 			
 			ItemStack Kill =new Wool(DyeColor.RED).toItemStack();
@@ -85,6 +87,7 @@ public class EruIluvatar {
 			inv.setItem(15, Revive);
 			
 			p.Eru_Iluvatar.openInventory(inv);
+			p.Eru_Iluvatar.setGameMode(GameMode.SPECTATOR);
 		}
 	}
 
