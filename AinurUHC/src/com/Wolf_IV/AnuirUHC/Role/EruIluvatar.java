@@ -36,7 +36,9 @@ public class EruIluvatar {
 			player.sendMessage("§4Vous n'avez pas choisi de chanson dans les 5 premiere minute du Jour 2");
 			return true;
 		}
+		
 		Player[] pl = Search.pNext(player, p, 10);
+		
 		player.sendMessage("p1 = "+pl[0].getDisplayName());
 		player.sendMessage("p1 = "+pl[0].getDisplayName()+" p2 = "+pl[1].getDisplayName());
 		

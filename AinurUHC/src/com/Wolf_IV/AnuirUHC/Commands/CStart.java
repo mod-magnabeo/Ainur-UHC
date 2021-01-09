@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.Wolf_IV.AnuirUHC.MainA;
+import com.Wolf_IV.AnuirUHC.Role.Role;
 import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
 
 public class CStart implements CommandExecutor {
@@ -27,6 +28,7 @@ public class CStart implements CommandExecutor {
 	int i;
 	
 	public boolean jouD[]= new boolean[24+1+1];
+	public Role role[]=new Role[24+1+1];
 	public Player jou[]=new Player[24+1+1];
 	public Player jouHit[]=new Player[24+1+1];
 	public Player evil[]=new Player[9+1+1];
@@ -133,16 +135,22 @@ public class CStart implements CommandExecutor {
 							jou[choose]=container;
 							}
 						
+						  for(i = 1; i<=nubPlayer; i++) {
+							  role[i].setPlayer(jou[i]);
+						  }
 						Melkor=jou[1];
+						role[1].setRole("Melkor");
 						sauron=jou[2];
+						role[2].setRole("Sauron");
 						ungoliant=jou[3];
-						balrog[1]=jou[4];
-						balrog[2]=jou[5];
-						balrog[3]=jou[6];
-						balrog[4]=jou[7];
-						balrog[5]=jou[8];
-						balrog[6]=jou[9];
+						role[3].setRole("Ungoliant");
+						
+						for(i=1;i<=6;i++) {
+							balrog[i]=jou[i+3];
+							}
+						
 						balrog[7]=ungoliant;
+						role[7].setRole("Balrog");
 						for(i=1;i<=9;i++) {
 							evil[i]=jou[i];
 						}
@@ -150,27 +158,29 @@ public class CStart implements CommandExecutor {
 						
 						rando=rand.nextInt(50)+10;
 						for(i=0;i<=rando;i++) {
-							choose=rand.nextInt(5)+1;
-							choose2=rand.nextInt(5)+1;
+							choose=rand.nextInt(7)+1;
+							choose2=rand.nextInt(7)+1;
 							container=balrog[choose2];
 							balrog[choose2]=balrog[choose];
 							balrog[choose]=container;
 							}
 						
+						for(i=1;i<=7;i++) {
+							role[i+3].setRole("Balrog");
+						}
 						
 						balrog_infiltré=balrog[1];
+						role[4].setRole("Balrog Infiltré");
 						balrog_traceur=balrog[2];
-						balrogC[1]=balrog[2];
-						balrogC[2]=balrog[3];
-						balrogC[3]=balrog[4];
-						balrogC[4]=balrog[5];
-						balrogC[5]=balrog[6];
-						balrogC[6]=balrog[7];
+						role[5].setRole("Balrog Traceur");
 						
+						for(i=1;i<=6;i++) {
+							balrogC[i]=balrog[i+2];
+						}
 						rando=rand.nextInt(50)+10;
 						for(i=0;i<=rando;i++) {
-							choose=rand.nextInt(5)+1;
-							choose2=rand.nextInt(5)+1;
+							choose=rand.nextInt(7)+1;
+							choose2=rand.nextInt(7)+1;
 							container=balrog[choose2];
 							balrog[choose2]=balrog[choose];
 							balrog[choose]=container;
@@ -178,25 +188,40 @@ public class CStart implements CommandExecutor {
 						
 						
 						Feanor=jou[10];
+						role[10].setRole("Fëanor");
 						Eru_Iluvatar=jou[11];
+						role[11].setRole("Eru Iluvatar");
 						manwé=jou[12];
+						role[12].setRole("Manwë");
 						oromé=jou[13];
+						role[13].setRole("Oromë");
 						namo=jou[14];
+						role[14].setRole("Namo");
 						sauruman=jou[15];
+						role[15].setRole("Saruman");
 						gandalf=jou[16];
+						role[16].setRole("Gandalf");
 						lorien=jou[17];
+						role[17].setRole("Lorien");
 						scorcier_bleu_1=jou[18];
+						role[18].setRole("Scorcier Bleu");
 						scorcier_bleu_2=jou[19];
+						role[19].setRole("Scorcier Bleu");
 						aulé=jou[20];
+						role[20].setRole("Aulë");
 						fingolfin=jou[21];
+						role[21].setRole("Fingolfin");
 						varda=jou[22];
+						role[22].setRole("Varda");
 						maedhros=jou[23];
+						role[23].setRole("Maedhros");
 						tulkas=jou[24];
+						role[24].setRole("Tulkas");
 						
 						rando=rand.nextInt(50)+10;
 						for(i=0;i<=rando;i++) {
-							choose=rand.nextInt(5)+1;
-							choose2=rand.nextInt(5)+1;
+							choose=rand.nextInt(7)+1;
+							choose2=rand.nextInt(7)+1;
 							container=balrog[choose2];
 							balrog[choose2]=balrog[choose];
 							balrog[choose]=container;
@@ -316,13 +341,17 @@ public class CStart implements CommandExecutor {
 										}
 										jou[i+1]=playerO;
 										jouD[i+1] = true;
-									
+										role[i+1].setPlayer(playerO);
+										role[i+1].setRole(args[i]);
 										
 									
 									//Bukkit.broadcastMessage("1");
 									}
 									
 								}
+								  for(i = 1; i<=nubPlayer; i++) {
+									  role[i].setPlayer(jou[i]);
+								  }
 								RegisterString();
 							}else {
 								Bukkit.broadcastMessage("§4Trop de role pour "+nubPlayer+" joueur(s)");
