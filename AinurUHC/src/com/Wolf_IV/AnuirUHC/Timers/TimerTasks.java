@@ -297,6 +297,7 @@ public class TimerTasks extends BukkitRunnable {
 	
 				Search search =new Search();
 				 search.dayRole(p);
+				 
 				
 			}
 		}

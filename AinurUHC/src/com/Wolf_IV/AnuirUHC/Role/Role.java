@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 
 public class Role {
 
-	Player player;
+	String player;
 	String role;
 	String lien;
 	
@@ -14,10 +14,10 @@ public class Role {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public Player getPlayer() {
+	public String getPlayer() {
 		return player;
 	}
-	public void setPlayer(Player p) {
+	public void setPlayer(String p) {
 		this.player = p;
 	}
 	

@@ -28,7 +28,7 @@ public class CStart implements CommandExecutor {
 	int i;
 	
 	public boolean jouD[]= new boolean[24+1+1];
-	public Role role[]=new Role[24+1+1];
+	public Role[] role =new Role[24+1+1];;
 	public Player jou[]=new Player[24+1+1];
 	public Player jouHit[]=new Player[24+1+1];
 	public Player evil[]=new Player[9+1+1];
@@ -102,7 +102,7 @@ public class CStart implements CommandExecutor {
 
 		@Override
 		public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
-			
+			Role r =new Role();
 			
 			if(sender instanceof Player) {
 				if(cmd.getName().equalsIgnoreCase("startainuruhc")) {
@@ -135,22 +135,24 @@ public class CStart implements CommandExecutor {
 							jou[choose]=container;
 							}
 						
-						  for(i = 1; i<=nubPlayer; i++) {
-							  role[i].setPlayer(jou[i]);
-						  }
+						r.setPlayer(jou[1].getDisplayName());
 						Melkor=jou[1];
-						role[1].setRole("Melkor");
+						r.setRole("Melkor");
+						role[1] = r;
 						sauron=jou[2];
-						role[2].setRole("Sauron");
+						r.setRole("Sauron");
+						role[2] =r;
 						ungoliant=jou[3];
-						role[3].setRole("Ungoliant");
+						r.setRole("Ungoliant");
+						role[3] =r;
 						
 						for(i=1;i<=6;i++) {
 							balrog[i]=jou[i+3];
 							}
 						
 						balrog[7]=ungoliant;
-						role[7].setRole("Balrog");
+						r.setRole("Balrog");
+						role[7] =r;
 						for(i=1;i<=9;i++) {
 							evil[i]=jou[i];
 						}
@@ -166,13 +168,16 @@ public class CStart implements CommandExecutor {
 							}
 						
 						for(i=1;i<=7;i++) {
-							role[i+3].setRole("Balrog");
+							r.setRole("Balrog");
+							role[i+3] =r;
 						}
 						
 						balrog_infiltré=balrog[1];
-						role[4].setRole("Balrog Infiltré");
+						r.setRole("Balrog Infiltré");
+						role[4] =r;
 						balrog_traceur=balrog[2];
-						role[5].setRole("Balrog Traceur");
+						r.setRole("Balrog Traceur");
+						role[5] =r;
 						
 						for(i=1;i<=6;i++) {
 							balrogC[i]=balrog[i+2];
@@ -188,35 +193,56 @@ public class CStart implements CommandExecutor {
 						
 						
 						Feanor=jou[10];
-						role[10].setRole("Fëanor");
+						r.setRole("Fëanor");
+						role[10] =r;
 						Eru_Iluvatar=jou[11];
-						role[11].setRole("Eru Iluvatar");
+						r.setRole("Eru Iluvatar");
+						role[11] =r;
 						manwé=jou[12];
-						role[12].setRole("Manwë");
+						r.setRole("Manwë");
+						role[12] =r;
 						oromé=jou[13];
-						role[13].setRole("Oromë");
+						r.setRole("Oromë");
+						role[13] =r;
 						namo=jou[14];
-						role[14].setRole("Namo");
+						r.setRole("Namo");
+						role[14] =r;
 						sauruman=jou[15];
-						role[15].setRole("Saruman");
+						r.setRole("Saruman");
+						role[15] =r;
 						gandalf=jou[16];
-						role[16].setRole("Gandalf");
+						r.setRole("Gandalf");
+						role[16] =r;
 						lorien=jou[17];
-						role[17].setRole("Lorien");
+						r.setRole("Lorien");
+						role[17] =r;
 						scorcier_bleu_1=jou[18];
-						role[18].setRole("Scorcier Bleu");
+						r.setRole("Scorcier Bleu");
+						role[18] =r;
 						scorcier_bleu_2=jou[19];
-						role[19].setRole("Scorcier Bleu");
+						r.setRole("Scorcier Bleu");
+						role[19] =r;
 						aulé=jou[20];
-						role[20].setRole("Aulë");
+						r.setRole("Aulë");
+						role[20] =r;
 						fingolfin=jou[21];
-						role[21].setRole("Fingolfin");
+						r.setRole("Fingolfin");
+						role[21] =r;
 						varda=jou[22];
-						role[22].setRole("Varda");
+						r.setRole("Varda");
+						role[22]=r;
 						maedhros=jou[23];
-						role[23].setRole("Maedhros");
+						r.setRole("Maedhros");
+						role[23]=r;
 						tulkas=jou[24];
-						role[24].setRole("Tulkas");
+						r.setRole("Tulkas");
+						role[24]=r;
+						
+						for(i = 1; i<=nubPlayer; i++) {
+							  r.setPlayer(jou[i].getDisplayName());
+							  r.setRole(role[i].getRole());
+							  role[i] =r;
+						  }
 						
 						rando=rand.nextInt(50)+10;
 						for(i=0;i<=rando;i++) {
@@ -341,17 +367,15 @@ public class CStart implements CommandExecutor {
 										}
 										jou[i+1]=playerO;
 										jouD[i+1] = true;
-										role[i+1].setPlayer(playerO);
-										role[i+1].setRole(args[i]);
+										Role rr =new Role();
+										rr.setPlayer(playerO.getDisplayName());
+										rr.setRole(args[i]);
+										role[i+1] = rr;
 										
 									
-									//Bukkit.broadcastMessage("1");
 									}
 									
 								}
-								  for(i = 1; i<=nubPlayer; i++) {
-									  role[i].setPlayer(jou[i]);
-								  }
 								RegisterString();
 							}else {
 								Bukkit.broadcastMessage("§4Trop de role pour "+nubPlayer+" joueur(s)");

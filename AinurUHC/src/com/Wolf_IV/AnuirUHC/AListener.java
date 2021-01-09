@@ -1,6 +1,7 @@
 package com.Wolf_IV.AnuirUHC;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -8,11 +9,14 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
+import com.Wolf_IV.AnuirUHC.Role.EruIluvatar;
 import com.Wolf_IV.AnuirUHC.Role.Namo;
 import com.Wolf_IV.AnuirUHC.Timers.TimerProt;
 import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
@@ -165,8 +169,40 @@ public class AListener implements Listener {
        				}
        				
        			 Namo.lastDead = "§a"+p.jouHit[i].getName()+" est la derniere personne a avoir frapper "+victim.getName();
+       			 if(victim == p.Eru_Iluvatar) {
+       				 EruIluvatar.onDead(p.jouHit[i], p);
+       			 }
        			}}
 		  
+	}
+	
+	@EventHandler
+	public void onClick(InventoryClickEvent event) {
+		Inventory inv = event.getInventory();
+		Player player =(Player) event.getWhoClicked();
+		ItemStack current= event.getCurrentItem();
+		if(inv.getName().equalsIgnoreCase("§bChoisir:")) {
+		if(current==null) return;
+		
+		event.setCancelled(true);
+		
+		if(current.getItemMeta().getDisplayName().equals("§aRevive")) {
+			Search.Revive(player, p);
+			player.closeInventory();
+		}else if(current != null) {
+			
+			if(Bukkit.getPlayer(current.getItemMeta().getDisplayName().substring(20)) != null) {
+				Player killer = Bukkit.getPlayer(current.getItemMeta().getDisplayName().substring(20));
+				killer.setMaxHealth(killer.getMaxHealth()-5.0F);
+				killer.sendMessage("§bEru Iluvatar vous retire 5 coeur permanent");
+				player.closeInventory();
+				player.sendMessage("§bVous avez retirer 5 coeur à "+killer.getDisplayName());
+			}else {
+				player.sendMessage("§4Joueur déconnecter");
+			}
+		}
+		
+		}
 	}
 	
 	
