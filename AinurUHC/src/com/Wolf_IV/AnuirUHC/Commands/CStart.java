@@ -26,7 +26,7 @@ public class CStart implements CommandExecutor {
 	int choose2;
 	int i;
 	
-	
+	public boolean jouD[]= new boolean[24+1+1];
 	public Player jou[]=new Player[24+1+1];
 	public Player jouHit[]=new Player[24+1+1];
 	public Player evil[]=new Player[9+1+1];
@@ -122,6 +122,7 @@ public class CStart implements CommandExecutor {
 						for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
 							nubjou++;
 							jou[nubjou]=playerO;
+							jouD[nubjou] = true;
 						}
 						rando=rand.nextInt(250)+50;
 						for(i=0;i<=rando;i++) {
@@ -314,6 +315,7 @@ public class CStart implements CommandExecutor {
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Tulkas");
 										}
 										jou[i+1]=playerO;
+										jouD[i+1] = true;
 									
 										
 									

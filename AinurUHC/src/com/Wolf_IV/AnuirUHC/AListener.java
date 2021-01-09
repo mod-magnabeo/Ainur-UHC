@@ -152,10 +152,11 @@ public class AListener implements Listener {
 		if (!(event.getEntity() instanceof Player)) {
 		      return;
 		    }
+		
 		      Player victim = (Player)event.getEntity();
 		      for(i = 1; i<=p.nubPlayer; i++) {
-       			if(victim == p.jou[i]) {
-       				
+       			if(p.jou[i] != null && victim == p.jou[i]) {
+       				p.jouD[i] = false;
        			
        				
        				if(p.jouHit[i] ==null) {
