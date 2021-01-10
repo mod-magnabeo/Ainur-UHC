@@ -22,6 +22,7 @@ import com.Wolf_IV.AnuirUHC.MainA;
 import com.Wolf_IV.AnuirUHC.Search;
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Role.Maedhros;
+import com.Wolf_IV.AnuirUHC.Role.Ungoliant;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -117,7 +118,7 @@ public class TimerTasks extends BukkitRunnable {
 			 timeSDay=0;
 			 timeDay++;
 			 
-			 /*Search search =new Search();
+			/* Search search =new Search();
 			 search.dayRole(p);*/
 			/* Maedhros ma = new Maedhros();
 			 ma.nDay(p);*/
@@ -136,8 +137,16 @@ public class TimerTasks extends BukkitRunnable {
 				 //Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "gamerule keepInventory false");
 			 }else if(timeDay==6){
 				 JourSay="§eFin Bordur Jour 7⚙";
+				 /**
+				  * SI TU MODIFIE LA BORDUR OUBLIE PAS DE MODIFIER LE REVIVE
+				  */
+				//SI TU MODIFIE LA BORDUR OUBLIE PAS DE MODIFIER LE REVIVE
 				 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "worldborder set 6000");
 				 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "worldborder set 200 1200");
+				 //SI TU MODIFIE LA BORDUR OUBLIE PAS DE MODIFIER LE REVIVE
+				 /**
+				  * SI TU MODIFIE LA BORDUR OUBLIE PAS DE MODIFIER LE REVIVE
+				  */
 				 Bukkit.broadcastMessage("§eJour 6⚙ Bordur 3000 block elle serat a 100 block d'ici Jour 7⚙"); 
 			 }else if(timeDay==7){
 				 JourSay="§eBonne chance a tous";
@@ -146,7 +155,11 @@ public class TimerTasks extends BukkitRunnable {
 			 
 				 Bukkit.broadcastMessage("§eJour "+timeDay+"⚙"); 
 			 }
-			 
+			 Search search =new Search();
+			 if(timeDay==7){
+				 Ungoliant.trans(p);
+			 }
+			 search.dayRole(p);
 			 }
 		
 	
@@ -203,7 +216,7 @@ public class TimerTasks extends BukkitRunnable {
 					p.balrog[i].sendMessage("§3Ton rôle est simple. Avec ton équipe récupérer les trois silmarils(qui " + 
 							" arriveront directement dans l’inventaire de Melkor)." + 
 							" Après les avoir récupérer tu gagne en étant le dernier vivant avec ton équipe." + 
-							" Les autres balrog sauron et Melkor sont avec toi, tu peut les identifier avec la command /team" + 
+							" Les autres balrog sauron et Melkor sont avec toi, tu peut les identifier avec la command /br" + 
 							" Quand vous avez les trois silmarils il se transformeront en couronne de fer, une fois porter par Melkor un "
 							+ "balrog sera informé qu’il doit trahir son équipe c’est Ungoliant(sauf si il est déjà mort). Tu obtiens force 1 "
 							+ "la nuit comme tous les autre balrogs et sauron. Un joueur choisi par Melkor rejoindra ton équipe. Si ton équipe obtient "
@@ -314,8 +327,8 @@ public class TimerTasks extends BukkitRunnable {
 				p.tulkas.setMaxHealth(p.tulkas.getMaxHealth()+4.0F);
 				}
 	
-				Search search =new Search();
-				 search.dayRole(p);//PENSER A LE METTRE EN HAUT
+			/*	Search search =new Search();
+				 search.dayRole(p);//PENSER A LE METTRE EN HAUT*/
 				 
 				
 			}

@@ -295,6 +295,7 @@ public class CStart implements CommandExecutor {
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Ungoliant");
 											evil[evilnub]=playerO;
 											evilnub++;
+											balrogC[balnub] = playerO;
 											balrog[balnub]=playerO;
 											balnub++;
 										}else if(args[i].equalsIgnoreCase("balrog_infiltré")) {
@@ -309,6 +310,7 @@ public class CStart implements CommandExecutor {
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Balrog Traceur");
 											evil[evilnub]=playerO;
 											evilnub++;
+											balrogC[balnub] = playerO;
 											balrog[balnub]=playerO;
 											balnub++;
 										}else if(args[i].equalsIgnoreCase("balrog")) {
@@ -316,6 +318,7 @@ public class CStart implements CommandExecutor {
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Balrog");
 											evil[evilnub]=playerO;
 											evilnub++;
+											balrogC[balnub] = playerO;
 											balrog[balnub]=playerO;
 											balnub++;
 										}else if(args[i].equalsIgnoreCase("feanor")) {
