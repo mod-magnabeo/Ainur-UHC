@@ -2,6 +2,7 @@ package com.Wolf_IV.AnuirUHC;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,6 +11,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
@@ -227,6 +229,16 @@ public class AListener implements Listener {
 		
 		}
 	}
+	 @EventHandler
+	    public void onItemDrop (PlayerDropItemEvent event) {
+	        Player player = event.getPlayer();
+	       
+	            Item drop = event.getItemDrop();
+	            if (drop.getItemStack().getType() == Material.INK_SACK) {
+	            	player.sendMessage("§4Jeté pas vos silmarils");
+	                event.setCancelled(true);  
+	            }
+	    }
 	
 	
 }

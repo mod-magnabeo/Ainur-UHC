@@ -16,3 +16,5 @@ commands:
     description: use power
   br:
     description: see balrog list
+  don:
+    description: donner silmarils

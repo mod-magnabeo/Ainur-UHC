@@ -19,6 +19,7 @@ public class MainA extends JavaPlugin implements Listener{
 	getCommand("startainuruhcstop").setExecutor(new CStartStop());
 	getCommand("u").setExecutor(new CU(cstart));
 	getCommand("br").setExecutor(new CBR(cstart));
+	getCommand("don").setExecutor(new CDON(cstart));
 	getServer().getPluginManager().registerEvents(new AListener(cstart), this);
 	}
 	@Override

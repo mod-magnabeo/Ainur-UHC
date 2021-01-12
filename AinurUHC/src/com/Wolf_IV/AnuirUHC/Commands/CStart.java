@@ -27,6 +27,10 @@ public class CStart implements CommandExecutor {
 	int choose2;
 	int i;
 	
+	public ItemStack SG;
+	public ItemStack SB;
+	public ItemStack SJ;
+	
 	public boolean jouD[]= new boolean[24+1+1];
 	public Role[] role =new Role[24+1+1];;
 	public Player jou[]=new Player[24+1+1];
@@ -81,6 +85,10 @@ public class CStart implements CommandExecutor {
 	public String maedhrosS;
 	public String tulkasS;
 	public String OrcS;// A la creation de l'orc noublie pas de le co register
+	
+	public String SVert;
+	public String SBleu;
+	public String SJaune;
 	
 	
 	
@@ -314,7 +322,6 @@ public class CStart implements CommandExecutor {
 											balrog[balnub]=playerO;
 											balnub++;
 										}else if(args[i].equalsIgnoreCase("balrog")) {
-											balrog_traceur=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Balrog");
 											evil[evilnub]=playerO;
 											evilnub++;
