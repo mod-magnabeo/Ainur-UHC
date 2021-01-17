@@ -10,6 +10,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
@@ -66,6 +68,25 @@ public class TimerTasks extends BukkitRunnable {
 		timeSDay++;
 		timeSec++;
 		
+		if(role == true) {
+			if(!p.SBleu.isEmpty() && Bukkit.getPlayer(p.SBleu) != null) {
+				//FAIRE NO EFFECT POUR AULé et tt
+				if(p.manwéS.isEmpty() || !p.manwéS.equalsIgnoreCase(p.SBleu)) {
+				Bukkit.getPlayer(p.SBleu).removePotionEffect(PotionEffectType.SPEED);
+				Bukkit.getPlayer(p.SBleu).addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20*5, 0 , false, false));
+				}
+			}
+			if(!p.SVert.isEmpty() && Bukkit.getPlayer(p.SVert) != null) {
+				Bukkit.getPlayer(p.SVert).removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
+				Bukkit.getPlayer(p.SVert).addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20*5, 0 , false, false));
+			}
+			if(!p.SRouge.isEmpty() && Bukkit.getPlayer(p.SRouge) != null) {
+				if(p.auléS.isEmpty() || !p.auléS.equalsIgnoreCase(p.SRouge)) {
+				Bukkit.getPlayer(p.SRouge).removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
+				Bukkit.getPlayer(p.SRouge).addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 20*5, 0, false, false));
+				}
+			}
+		}
 		if(timeSec==60) {
 			timeSec=0;
 			timeMin++;

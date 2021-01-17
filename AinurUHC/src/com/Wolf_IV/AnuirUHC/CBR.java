@@ -5,7 +5,9 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -25,29 +27,38 @@ public class CBR implements CommandExecutor {
 		if(sender instanceof Player) {
 			if(cmd.getName().equalsIgnoreCase("br")) {
 				Player player = (Player)sender;
-
+				
 				player.getInventory().setHeldItemSlot(0);
 				 ItemStack G = new ItemStack(Material.INK_SACK, 1, (short)0, DyeColor.MAGENTA.getData());
 				ItemMeta customG = G.getItemMeta();
 				customG.setDisplayName("§aSilmaril Vert");
+				customG.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
+				customG.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				G.setItemMeta(customG);
 				p.SG = G;
+				p.SVert = player.getDisplayName();
 				player.getInventory().setItemInHand(G);
 				
 				player.getInventory().setHeldItemSlot(1);
-				ItemStack J = new ItemStack(Material.INK_SACK, 1, (short)0, DyeColor.BLUE.getData());
-				ItemMeta customJ = J.getItemMeta();
-				customJ.setDisplayName("§eSilmaril Jaune");
-				J.setItemMeta(customJ);
-				p.SJ = J;
-				player.getInventory().setItemInHand(J);
+				ItemStack R = new ItemStack(Material.INK_SACK, 1, (short)0, DyeColor.BLUE.getData());
+				ItemMeta customR = R.getItemMeta();
+				customR.setDisplayName("§eSilmaril Rouge");
+				customR.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
+				customR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+				R.setItemMeta(customR);
+				p.SR = R;
+				p.SRouge = player.getDisplayName();
+				player.getInventory().setItemInHand(R);
 				
 				player.getInventory().setHeldItemSlot(2);
 				ItemStack B = new ItemStack(Material.INK_SACK, 1, (short)0, DyeColor.YELLOW.getData());
 				ItemMeta customB = B.getItemMeta();
 				customB.setDisplayName("§bSilmaril Bleu");
+				customB.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
+				customB.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				B.setItemMeta(customB);
 				p.SB = B;
+				p.SBleu = player.getDisplayName();
 				player.getInventory().setItemInHand(B);
 				if(TimerTasks.role==false) {
 					player.sendMessage("§4Les role n'ont pas été donné");

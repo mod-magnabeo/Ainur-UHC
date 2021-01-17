@@ -1,7 +1,10 @@
 package com.Wolf_IV.AnuirUHC;
 
+import java.util.Arrays;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,10 +19,15 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.material.Skull;
 
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Role.EruIluvatar;
 import com.Wolf_IV.AnuirUHC.Role.Namo;
+import com.Wolf_IV.AnuirUHC.Role.SBleu;
+import com.Wolf_IV.AnuirUHC.Role.SRouge;
 import com.Wolf_IV.AnuirUHC.Timers.TimerProt;
 import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
 
@@ -227,6 +235,29 @@ public class AListener implements Listener {
 			}
 		}
 		
+		}else if(inv.getName().equalsIgnoreCase("§bTeleporter a un joueur:")) {
+			if(current == null) return;
+			event.setCancelled(true);
+			if(current.getType() == Material.SKULL_ITEM && current.getItemMeta().hasDisplayName()) {
+				SkullMeta skullM = (SkullMeta) current.getItemMeta();
+				for(int i = 1; i<=p.nubPlayer; i++) {
+					Bukkit.broadcastMessage(p.jou[i].getDisplayName()+" owner"+skullM.getOwner());
+					if(p.jou[i] !=  null && p.jouD[i] == true && p.jou[i].getName().equalsIgnoreCase(skullM.getOwner())) {
+	       				player.teleport(p.jou[i]);
+	       				
+	       				player.closeInventory();
+	       				player.sendMessage("§eVous avez été Teleporter");
+	       				p.SBU = false;
+	       				ItemMeta Imeta = p.SB.getItemMeta();
+	       				Imeta.removeEnchant(Enchantment.ARROW_KNOCKBACK);  
+	       				Imeta.setLore(Arrays.asList("§cSilmaril utilisé"));
+	       				p.SB.setItemMeta(Imeta);
+	       				player.getInventory().setItemInHand(p.SB);
+	       				return;
+	       			}
+				}
+				player.sendMessage("§4Le joueur est aculement indisponible");
+			}
 		}
 	}
 	 @EventHandler
@@ -239,6 +270,27 @@ public class AListener implements Listener {
 	                event.setCancelled(true);  
 	            }
 	    }
+	 
+	 
+	 @EventHandler
+		public void onInteract(PlayerInteractEvent event) {
+			Player player =event.getPlayer();
+			Action action =event.getAction();
+			ItemStack it =event.getItem();
+			
+			
+			if(it != null) {
+				if(it.getItemMeta().hasDisplayName() && it.getItemMeta().getDisplayName() == p.SB.getItemMeta().getDisplayName()) {
+				SBleu.interact(player, action, p);
+				}else if(it.getItemMeta().hasDisplayName() && it.getItemMeta().getDisplayName() == p.SR.getItemMeta().getDisplayName()) {
+				SRouge.interact(player, action, p);
+				}
+				
+				
+			}
+			
+	 }
+	 
 	
 	
 }

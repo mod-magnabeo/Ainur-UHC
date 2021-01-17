@@ -29,7 +29,11 @@ public class CStart implements CommandExecutor {
 	
 	public ItemStack SG;
 	public ItemStack SB;
-	public ItemStack SJ;
+	public ItemStack SR;
+	
+	public boolean SGU = true;
+	public boolean SBU = true;
+	public boolean SRU = true;
 	
 	public boolean jouD[]= new boolean[24+1+1];
 	public Role[] role =new Role[24+1+1];;
@@ -88,7 +92,7 @@ public class CStart implements CommandExecutor {
 	
 	public String SVert;
 	public String SBleu;
-	public String SJaune;
+	public String SRouge;
 	
 	
 	

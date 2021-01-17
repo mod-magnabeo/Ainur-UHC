@@ -39,14 +39,17 @@ public class CDON implements CommandExecutor {
 							player.sendMessage("§aCeci n'est pas un silmarils");
 							return true;
 						}
-						if(item.getDisplayName().equalsIgnoreCase("§aSilmaril Vert")) {
+						if(item.getDisplayName().equalsIgnoreCase("§aSilmaril Vert") && p.SVert.equalsIgnoreCase(player.getDisplayName()) ) {
 							play.getInventory().addItem(p.SG);
+							p.SVert = play.getName();
 							play.sendMessage("§dVous recever le §aSilmaril Vert faite /claim si vous ne l'avez pas reçu");
-						}else if(item.getDisplayName().equalsIgnoreCase("§bSilmaril Bleu")) {
+						}else if(item.getDisplayName().equalsIgnoreCase("§bSilmaril Bleu") && p.SBleu.equalsIgnoreCase(player.getDisplayName())) {
 							play.getInventory().addItem(p.SB);
+							p.SBleu = play.getName();
 							play.sendMessage("§dVous recever le §bSilmaril Bleu faite /claim si vous ne l'avez pas reçu");
-						}else if(item.getDisplayName().equalsIgnoreCase("§eSilmaril Jaune")) {
-							play.getInventory().addItem(p.SJ);
+						}else if(item.getDisplayName().equalsIgnoreCase("§eSilmaril Rouge") && p.SRouge.equalsIgnoreCase(player.getDisplayName())) {
+							play.getInventory().addItem(p.SR);
+							p.SRouge = play.getName();
 							play.sendMessage("§dVous recever le §eSilmaril Jaune faite /claim si vous ne l'avez pas reçu");
 						}else {
 							player.sendMessage("§aCeci n'est pas un silmarils");
