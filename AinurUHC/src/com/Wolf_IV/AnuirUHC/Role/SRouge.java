@@ -29,7 +29,7 @@ public static void interact(Player player, Action action, CStart p) {
 			double dégat = 4.0F;
 			Player pl[] = Search.pNext(player, p, 15);
 			for(Player playerH : pl) {
-				if(playerH.getMaxHealth()>dégat) {
+				if(playerH != null && playerH.getMaxHealth()>dégat) {
 					playerH.sendMessage("§6La une des dernière lumiere des arbre de Valianor vous atteint §cle Silmaril Rouge §6vous retire 2 coeur permanent");
 					playerH.setMaxHealth(playerH.getMaxHealth()-dégat);
 				}

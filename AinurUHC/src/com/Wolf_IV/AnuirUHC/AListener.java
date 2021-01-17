@@ -164,7 +164,7 @@ public class AListener implements Listener {
 		if (event.getEntity() instanceof Player) {
 			Player player = (Player) event.getEntity();
 
-		if(player.getHealth()-event.getDamage() <=0 && p.Eru_Iluvatar == player && EruIluvatar.raise == true) {
+		if(player.getHealth()-event.getDamage() <=0) {
 			 for(i = 1; i<=p.nubPlayer; i++) {
 	       			if(p.jou[i] != null && player == p.jou[i]) {
 	       				p.jouD[i]=false;
@@ -173,7 +173,20 @@ public class AListener implements Listener {
 	       				}
 	       			
 	       			event.setCancelled(true);
+	       			if(p.SVert != null && player.getName().equalsIgnoreCase(p.SVert)) {
+	       				player.setMaxHealth(Math.round(player.getMaxHealth()/2));
+	       				player.setHealth(player.getMaxHealth());
+	       				p.SGU = false;
+	       				ItemMeta Imeta = p.SG.getItemMeta();
+	    				Imeta.removeEnchant(Enchantment.ARROW_KNOCKBACK);  
+	    				Imeta.setLore(Arrays.asList("§cSilmaril utilisé"));
+	    				p.SG.setItemMeta(Imeta);
+	    				player.getInventory().setItemInHand(p.SG);
+	    				player.sendMessage("§6La puissance de la lumière des arbre de Valianor du §aSilmaril Vert §6vous confère une seconde vie, mais vous avez désormais perdu la moitiè de votre vie de façon permanente");
+	       				Search.Revive(player, p);
+	       			}if(p.Eru_Iluvatar != null &&p.Eru_Iluvatar == player && EruIluvatar.raise == true) {
 	       				 EruIluvatar.onDead(p.jouHit[i], p);
+	       			}
 	       			 
 	       			}}
 		}

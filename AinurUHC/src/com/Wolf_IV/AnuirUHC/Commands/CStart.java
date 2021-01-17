@@ -118,6 +118,7 @@ public class CStart implements CommandExecutor {
 			
 			if(sender instanceof Player) {
 				if(cmd.getName().equalsIgnoreCase("startainuruhc")) {
+					Bukkit.getOnlinePlayers()
 					Player player = (Player) sender;
 					TimerTasks tasks = new TimerTasks(main, this);
 					tasks.runTaskTimer(main, 0, 20);
