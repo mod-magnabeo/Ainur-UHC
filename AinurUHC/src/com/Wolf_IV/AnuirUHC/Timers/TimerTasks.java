@@ -23,6 +23,7 @@ import com.Wolf_IV.AnuirUHC.AListener;
 import com.Wolf_IV.AnuirUHC.MainA;
 import com.Wolf_IV.AnuirUHC.Search;
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
+import com.Wolf_IV.AnuirUHC.Role.Feanor;
 import com.Wolf_IV.AnuirUHC.Role.Maedhros;
 import com.Wolf_IV.AnuirUHC.Role.Ungoliant;
 
@@ -69,19 +70,20 @@ public class TimerTasks extends BukkitRunnable {
 		timeSec++;
 		
 		if(role == true) {
-			if(!p.SBleu.isEmpty() && Bukkit.getPlayer(p.SBleu) != null) {
+			//Bug qq fois ici
+			if(p.SBleu != null && Bukkit.getPlayer(p.SBleu) != null) {
 				//FAIRE NO EFFECT POUR AULé et tt
-				if(p.manwéS.isEmpty() || !p.manwéS.equalsIgnoreCase(p.SBleu)) {
+				if(p.manwé == null || !p.manwéS.equalsIgnoreCase(p.SBleu)) {
 				Bukkit.getPlayer(p.SBleu).removePotionEffect(PotionEffectType.SPEED);
 				Bukkit.getPlayer(p.SBleu).addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20*5, 0 , false, false));
 				}
 			}
-			if(!p.SVert.isEmpty() && Bukkit.getPlayer(p.SVert) != null) {
+			if(p.SVert != null && Bukkit.getPlayer(p.SVert) != null) {
 				Bukkit.getPlayer(p.SVert).removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
 				Bukkit.getPlayer(p.SVert).addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20*5, 0 , false, false));
 			}
-			if(!p.SRouge.isEmpty() && Bukkit.getPlayer(p.SRouge) != null) {
-				if(p.auléS.isEmpty() || !p.auléS.equalsIgnoreCase(p.SRouge)) {
+			if(p.SRouge != null && Bukkit.getPlayer(p.SRouge) != null) {
+				if(p.aulé == null || !p.auléS.equalsIgnoreCase(p.SRouge)) {
 				Bukkit.getPlayer(p.SRouge).removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
 				Bukkit.getPlayer(p.SRouge).addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 20*5, 0, false, false));
 				}
@@ -157,6 +159,7 @@ public class TimerTasks extends BukkitRunnable {
 				 pvp=true;
 				 //Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "gamerule keepInventory false");
 			 }else if(timeDay==6){
+				 Feanor.distribution(p);
 				 JourSay="§eFin Bordur Jour 7⚙";
 				 /**
 				  * SI TU MODIFIE LA BORDUR OUBLIE PAS DE MODIFIER LE REVIVE
@@ -194,6 +197,7 @@ public class TimerTasks extends BukkitRunnable {
 				for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
 					playerO.playSound(playerO.getLocation(), Sound.CLICK, 10.0F, 5.0F);
 					}
+				//Bug quand melkor n'existe pas
 				p.Melkor.sendMessage("§eValar");
 			}else if(timerR==2) {
 				for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
@@ -221,8 +225,9 @@ public class TimerTasks extends BukkitRunnable {
 						+ "infecter un joueur\r\n" + 
 						"§3 gentil apart Eru Iluvatar. Si ton équipe obtient le planatìr elle peut s'en servir pour traquer\r\n" + 
 						"§3 les silmarils A ta mort sauron récupère tes silmarils et ton planatìr ou couronne.");
+				p.Melkor.setMaxHealth(p.Melkor.getMaxHealth()+6.0F);
 				 }
-				 else if(p.Feanor != null) {	
+				 if(p.Feanor != null) {	
 	p.Feanor.sendMessage("§3 Tu est le protagonist de la partie. En début de game tu dois crafté trois" + 
 						"§3 silmarils vide. Tu doit les remplir de la lumière des arbres du" + 
 						"§3 valinor en 0 0. Tu devra alors distribuer tes silmarils a des"+ 
@@ -231,6 +236,7 @@ public class TimerTasks extends BukkitRunnable {
 						"§3 arbres seront détruis) ils seront distribuées aléatoirement a des" + 
 						"§3 joueur. Tu peux pas te servir d’un silmarils avant de l’avoir donnés."
 						);
+				Feanor.giveF(p.Feanor, p);
 				 }
 				for(int i=1;i<=7;i++) {
 					if(p.balrog[i] != null) {
@@ -252,14 +258,14 @@ public class TimerTasks extends BukkitRunnable {
 						+ "à connaître ton rôle il sera dit que tu est gentil. Une fois par jour tu peux spec un joueur qui se "
 						+ "trouve à 15 blocs de toi. Mais celui ci prendra un dégât de un demi-coeur.");
 				}
-				else if(p.balrog_traceur != null) {
+				if(p.balrog_traceur != null) {
 				p.balrog_traceur.sendMessage("Tu est un Balrog spécial tu est Balrog traceur. A chaque épisode tu peux choisir un "
 						+ "joueur que tu va tracer(/u pseudo). La boussole que tu va recevoir te pointera la direction du joueur "
 						+ "choisi(tu pourra l'actualité avec clique droit). La boussole sera reset au prochain épisode. Il ne "
 						+ "sera pas possible de tracer le même joueur 2 fois d’affilé."
 						);
 				}
-				else if(p.sauron != null) {
+				if(p.sauron != null) {
 				p.sauron.sendMessage("Ton rôle est simple. Avec ton équipe récupérer les trois silmarils(qui " + 
 						"arriveront directement dans l’inventaire de Melkor). " + 
 						"Après les avoir récupérer tu gagne en étant le dernier vivant avec ton équipe. " + 
@@ -272,7 +278,7 @@ public class TimerTasks extends BukkitRunnable {
 						+ " Tu passera a 13 coeur. Et ton pseudo est révélé dans le chat si Melkor avait obtenu la couronne. "
 						+ "Tu devra accomplir la mission abandonné par Melkor.");
 				}
-				else if(p.Eru_Iluvatar != null) {
+				if(p.Eru_Iluvatar != null) {
 				p.Eru_Iluvatar.sendMessage("Tout les joueur les joueur connaisent ton role. Tu ne peut pas avoir les effet des "
 						+ "silmarils et si tu en gagne un tu doit le donner avec la commande /donner pseudo dans les 3 min sinon "
 						+ "il sera donner aléatoirement a un joueur. Tu doit maintenant choisir entre deux chanson. Elle sont "
@@ -288,26 +294,27 @@ public class TimerTasks extends BukkitRunnable {
 				p.Eru_Iluvatar.spigot().sendMessage(page);
 				p.Eru_Iluvatar.spigot().sendMessage(page2);
 				}
-				else if(p.manwé != null) {
+				if(p.manwé != null) {
 				p.manwé.sendMessage("Tout les joueur les joueur connaisent ton role. Tu ne peut pas avoir les effet des silmarils "
 						+ "et si tu en gagne un tu doit le donner avec la commande /donner pseudo dans les 3 min sinon il sera "
 						+ "donner aléatoirement a un joueur. Tu doit maintenant choisir entre deux chanson. Elle sont expliquer "
 						+ "en dessous.");
 				}
-				else if(p.oromé != null) {
+				if(p.oromé != null) {
 				p.oromé.sendMessage("Une fois par épisode pendant 5 minutes tu peut te transformer en mouton Gandalf te voit dans "
 						+ "ta vrai forme");
 				}
-				else if(p.namo != null) {
+				if(p.namo != null) {
 				p.namo.sendMessage("2 fois dans la game avec /u pseudo tu peut connaitre la raison de la mort d’un joueur dans "
 						+ "les 30s après sa mort. Tu peut savoir qui la tué si il est mort pvp. Mais quand tu t’en sert tu va "
 						+ "perdre 1 coeur permanent par utilisation. Si le tueur et le Balrog Infiltré tu vera le message en "
 						+ "brouiller.");
 				}
-				else if(p.sauruman != null) {
+				if(p.sauruman != null) {
 				p.sauruman.sendMessage("Pendant les 15 première minute d’un jour tu peut écrire un message avec /u msg qui sera "
 						+ "envoyé a tout le monde le debut du jour suivant. Tu restera anonyme.");
-				}else if(p.gandalf != null) {
+				}
+				if(p.gandalf != null) {
 				p.gandalf.sendMessage(" trois fois dans la game tu peut inspecter 3 personnes a 10 block de toi. "
 						+ "il y a deux résultat possible au flaire: " + 
 						"suspect: 87,5%(7/8) méchant 12,5%(1/8) gentils" + 
@@ -315,35 +322,42 @@ public class TimerTasks extends BukkitRunnable {
 						"tu peut flairer plusieur fois la même personne." + 
 						"tu peut voir oromé même en forme de mouton.");
 				}
-				else if(p.lorien != null) {
+				if(p.lorien != null) {
 				p.lorien.sendMessage("A l’épisode 2 tu aura le x de l’emplacement du planatir, a l’épisode 3 tu aura le y "
 						+ "du planatir et à l’épisode 4 tu aura le z du planatir");
-				}else if(p.scorcier_bleu_1 != null) {
+				}
+				if(p.scorcier_bleu_1 != null) {
 				p.scorcier_bleu_1.sendMessage("Tu a un scorcier bleu d’ont tu connais le non. Tu peut lui parler avec /u msg. "
 						+ "Si il vient a mourir tu recupérera tous ses objet sépcial (planatir, silmarils) et tu connaitra la raison "
 						+ "de sa mort.");
 				
-				}else if(p.scorcier_bleu_2 != null) {
+				}
+				if(p.scorcier_bleu_2 != null) {
 				p.scorcier_bleu_2.sendMessage("Tu a un scorcier bleu d’ont tu connais le non. Tu peut lui parler avec /u msg. "
 						+ "Si il vient a mourir tu recupérera tous ses objet sépcial (planatir, silmarils) et tu connaitra la raison "
 						+ "de sa mort.");
-				}else if(p.aulé != null) {
+				}
+				if(p.aulé != null) {
 				p.aulé.sendMessage("Tu a un livre sharp 3 et un livre prot 3");
 				
-				}else if(p.fingolfin != null) {
+				}
+				if(p.fingolfin != null) {
 				p.fingolfin.sendMessage("Tu lorsque la moitié des joueur sont mort tu a 30s pour choisir un camps(balrog/valar).");
 				
-				}else if(p.varda != null) {
+				}
+				if(p.varda != null) {
 				p.varda.sendMessage("A chaque début d’episode avec /u pseudo1 pseudo2 tu peut savoir si deux joueur vivant ont "
 						+ "le même lien. Liens:Connaitre les liens avec la commande /lien");
 				
-				}else if(p.maedhros != null) {
+				}
+				if(p.maedhros != null) {
 					
 				
 				p.maedhros.sendMessage("Tu peut protéger une personne par épisode en lui donnant l’effet resistance avec /u pseudo. "
 						+ "Tu a droit de se protéger toi même que 2 fois dans la partie.");
 				
-				}else if(p.tulkas != null) {
+				}
+				if(p.tulkas != null) {
 				p.tulkas.sendMessage("Tu a un effet de force le jour et tu a deux coeur en plus.");
 				p.tulkas.setMaxHealth(p.tulkas.getMaxHealth()+4.0F);
 				}

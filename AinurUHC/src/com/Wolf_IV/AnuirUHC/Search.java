@@ -7,6 +7,9 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Role.Maedhros;
@@ -71,6 +74,47 @@ static Random rand =new Random();
 					}
 			}
 			}
+		}
+	}
+	
+	public static Player[] getLivingAndConnectedPlayers(CStart p, Player pNon/*Mettre a null si tu veut pas enlever de joueur*/) {
+		Player[] pl = new Player[24+1+1];
+		int pI = -1;
+		for(int i = 1; i<=p.nubPlayer; i++) {
+   			if(p.jouD[i] == true && p.jou[i] != null) {
+   				if(pNon == null || pNon != p.jou[i]) {
+   					pI++;
+   				pl[pI] = p.jou[i];
+   				}
+   				
+   			}
+		}
+		Bukkit.broadcastMessage("pI = "+pI);
+		Player[] lpl = new Player[pI+1];
+   		int ii =-1;
+   		for(Player player : pl) {
+   			if(player != null){
+   				Bukkit.broadcastMessage(player.getDisplayName());
+   				ii++;
+   				lpl[ii] = player;
+   				Bukkit.broadcastMessage("ii = "+ii);
+   				
+   			}else {
+   				return lpl;
+   			}
+   		}
+   	return lpl;
+	}
+	public static void pInvItemSup(Player player, ItemStack item) {
+		PlayerInventory inv = player.getInventory();
+		int slot = 0;
+		while(slot <= 35) {
+			if(inv.getItem(slot) != null && inv.getItem(slot).getType()  == item.getType()) {
+				if(!inv.getItem(slot).getItemMeta().hasDisplayName() || inv.getItem(slot).getItemMeta().getDisplayName().equalsIgnoreCase(item.getItemMeta().getDisplayName())) {
+					inv.setItem(slot, null);
+				}
+			}
+			slot++;
 		}
 	}
 

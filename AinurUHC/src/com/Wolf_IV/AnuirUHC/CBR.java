@@ -29,7 +29,7 @@ public class CBR implements CommandExecutor {
 				Player player = (Player)sender;
 				
 				player.getInventory().setHeldItemSlot(0);
-				 ItemStack G = new ItemStack(Material.INK_SACK, 1, (short)0, DyeColor.MAGENTA.getData());
+				 ItemStack G = new ItemStack(Material.INK_SACK, 1, (short)0, DyeColor.MAGENTA/*Green*/.getData());
 				ItemMeta customG = G.getItemMeta();
 				customG.setDisplayName("§aSilmaril Vert");
 				customG.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
@@ -40,9 +40,9 @@ public class CBR implements CommandExecutor {
 				player.getInventory().setItemInHand(G);
 				
 				player.getInventory().setHeldItemSlot(1);
-				ItemStack R = new ItemStack(Material.INK_SACK, 1, (short)0, DyeColor.BLUE.getData());
+				ItemStack R = new ItemStack(Material.INK_SACK, 1, (short)0, DyeColor.ORANGE/*RED*/.getData());
 				ItemMeta customR = R.getItemMeta();
-				customR.setDisplayName("§eSilmaril Rouge");
+				customR.setDisplayName("§cSilmaril Rouge");
 				customR.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
 				customR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				R.setItemMeta(customR);
@@ -51,7 +51,7 @@ public class CBR implements CommandExecutor {
 				player.getInventory().setItemInHand(R);
 				
 				player.getInventory().setHeldItemSlot(2);
-				ItemStack B = new ItemStack(Material.INK_SACK, 1, (short)0, DyeColor.YELLOW.getData());
+				ItemStack B = new ItemStack(Material.INK_SACK, 1, (short)0, DyeColor.PINK/*CYAN*/.getData());
 				ItemMeta customB = B.getItemMeta();
 				customB.setDisplayName("§bSilmaril Bleu");
 				customB.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);

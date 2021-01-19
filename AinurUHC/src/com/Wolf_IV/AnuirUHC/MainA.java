@@ -3,6 +3,7 @@ package com.Wolf_IV.AnuirUHC;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.Wolf_IV.AnuirUHC.Commands.CClaim;
 import com.Wolf_IV.AnuirUHC.Commands.CDayPass;
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Commands.CStartStop;
@@ -20,6 +21,7 @@ public class MainA extends JavaPlugin implements Listener{
 	getCommand("u").setExecutor(new CU(cstart));
 	getCommand("br").setExecutor(new CBR(cstart));
 	getCommand("don").setExecutor(new CDON(cstart));
+	getCommand("claim").setExecutor(new CClaim(cstart));
 	getServer().getPluginManager().registerEvents(new AListener(cstart), this);
 	}
 	@Override

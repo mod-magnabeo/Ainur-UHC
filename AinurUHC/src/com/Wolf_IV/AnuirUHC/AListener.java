@@ -214,6 +214,7 @@ public class AListener implements Listener {
        				}
        				
        			 Namo.lastDead = "§a"+p.jouHit[i].getName()+" est la derniere personne a avoir frapper "+victim.getName();
+       			 //DONER SILMARILS
        			 if(victim == p.Eru_Iluvatar) {
        				 EruIluvatar.onDead(p.jouHit[i], p);
        			 }

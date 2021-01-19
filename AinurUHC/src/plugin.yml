@@ -18,3 +18,5 @@ commands:
     description: see balrog list
   don:
     description: donner silmarils
+  claim:
+    description: claim les silmarils
