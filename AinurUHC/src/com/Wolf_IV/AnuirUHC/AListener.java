@@ -1,9 +1,14 @@
 package com.Wolf_IV.AnuirUHC;
 
 import java.util.Arrays;
+import java.util.Random;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Color;
+import org.bukkit.Effect;
+import org.bukkit.FireworkEffect;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -31,8 +36,11 @@ import com.Wolf_IV.AnuirUHC.Role.SRouge;
 import com.Wolf_IV.AnuirUHC.Timers.TimerProt;
 import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
 
+import net.minecraft.server.v1_8_R1.EnumParticle;
+import net.minecraft.server.v1_8_R1.PacketPlayOutWorldParticles;
+
 public class AListener implements Listener {
-	
+	Random rand =new Random();
 	int i;
 	
 	private static CStart p;
@@ -168,23 +176,35 @@ public class AListener implements Listener {
 			 for(i = 1; i<=p.nubPlayer; i++) {
 	       			if(p.jou[i] != null && player == p.jou[i]) {
 	       				p.jouD[i]=false;
+	       				
+	       				for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
+	       					for(int ii = 0; ii<=500; ii++) {
+	       						 float x = (rand.nextInt(3)+rand.nextFloat())-2.0F;
+	       						float y = (rand.nextInt(3)+rand.nextFloat())-2.0F;
+	       						float z = (rand.nextInt(3)+rand.nextFloat())-2.0F;
+	       						if(x+y+z <= 2.0F && x+y+z >= -2.0F) {
+	       																																																									//Rouge  Vert    Bleu en dégatif de 0 à -1
+	       				PacketPlayOutWorldParticles particle = new PacketPlayOutWorldParticles(EnumParticle.SPELL_MOB, true, (float) playerO.getLocation().getX()+x, (float) playerO.getLocation().getY()+y, (float) playerO.getLocation().getZ()+z, 0.0F, -1.0F, 0.0F, -10.0F, 0);
+	       					((CraftPlayer)playerO).getHandle().playerConnection.sendPacket(particle);
+	       						}
+	       				}
+		       				player.setMaxHealth(Math.round(player.getMaxHealth()/2));
+		       				player.setHealth(player.getMaxHealth());
+		       				p.SGU = false;
+		       				ItemMeta Imeta = p.SG.getItemMeta();
+		    				Imeta.removeEnchant(Enchantment.ARROW_KNOCKBACK);  
+		    				Imeta.setLore(Arrays.asList("§cSilmaril utilisé"));
+		    				p.SG.setItemMeta(Imeta);
+		    				player.getInventory().setItemInHand(p.SG);
+		    				player.sendMessage("§6La puissance de la lumière des arbre de Valianor du §aSilmaril Vert §6vous confère une seconde vie, mais vous avez désormais perdu la moitiè de votre vie de façon permanente");
+		       				Search.Revive(player, p);
+		       			}
 	       			if(p.jouHit[i] ==null) {
 	       					return;
 	       				}
 	       			
 	       			event.setCancelled(true);
-	       			if(p.SVert != null && player.getName().equalsIgnoreCase(p.SVert)) {
-	       				player.setMaxHealth(Math.round(player.getMaxHealth()/2));
-	       				player.setHealth(player.getMaxHealth());
-	       				p.SGU = false;
-	       				ItemMeta Imeta = p.SG.getItemMeta();
-	    				Imeta.removeEnchant(Enchantment.ARROW_KNOCKBACK);  
-	    				Imeta.setLore(Arrays.asList("§cSilmaril utilisé"));
-	    				p.SG.setItemMeta(Imeta);
-	    				player.getInventory().setItemInHand(p.SG);
-	    				player.sendMessage("§6La puissance de la lumière des arbre de Valianor du §aSilmaril Vert §6vous confère une seconde vie, mais vous avez désormais perdu la moitiè de votre vie de façon permanente");
-	       				Search.Revive(player, p);
-	       			}if(p.Eru_Iluvatar != null &&p.Eru_Iluvatar == player && EruIluvatar.raise == true) {
+	       			if(p.Eru_Iluvatar != null &&p.Eru_Iluvatar == player && EruIluvatar.raise == true) {
 	       				 EruIluvatar.onDead(p.jouHit[i], p);
 	       			}
 	       			 
@@ -258,6 +278,19 @@ public class AListener implements Listener {
 					Bukkit.broadcastMessage(p.jou[i].getDisplayName()+" owner"+skullM.getOwner());
 					if(p.jou[i] !=  null && p.jouD[i] == true && p.jou[i].getName().equalsIgnoreCase(skullM.getOwner())) {
 	       				player.teleport(p.jou[i]);
+	       				
+	       				for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
+	       					for(int ii = 0; ii<=500; ii++) {
+	       						 float x = (rand.nextInt(3)+rand.nextFloat())-2.0F;
+	       						float y = (rand.nextInt(3)+rand.nextFloat())-2.0F;
+	       						float z = (rand.nextInt(3)+rand.nextFloat())-2.0F;
+	       						if(x+y+z <= 2.0F && x+y+z >= -2.0F) {
+	       																																																									//Rouge  Vert    Bleu en dégatif de 0 à -1
+	       				PacketPlayOutWorldParticles particle = new PacketPlayOutWorldParticles(EnumParticle.SPELL_MOB, true, (float) playerO.getLocation().getX()+x, (float) playerO.getLocation().getY()+y, (float) playerO.getLocation().getZ()+z, 0.0F, -0.1F, -0.5F, -10.0F, 0);
+	       					((CraftPlayer)playerO).getHandle().playerConnection.sendPacket(particle);
+	       						}
+	       					}
+	       				}
 	       				
 	       				player.closeInventory();
 	       				player.sendMessage("§eVous avez été Teleporter");
