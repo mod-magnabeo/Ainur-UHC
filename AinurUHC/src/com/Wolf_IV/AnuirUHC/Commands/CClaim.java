@@ -24,17 +24,22 @@ public class CClaim implements CommandExecutor {
 				Search.pInvItemSup(player, p.SB);
 				Search.pInvItemSup(player, p.SG);
 				Search.pInvItemSup(player, p.SR);
+				Search.pInvItemSup(player, p.P);
 				if(player.getDisplayName() == p.SBleu) {
 					player.getInventory().addItem(p.SB);
-					player.sendMessage("§bVous recevez §bSilmaril Bleu");
+					player.sendMessage("§bVous recevez le §bSilmaril Bleu");
 				}
 				if(player.getDisplayName() == p.SVert) {
 					player.getInventory().addItem(p.SG);
-					player.sendMessage("§bVous recevez §aSilmaril Vert");
+					player.sendMessage("§bVous recevez le §aSilmaril Vert");
 				}
 				if(player.getDisplayName() == p.SRouge) {
 					player.getInventory().addItem(p.SR);
-					player.sendMessage("§bVous recevez §cSilmaril Rouge");
+					player.sendMessage("§bVous recevez le §cSilmaril Rouge");
+				}
+				if(player.getDisplayName() == p.Planatir) {
+					player.getInventory().addItem(p.P);
+					player.sendMessage("§bVous recevez le §7Planatir");
 				}
 				return true;
 			}

@@ -15,6 +15,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -31,6 +32,7 @@ import org.bukkit.material.Skull;
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Role.EruIluvatar;
 import com.Wolf_IV.AnuirUHC.Role.Namo;
+import com.Wolf_IV.AnuirUHC.Role.Planatir;
 import com.Wolf_IV.AnuirUHC.Role.SBleu;
 import com.Wolf_IV.AnuirUHC.Role.SRouge;
 import com.Wolf_IV.AnuirUHC.Timers.TimerProt;
@@ -315,9 +317,19 @@ public class AListener implements Listener {
 	            if (drop.getItemStack().getType() == Material.INK_SACK) {
 	            	player.sendMessage("§4Jeté pas vos silmarils");
 	                event.setCancelled(true);  
+	            }else if(drop.getItemStack().getItemMeta().hasDisplayName() && drop.getItemStack().getItemMeta().getDisplayName().equalsIgnoreCase(p.P.getItemMeta().getDisplayName())) {
+	            	player.sendMessage("§4Jeté pas votre Planatir");
+	                event.setCancelled(true);  
 	            }
 	    }
 	 
+	 @EventHandler
+	    public void onPlayerPlaceBlock (BlockPlaceEvent event) {
+		 ItemStack it =event.getItemInHand();
+		 if(it.getItemMeta().hasDisplayName() && it.getItemMeta().getDisplayName() == p.P.getItemMeta().getDisplayName()) {
+			 event.setCancelled(true);
+		 }
+	 }
 	 
 	 @EventHandler
 		public void onInteract(PlayerInteractEvent event) {
@@ -331,6 +343,9 @@ public class AListener implements Listener {
 				SBleu.interact(player, action, p);
 				}else if(it.getItemMeta().hasDisplayName() && it.getItemMeta().getDisplayName() == p.SR.getItemMeta().getDisplayName()) {
 				SRouge.interact(player, action, p);
+				}else if(it.getItemMeta().hasDisplayName() && it.getItemMeta().getDisplayName() == p.P.getItemMeta().getDisplayName()) {
+					//event.setCancelled(true);
+				Planatir.interact(player, action, p);
 				}
 				
 				

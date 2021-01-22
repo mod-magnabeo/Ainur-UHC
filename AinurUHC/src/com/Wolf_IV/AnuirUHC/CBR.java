@@ -39,6 +39,17 @@ public class CBR implements CommandExecutor {
 				p.SVert = player.getDisplayName();
 				player.getInventory().setItemInHand(G);
 				
+				player.getInventory().setHeldItemSlot(0);
+				 ItemStack Planatir = new ItemStack(Material.STAINED_GLASS, 1, (short)0, DyeColor.WHITE/*White*/.getData());
+				ItemMeta customPlanatir = Planatir.getItemMeta();
+				customPlanatir.setDisplayName("§7Plantir");
+				customPlanatir.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
+				customPlanatir.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+				Planatir.setItemMeta(customPlanatir);
+				p.P = Planatir;
+				p.Planatir = player.getDisplayName();
+				player.getInventory().setItemInHand(Planatir);
+				
 				player.getInventory().setHeldItemSlot(1);
 				ItemStack R = new ItemStack(Material.INK_SACK, 1, (short)0, DyeColor.ORANGE/*RED*/.getData());
 				ItemMeta customR = R.getItemMeta();

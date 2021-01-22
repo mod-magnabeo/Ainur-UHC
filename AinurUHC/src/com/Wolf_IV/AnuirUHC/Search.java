@@ -117,6 +117,18 @@ static Random rand =new Random();
 			slot++;
 		}
 	}
+	
+	public static String[] melangerS(String[] s, int max, int round, int min) {
+		int rando=rand.nextInt(round)+Math.round(round/5);
+		for(int i=0;i<=rando;i++) {
+			int choose=rand.nextInt(max)+min;
+			int choose2=rand.nextInt(max)+min;
+			String container=s[choose2];
+			s[choose2]=s[choose];
+			s[choose]=container;
+			}
+		return s;
+	}
 
 	
 }

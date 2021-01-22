@@ -42,7 +42,7 @@ public static void interact(Player player, Action action, CStart p) {
 						float z = (rand.nextInt(3)+rand.nextFloat())-2.0F;
 						if(x+y+z <= 2.0F && x+y+z >= -2.0F) {
 																																																									//Rouge  Vert    Bleu en dégatif de 0 à -1
-				PacketPlayOutWorldParticles particle = new PacketPlayOutWorldParticles(EnumParticle.SPELL_MOB, true, (float) playerO.getLocation().getX()+x, (float) playerO.getLocation().getY()+y, (float) playerO.getLocation().getZ()+z, -0.8F, -0.1F, 0.0F, -10.0F, 0);
+				PacketPlayOutWorldParticles particle = new PacketPlayOutWorldParticles(EnumParticle.SPELL_MOB, true, (float) playerO.getLocation().getX()+x, (float) playerO.getLocation().getY()+y, (float) playerO.getLocation().getZ()+z, -1.0F, 0.0F, 0.0F, -10.0F, 0);
 					((CraftPlayer)playerO).getHandle().playerConnection.sendPacket(particle);
 						}
 					}

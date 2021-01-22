@@ -41,6 +41,7 @@ public class TimerTasks extends BukkitRunnable {
 	this.p=cstart;
 	}
 	
+	public static boolean jN = true;
 	public static boolean role = false;
 	public static int timerS=10;
 	public static int timerR=-1;
@@ -136,8 +137,14 @@ public class TimerTasks extends BukkitRunnable {
 			wolfch=1;
 			WolfS="§b-§cW§do§el§1f§2_§3I§aV";
 		}
-		 
-		if(timeSDay==1200) {
+		if(timeSDay==600) {
+			jN=false;
+			 for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
+					playerO.playSound(playerO.getLocation(), Sound.BLAZE_BREATH, 10.0F, 0.0F);
+					}
+			 Bukkit.broadcastMessage("§9Nuit🌙");
+		}else if(timeSDay==1200) {
+			jN=true;
 			 timeSDay=0;
 			 timeDay++;
 			 
