@@ -5,6 +5,7 @@ import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.DyeColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -25,6 +26,7 @@ import com.Wolf_IV.AnuirUHC.Search;
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Role.Feanor;
 import com.Wolf_IV.AnuirUHC.Role.Maedhros;
+import com.Wolf_IV.AnuirUHC.Role.Planatir;
 import com.Wolf_IV.AnuirUHC.Role.Ungoliant;
 
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -43,6 +45,7 @@ public class TimerTasks extends BukkitRunnable {
 	
 	public static boolean jN = true;
 	public static boolean role = false;
+	public static int pls=0;
 	public static int timerS=10;
 	public static int timerR=-1;
 	public static int timeSec=0;
@@ -71,6 +74,9 @@ public class TimerTasks extends BukkitRunnable {
 		timeSec++;
 		
 		if(role == true) {
+			if(pls > 0) {
+				pls--;
+			}
 			//Bug qq fois ici
 			if(p.SBleu != null && Bukkit.getPlayer(p.SBleu) != null) {
 				//FAIRE NO EFFECT POUR AULé et tt
@@ -139,6 +145,7 @@ public class TimerTasks extends BukkitRunnable {
 		}
 		if(timeSDay==600) {
 			jN=false;
+			Planatir.plColor(p, DyeColor.BLACK);
 			 for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
 					playerO.playSound(playerO.getLocation(), Sound.BLAZE_BREATH, 10.0F, 0.0F);
 					}
@@ -147,7 +154,7 @@ public class TimerTasks extends BukkitRunnable {
 			jN=true;
 			 timeSDay=0;
 			 timeDay++;
-			 
+			 Planatir.plColor(p, DyeColor.WHITE);
 			/* Search search =new Search();
 			 search.dayRole(p);*/
 			/* Maedhros ma = new Maedhros();
@@ -189,6 +196,10 @@ public class TimerTasks extends BukkitRunnable {
 			 Search search =new Search();
 			 if(timeDay==7){
 				 Ungoliant.trans(p);
+			 }else if(timeDay==5){
+				 Planatir.lorienAcces(p);
+			 }else if(timeDay==6){
+				 Planatir.eAcces(p);
 			 }
 			 search.dayRole(p);
 			 }
@@ -332,6 +343,7 @@ public class TimerTasks extends BukkitRunnable {
 				if(p.lorien != null) {
 				p.lorien.sendMessage("A l’épisode 2 tu aura le x de l’emplacement du planatir, a l’épisode 3 tu aura le y "
 						+ "du planatir et à l’épisode 4 tu aura le z du planatir");
+				 //p.lorien.setCompassTarget(new Location(p.lorien.getWorld(), 50, 100, 50));
 				}
 				if(p.scorcier_bleu_1 != null) {
 				p.scorcier_bleu_1.sendMessage("Tu a un scorcier bleu d’ont tu connais le non. Tu peut lui parler avec /u msg. "
@@ -389,6 +401,7 @@ public class TimerTasks extends BukkitRunnable {
 			Ingame=true;
 			timerS--;
 			starting=false;
+			Planatir.plPlace(p);
 		
 			
 		

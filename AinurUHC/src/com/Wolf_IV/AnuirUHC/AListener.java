@@ -5,6 +5,7 @@ import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
+import org.bukkit.DyeColor;
 import org.bukkit.Effect;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Material;
@@ -15,6 +16,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -24,6 +26,7 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -179,6 +182,8 @@ public class AListener implements Listener {
 	       			if(p.jou[i] != null && player == p.jou[i]) {
 	       				p.jouD[i]=false;
 	       				
+	       				if(p.SVert != null && p.SVert.equalsIgnoreCase(player.getDisplayName()) && p.SGU == true) {
+	       				
 	       				for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
 	       					for(int ii = 0; ii<=500; ii++) {
 	       						 float x = (rand.nextInt(3)+rand.nextFloat())-2.0F;
@@ -190,6 +195,8 @@ public class AListener implements Listener {
 	       					((CraftPlayer)playerO).getHandle().playerConnection.sendPacket(particle);
 	       						}
 	       				}
+	       				}
+	       					
 		       				player.setMaxHealth(Math.round(player.getMaxHealth()/2));
 		       				player.setHealth(player.getMaxHealth());
 		       				p.SGU = false;
@@ -197,10 +204,13 @@ public class AListener implements Listener {
 		    				Imeta.removeEnchant(Enchantment.ARROW_KNOCKBACK);  
 		    				Imeta.setLore(Arrays.asList("§cSilmaril utilisé"));
 		    				p.SG.setItemMeta(Imeta);
-		    				player.getInventory().setItemInHand(p.SG);
+		    				int pl[] = Search.pInvItemSup(player, p.SG);
+		    				if(pl.length > 0) {
+		    				player.getInventory().setItem(pl[0], p.SG);
+		    				}
 		    				player.sendMessage("§6La puissance de la lumière des arbre de Valianor du §aSilmaril Vert §6vous confère une seconde vie, mais vous avez désormais perdu la moitiè de votre vie de façon permanente");
 		       				Search.Revive(player, p);
-		       			}
+	       				}
 	       			if(p.jouHit[i] ==null) {
 	       					return;
 	       				}
@@ -229,17 +239,30 @@ public class AListener implements Listener {
        			if(p.jou[i] != null && victim == p.jou[i]) {
        				p.jouD[i] = false;
        			
-       				
+       				Player killer = victim;
        				if(p.jouHit[i] ==null) {
        					Namo.lastDead = "§a"+victim.getName()+" est mort de PVE";
-       					return;
+       					Player pl[] = Search.getLivingAndConnectedPlayers(p, null);
+       					//Randomisé le choix du joueur
+       				}else {
+       					Namo.lastDead = "§a"+p.jouHit[i].getName()+" est la derniere personne a avoir frapper "+victim.getName();
+       					killer = p.jouHit[i];
        				}
        				
-       			 Namo.lastDead = "§a"+p.jouHit[i].getName()+" est la derniere personne a avoir frapper "+victim.getName();
+       				
        			 //DONER SILMARILS
-       			 if(victim == p.Eru_Iluvatar) {
-       				 EruIluvatar.onDead(p.jouHit[i], p);
-       			 }
+       			if(p.SBleu.equalsIgnoreCase(victim.getName())) {
+    				//Probleme avec SB
+    				CDON.don(p.SB.getItemMeta(), killer, p, victim.getName());
+    					Search.pInvItemSup(victim, p.SB);
+    			}if(p.SVert.equalsIgnoreCase(victim.getName())) {
+    				CDON.don(p.SG.getItemMeta(), killer, p,victim.getName());
+    					Search.pInvItemSup(victim, p.SG);
+    			}if(p.SRouge.equalsIgnoreCase(victim.getName())) {
+    				//Bizare donne a Feanor
+    				CDON.don(p.SR.getItemMeta(), killer, p, victim.getName());
+    					Search.pInvItemSup(victim, p.SR);
+    			}
        			}}
 		  
 	}
@@ -328,6 +351,21 @@ public class AListener implements Listener {
 		 ItemStack it =event.getItemInHand();
 		 if(it.getItemMeta().hasDisplayName() && it.getItemMeta().getDisplayName() == p.P.getItemMeta().getDisplayName()) {
 			 event.setCancelled(true);
+		 }
+	 }
+	 @EventHandler
+	    public void onPlayerBreakBlock (BlockBreakEvent event) {
+		 if(Planatir.disc == false && event.getBlock().getType() == Material.STAINED_GLASS && event.getBlock().getLocation().getBlockX() == Planatir.Loc.getBlockX()&& event.getBlock().getLocation().getBlockZ() == Planatir.Loc.getBlockZ()&& event.getBlock().getLocation().getBlockY() == Planatir.Loc.getBlockY()) {						//ORANGE A ENLEVé
+			 ItemStack Planatir = new ItemStack(Material.STAINED_GLASS, 1, (short)0, DyeColor.WHITE/*White*/.getData());
+			ItemMeta customPlanatir = Planatir.getItemMeta();
+			customPlanatir.setDisplayName("§7Plantir");
+			customPlanatir.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
+			customPlanatir.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+			Planatir.setItemMeta(customPlanatir);
+			p.P = Planatir;
+			p.Planatir =event.getPlayer().getDisplayName();
+			event.getPlayer().getInventory().addItem(p.P);
+			Bukkit.broadcastMessage("§9Le Planatir a été découvert");
 		 }
 	 }
 	 

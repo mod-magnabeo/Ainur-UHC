@@ -105,17 +105,23 @@ static Random rand =new Random();
    		}
    	return lpl;
 	}
-	public static void pInvItemSup(Player player, ItemStack item) {
+	public static int[] pInvItemSup(Player player, ItemStack item) {
 		PlayerInventory inv = player.getInventory();
+		int s[]= new int[36];
+		int si = -1;
 		int slot = 0;
 		while(slot <= 35) {
 			if(inv.getItem(slot) != null && inv.getItem(slot).getType()  == item.getType()) {
 				if(!inv.getItem(slot).getItemMeta().hasDisplayName() || inv.getItem(slot).getItemMeta().getDisplayName().equalsIgnoreCase(item.getItemMeta().getDisplayName())) {
 					inv.setItem(slot, null);
+					si++;
+					s[si]=slot;
 				}
 			}
 			slot++;
 		}
+		int sr[]= new int[si+1];
+		return sr;
 	}
 	
 	public static String[] melangerS(String[] s, int max, int round, int min) {

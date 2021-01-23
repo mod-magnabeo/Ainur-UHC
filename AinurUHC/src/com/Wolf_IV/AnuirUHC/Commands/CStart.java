@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -27,6 +28,7 @@ public class CStart implements CommandExecutor {
 	int choose2;
 	int i;
 	
+	public World world;
 	public ItemStack SG;
 	public ItemStack SB;
 	public ItemStack SR;
@@ -121,6 +123,7 @@ public class CStart implements CommandExecutor {
 			if(sender instanceof Player) {
 				if(cmd.getName().equalsIgnoreCase("startainuruhc")) {
 					Player player = (Player) sender;
+					world = player.getWorld();
 					TimerTasks tasks = new TimerTasks(main, this);
 					tasks.runTaskTimer(main, 0, 20);
 					TimerTasks.starting=true;

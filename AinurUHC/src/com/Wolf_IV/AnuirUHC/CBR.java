@@ -39,7 +39,7 @@ public class CBR implements CommandExecutor {
 				p.SVert = player.getDisplayName();
 				player.getInventory().setItemInHand(G);
 				
-				player.getInventory().setHeldItemSlot(0);
+				player.getInventory().setHeldItemSlot(0);								//ORANGE A ENLEVé
 				 ItemStack Planatir = new ItemStack(Material.STAINED_GLASS, 1, (short)0, DyeColor.WHITE/*White*/.getData());
 				ItemMeta customPlanatir = Planatir.getItemMeta();
 				customPlanatir.setDisplayName("§7Plantir");
