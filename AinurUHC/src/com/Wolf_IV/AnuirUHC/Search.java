@@ -71,6 +71,7 @@ static Random rand =new Random();
 						sky = false;
 						player.teleport(new Location(player.getWorld(),x,y+2,z));
 						player.setGameMode(GameMode.SURVIVAL);
+						player.setHealth(player.getMaxHealth());
 					}
 			}
 			}
@@ -135,6 +136,7 @@ static Random rand =new Random();
 			}
 		return s;
 	}
+	
 
 	
 }

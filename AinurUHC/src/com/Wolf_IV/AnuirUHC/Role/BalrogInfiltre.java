@@ -23,7 +23,7 @@ public class BalrogInfiltre {
 		}
 		Player[] pl = Search.pNext(player, p, 15);
 		for(Player play : pl) {
-			if(play.getName().equalsIgnoreCase(args[0])) {
+			if(play != null && play.getName().equalsIgnoreCase(args[0])) {
 			Role role = Search.roleF(play.getName(), p);
 				if(role == null) {
 					player.sendMessage("§4Le role de ce joueur n'a pas été trouvé");

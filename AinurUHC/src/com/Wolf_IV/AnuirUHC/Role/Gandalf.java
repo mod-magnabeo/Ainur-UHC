@@ -26,7 +26,7 @@ static Random rand = new Random();
 		boolean evil = false;
 		Player[] pl = Search.pNext(player, p, 10);
 		for(Player play : pl) {
-			if(play.getName().equalsIgnoreCase(args[0])) {
+			if(play != null && play.getName().equalsIgnoreCase(args[0])) {
 				for(Player ev : p.evil) {
 					if(ev == play) {
 						evil = true;

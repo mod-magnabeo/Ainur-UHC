@@ -70,6 +70,7 @@ public class EruIluvatar {
 	}
 	public static void onDead(Player killer, CStart p) {
 		if(raise == true) {
+			raise = false;
 			p.Eru_Iluvatar.closeInventory();
 			Inventory inv = Bukkit.createInventory(null, 27, "§bChoisir:");
 			

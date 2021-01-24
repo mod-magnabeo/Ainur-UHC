@@ -196,7 +196,7 @@ public class AListener implements Listener {
 	       						}
 	       				}
 	       				}
-	       					
+	       				event.setCancelled(true);
 		       				player.setMaxHealth(Math.round(player.getMaxHealth()/2));
 		       				player.setHealth(player.getMaxHealth());
 		       				p.SGU = false;
@@ -215,9 +215,10 @@ public class AListener implements Listener {
 	       					return;
 	       				}
 	       			
-	       			event.setCancelled(true);
+	       			
 	       			if(p.Eru_Iluvatar != null &&p.Eru_Iluvatar == player && EruIluvatar.raise == true) {
-	       				 EruIluvatar.onDead(p.jouHit[i], p);
+	       				event.setCancelled(true);
+	       				EruIluvatar.onDead(p.jouHit[i], p);
 	       			}
 	       			 
 	       			}}
@@ -243,6 +244,12 @@ public class AListener implements Listener {
        				if(p.jouHit[i] ==null) {
        					Namo.lastDead = "§a"+victim.getName()+" est mort de PVE";
        					Player pl[] = Search.getLivingAndConnectedPlayers(p, null);
+       					if(pl.length > 0) {
+       						int plN = rand.nextInt(pl.length);
+       						killer = pl[plN];
+       					}else {
+       						Bukkit.broadcastMessage("§4Il n'a plus de joueur pour donner sont silmarils");
+       					}
        					//Randomisé le choix du joueur
        				}else {
        					Namo.lastDead = "§a"+p.jouHit[i].getName()+" est la derniere personne a avoir frapper "+victim.getName();
@@ -280,7 +287,7 @@ public class AListener implements Listener {
 		if(current.getItemMeta().getDisplayName().equals("§aRevive")) {
 			Search.Revive(player, p);
 			player.closeInventory();
-			EruIluvatar.raise = true;
+			
 		}else if(current != null) {
 			if(Bukkit.getPlayer(current.getItemMeta().getDisplayName().substring(21)) != null) {
 				Player killer = Bukkit.getPlayer(current.getItemMeta().getDisplayName().substring(21));
@@ -288,7 +295,7 @@ public class AListener implements Listener {
 				killer.sendMessage("§bEru Iluvatar vous retire 5 coeur permanent");
 				player.closeInventory();
 				player.sendMessage("§bVous avez retirer 5 coeur à "+killer.getDisplayName());
-				EruIluvatar.raise = true;
+				
 			}else {
 				player.sendMessage("§4Joueur déconnecter");
 			}

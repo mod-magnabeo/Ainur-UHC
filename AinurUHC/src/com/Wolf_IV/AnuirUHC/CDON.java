@@ -12,6 +12,7 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
+import com.Wolf_IV.AnuirUHC.Role.Melkor;
 import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
 
 public class CDON implements CommandExecutor {
@@ -51,6 +52,14 @@ public class CDON implements CommandExecutor {
 						return true;
 					}else {
 						player.sendMessage("§eVotre Silmaril a été envoyé");
+						for(Player bl : p.evil) {
+							if(bl != null && bl == play) {
+								for(Player evil : p.evil) {
+									evil.sendMessage("§cUn membre de votre equipe a recupèrer un silmarils");
+								}
+								Melkor.crownCheck(p);
+							}
+						}
 						inv.setItemInHand(null);
 						return true;
 							}
