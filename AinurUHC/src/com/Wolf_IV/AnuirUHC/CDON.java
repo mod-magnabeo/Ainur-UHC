@@ -52,14 +52,6 @@ public class CDON implements CommandExecutor {
 						return true;
 					}else {
 						player.sendMessage("§eVotre Silmaril a été envoyé");
-						for(Player bl : p.evil) {
-							if(bl != null && bl == play) {
-								for(Player evil : p.evil) {
-									evil.sendMessage("§cUn membre de votre equipe a recupèrer un silmarils");
-								}
-								Melkor.crownCheck(p);
-							}
-						}
 						inv.setItemInHand(null);
 						return true;
 							}
@@ -72,6 +64,7 @@ public class CDON implements CommandExecutor {
 		return false;
 	}
 	public static boolean don(ItemMeta item, Player play, CStart p, String player) {
+		
 		if(item.getDisplayName().equalsIgnoreCase("§aSilmaril Vert") && p.SVert.equalsIgnoreCase(player) ) {
 			play.getInventory().addItem(p.SG);
 			p.SVert = play.getName();
@@ -91,6 +84,16 @@ public class CDON implements CommandExecutor {
 			play.sendMessage("§dVous recever le §7Planatir§d faite /claim si vous ne l'avez pas reçu");
 		}else {
 			return false;
+		}
+		for(Player bl : p.evil) {
+			if(bl != null && bl == play) {
+				for(Player evil : p.evil) {
+					if(evil != null) {
+					evil.sendMessage("§cUn membre de votre equipe a recupèrer un silmarils");
+					}
+				}
+				Melkor.crownCheck(p);
+			}
 		}
 		return true;
 	}

@@ -11,5 +11,8 @@ public class Fingolfin {
 		
 		return false;
 	}
+	public static void j12(CStart p) {
+		
+	}
 
 }

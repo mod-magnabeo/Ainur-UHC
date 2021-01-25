@@ -21,7 +21,7 @@ public class BalrogInfiltre {
 			player.sendMessage("§cAttends le prochain jour");
 			return true;
 		}
-		Player[] pl = Search.pNext(player, p, 15);
+		Player[] pl = Search.pNext(player, p, 5);
 		for(Player play : pl) {
 			if(play != null && play.getName().equalsIgnoreCase(args[0])) {
 			Role role = Search.roleF(play.getName(), p);
@@ -35,7 +35,7 @@ public class BalrogInfiltre {
 				return true;
 			}
 		}
-		player.sendMessage("§4Ce joueur n'est pas à 15 blocks de vous");
+		player.sendMessage("§4Ce joueur n'est pas à 5 blocks de vous");
 		return true;
 	}
 

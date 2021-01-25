@@ -12,6 +12,7 @@ import com.Wolf_IV.AnuirUHC.Role.EruIluvatar;
 import com.Wolf_IV.AnuirUHC.Role.Fingolfin;
 import com.Wolf_IV.AnuirUHC.Role.Gandalf;
 import com.Wolf_IV.AnuirUHC.Role.Maedhros;
+import com.Wolf_IV.AnuirUHC.Role.Melkor;
 import com.Wolf_IV.AnuirUHC.Role.Namo;
 import com.Wolf_IV.AnuirUHC.Role.Oromé;
 import com.Wolf_IV.AnuirUHC.Role.Saruman;
@@ -42,7 +43,7 @@ public class CU implements CommandExecutor {
 					return true;
 				}else if(EruIluvatar.u(p, player, args)==true) {
 					return true;
-				}else if(Oromé.u(p, player, args)==true) {
+				}else if(Melkor.u(p, player, args)==true) {
 					return true;
 				}else if(Namo.u(p, player, args)==true) {
 					return true;

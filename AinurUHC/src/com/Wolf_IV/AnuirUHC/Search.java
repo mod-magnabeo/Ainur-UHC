@@ -13,6 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Role.Maedhros;
+import com.Wolf_IV.AnuirUHC.Role.Manwe;
 import com.Wolf_IV.AnuirUHC.Role.Role;
 import com.Wolf_IV.AnuirUHC.Role.Saruman;
 import com.Wolf_IV.AnuirUHC.Role.Tulkas;
@@ -24,6 +25,7 @@ static Random rand =new Random();
 	Maedhros.nDay(p);
 	Tulkas.nDay(p);
 	Saruman.nDay(p);
+	Manwe.nDay(p);
 	}
 	
 	public static Player[] pNext(Player player, CStart p, int dis){
@@ -90,16 +92,12 @@ static Random rand =new Random();
    				
    			}
 		}
-		Bukkit.broadcastMessage("pI = "+pI);
 		Player[] lpl = new Player[pI+1];
    		int ii =-1;
    		for(Player player : pl) {
    			if(player != null){
-   				Bukkit.broadcastMessage(player.getDisplayName());
    				ii++;
    				lpl[ii] = player;
-   				Bukkit.broadcastMessage("ii = "+ii);
-   				
    			}else {
    				return lpl;
    			}

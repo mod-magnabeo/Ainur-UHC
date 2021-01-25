@@ -34,6 +34,7 @@ import org.bukkit.material.Skull;
 
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Role.EruIluvatar;
+import com.Wolf_IV.AnuirUHC.Role.Fingolfin;
 import com.Wolf_IV.AnuirUHC.Role.Namo;
 import com.Wolf_IV.AnuirUHC.Role.Planatir;
 import com.Wolf_IV.AnuirUHC.Role.SBleu;
@@ -271,6 +272,9 @@ public class AListener implements Listener {
     					Search.pInvItemSup(victim, p.SR);
     			}
        			}}
+		      if(Search.getLivingAndConnectedPlayers(p, null).length <= 12) {
+		    	  Fingolfin.j12(p);
+		      }
 		  
 	}
 	
@@ -301,13 +305,29 @@ public class AListener implements Listener {
 			}
 		}
 		
-		}else if(inv.getName().equalsIgnoreCase("§bTeleporter a un joueur:")) {
+		}else if(inv.getName().equalsIgnoreCase("§cTransformer un joueur:")) {
+			if(current == null) return;
+			event.setCancelled(true);
+			if(current.getType() == Material.SKULL_ITEM && current.getItemMeta().hasDisplayName()) {
+				SkullMeta skullM = (SkullMeta) current.getItemMeta();
+				for(Player playerO : Search.getLivingAndConnectedPlayers(p, p.Eru_Iluvatar)) {
+					if(playerO != null && skullM.getOwner().equalsIgnoreCase(playerO.getName())) {
+						p.Melkor.closeInventory();
+						p.Orc = playerO;
+						p.OrcS = playerO.getName();
+						p.Orc.sendMessage("§2Morgoth vous transforme en Orc. Vous faites desormais partie de l'équipe des Balrog. Faite /br");
+						//BROADCAST
+						Bukkit.broadcastMessage("§cMorgoth a transformé une personne en Orc. Cette Orc fait désormais partie de son équipe");
+					}
+				}
+			}
+		}	else if(inv.getName().equalsIgnoreCase("§bTeleporter a un joueur:")) {
+		
 			if(current == null) return;
 			event.setCancelled(true);
 			if(current.getType() == Material.SKULL_ITEM && current.getItemMeta().hasDisplayName()) {
 				SkullMeta skullM = (SkullMeta) current.getItemMeta();
 				for(int i = 1; i<=p.nubPlayer; i++) {
-					Bukkit.broadcastMessage(p.jou[i].getDisplayName()+" owner"+skullM.getOwner());
 					if(p.jou[i] !=  null && p.jouD[i] == true && p.jou[i].getName().equalsIgnoreCase(skullM.getOwner())) {
 	       				player.teleport(p.jou[i]);
 	       				

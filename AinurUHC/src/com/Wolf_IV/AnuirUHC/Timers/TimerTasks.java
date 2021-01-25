@@ -10,7 +10,11 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -358,7 +362,14 @@ public class TimerTasks extends BukkitRunnable {
 				}
 				if(p.aulé != null) {
 				p.aulé.sendMessage("Tu a un livre sharp 3 et un livre prot 3");
-				
+				 ItemStack Book = new ItemStack(Material.ENCHANTED_BOOK);
+				ItemMeta customBook = Book.getItemMeta();
+				customBook.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
+				Book.setItemMeta(customBook);
+				p.aulé.getInventory().addItem(Book);
+				customBook.addEnchant(Enchantment.DAMAGE_ALL, 2, true);
+				Book.setItemMeta(customBook);
+				p.aulé.getInventory().addItem(Book);
 				}
 				if(p.fingolfin != null) {
 				p.fingolfin.sendMessage("Tu lorsque la moitié des joueur sont mort tu a 30s pour choisir un camps(balrog/valar).");
