@@ -17,6 +17,7 @@ import com.Wolf_IV.AnuirUHC.Role.Manwe;
 import com.Wolf_IV.AnuirUHC.Role.Role;
 import com.Wolf_IV.AnuirUHC.Role.Saruman;
 import com.Wolf_IV.AnuirUHC.Role.Tulkas;
+import com.Wolf_IV.AnuirUHC.Role.Varda;
 import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
 
 public class Search {
@@ -26,6 +27,7 @@ static Random rand =new Random();
 	Tulkas.nDay(p);
 	Saruman.nDay(p);
 	Manwe.nDay(p);
+	Varda.nDay(p);
 	}
 	
 	public static Player[] pNext(Player player, CStart p, int dis){
