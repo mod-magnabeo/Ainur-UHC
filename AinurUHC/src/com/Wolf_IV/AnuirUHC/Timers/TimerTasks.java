@@ -29,6 +29,7 @@ import com.Wolf_IV.AnuirUHC.MainA;
 import com.Wolf_IV.AnuirUHC.Search;
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Role.Feanor;
+import com.Wolf_IV.AnuirUHC.Role.Fingolfin;
 import com.Wolf_IV.AnuirUHC.Role.Maedhros;
 import com.Wolf_IV.AnuirUHC.Role.Planatir;
 import com.Wolf_IV.AnuirUHC.Role.Ungoliant;
@@ -50,6 +51,7 @@ public class TimerTasks extends BukkitRunnable {
 	public static boolean jN = true;
 	public static boolean role = false;
 	public static int pls=0;
+	public static int fe=0;
 	public static int timerS=10;
 	public static int timerR=-1;
 	public static int timeSec=0;
@@ -80,6 +82,12 @@ public class TimerTasks extends BukkitRunnable {
 		if(role == true) {
 			if(pls > 0) {
 				pls--;
+			}
+			if(fe > 0) {
+				fe--;
+			if(fe == 0) {
+				Fingolfin.done(p);
+			}
 			}
 			//Bug qq fois ici
 			if(p.SBleu != null && Bukkit.getPlayer(p.SBleu) != null) {

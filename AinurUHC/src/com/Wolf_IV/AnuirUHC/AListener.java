@@ -86,10 +86,6 @@ public class AListener implements Listener {
 			p.sauron = player;
 		}else if(p.ungoliantS != null && p.ungoliantS.equalsIgnoreCase(player.getName())) {
 			p.ungoliant = player;
-		}else if(p.balrog_infiltréS != null && p.balrog_infiltréS.equalsIgnoreCase(player.getName())) {
-			p.balrog_infiltré = player;
-		}else if(p.balrog_traceurS != null && p.balrog_traceurS.equalsIgnoreCase(player.getName())) {
-			p.balrog_traceur = player;
 		}else if(p.FeanorS != null && p.FeanorS.equalsIgnoreCase(player.getName())) {
 			p.Feanor = player;
 		}else if(p.Eru_IluvatarS != null && p.Eru_IluvatarS.equalsIgnoreCase(player.getName())) {
@@ -122,25 +118,33 @@ public class AListener implements Listener {
 			p.tulkas = player;
 		}
 		
-		if(p.OrcS.equalsIgnoreCase(player.getName())) {
+		if(p.balrog_infiltréS != null && p.balrog_infiltréS.equalsIgnoreCase(player.getName())) {
+			p.balrog_infiltré = player;
+		}else if(p.balrog_traceurS != null && p.balrog_traceurS.equalsIgnoreCase(player.getName())) {
+			p.balrog_traceur = player;
+		}
+		if(p.finMechantS != null && p.finMechantS.equalsIgnoreCase(player.getName())) {
+			p.finMechant = player;
+		}
+		if(p.OrcS != null && p.OrcS.equalsIgnoreCase(player.getName())) {
 			p.Orc = player;
 		}
 		for(i=1;i<=24;i++) {
-			if(p.jouS[i].equalsIgnoreCase(player.getName())) {
+			if(p.jouS[i] != null && p.jouS[i].equalsIgnoreCase(player.getName())) {
 				p.jou[i] = player;
 			}
 			for(i=1;i<=24;i++) {
-				if(p.jouHitS[i].equalsIgnoreCase(player.getName())) {
+				if(p.jouHitS[i] != null && p.jouHitS[i].equalsIgnoreCase(player.getName())) {
 					p.jouHit[i] = player;
 				}
 			}
 		for(i=1;i<=9;i++) {
-			if(p.evilS[i].equalsIgnoreCase(player.getName())) {
+			if(p.evilS[i] != null && p.evilS[i].equalsIgnoreCase(player.getName())) {
 				p.evil[i] = player;
 			}
 			}
 		for(i=1;i<=7;i++) {
-			if(p.balrogS[i].equalsIgnoreCase(player.getName())) {
+			if(p.balrogS[i] != null && p.balrogS[i].equalsIgnoreCase(player.getName())) {
 				p.balrog[i] = player;
 			}
 			}
@@ -305,6 +309,18 @@ public class AListener implements Listener {
 			}
 		}
 		
+		}else if(inv.getName().equalsIgnoreCase("§bChoisir un camp:")) {
+			if(current==null) return;
+			event.setCancelled(true);
+			if(current.getItemMeta().getDisplayName().equals("§4Servir Melkor/Morgoth(Devenir Méchant)")) {
+				Fingolfin.mechant(p);
+			}else if(current.getItemMeta().getDisplayName().equals("§ePour gagner tu dois etre le dernier survivant")) {
+				Fingolfin.neutre(p);
+			}else if(current.getItemMeta().getDisplayName().equals("§aDevenir Gentil(Combatre Melkor/Morgoth)")) {
+				Fingolfin.gentil(p);
+			}
+			player.closeInventory();
+			
 		}else if(inv.getName().equalsIgnoreCase("§cTransformer un joueur:")) {
 			if(current == null) return;
 			event.setCancelled(true);
@@ -315,6 +331,12 @@ public class AListener implements Listener {
 						p.Melkor.closeInventory();
 						p.Orc = playerO;
 						p.OrcS = playerO.getName();
+						for(i=1;i<=11;i++) {
+							if(p.evilS[i] == null) {
+								p.evilS[i] = p.OrcS;
+								p.evil[i] = p.Orc;
+							}
+						}
 						p.Orc.sendMessage("§2Morgoth vous transforme en Orc. Vous faites desormais partie de l'équipe des Balrog. Faite /br");
 						//BROADCAST
 						Bukkit.broadcastMessage("§cMorgoth a transformé une personne en Orc. Cette Orc fait désormais partie de son équipe");

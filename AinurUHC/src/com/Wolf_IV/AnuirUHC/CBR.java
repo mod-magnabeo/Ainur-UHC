@@ -75,19 +75,18 @@ public class CBR implements CommandExecutor {
 					player.sendMessage("§4Les role n'ont pas été donné");
 					return false;
 				}
-				for(Player balrog : p.balrogC) {
-					if(balrog != null && player == balrog || player == p.Melkor || player == p.sauron) {
+				for(Player balrog : p.evil) {
+					if(balrog != null && player == balrog && player != p.balrog_infiltré) {
 						player.sendMessage("§cVoici la liste des balrog:");
 						player.sendMessage("§4------------");
-						for(int i = 1; i<=p.nubPlayer; i++) {
-							if(p.jouS[i] != null && p.jouD[i] == true) {
+						for(String pla : Search.getLivingPlayers(p)) {
 						for(String mechant : p.evilS) {
-							if(mechant == p.jouS[i]) {
+							if(mechant.equalsIgnoreCase(pla)) {
 								player.sendMessage("§3"+mechant);
 							}
 						}
 						}
-						}
+						
 						player.sendMessage("§4------------");
 						return true;
 				}

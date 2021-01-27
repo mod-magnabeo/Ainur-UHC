@@ -39,11 +39,12 @@ public class CStart implements CommandExecutor {
 	public boolean SRU = true;
 	public boolean SPU = true;
 	
+	
 	public boolean jouD[]= new boolean[24+1+1];
 	public Role[] role =new Role[24+1+1];;
 	public Player jou[]=new Player[24+1+1];
 	public Player jouHit[]=new Player[24+1+1];
-	public Player evil[]=new Player[9+1+1];
+	public Player evil[]=new Player[11+1+1];
 	public Player Feanor;
 	public Player Melkor;
 	public Player ungoliant;
@@ -67,10 +68,11 @@ public class CStart implements CommandExecutor {
 	public Player maedhros;
 	public Player tulkas;
 	public Player Orc;
+	public Player finMechant;
 	
 	public String jouS[]=new String[24+1+1];
 	public String jouHitS[]=new String[24+1+1];
-	public String evilS[]=new String[9+1+1];
+	public String evilS[]=new String[11+1+1];
 	public String FeanorS;
 	public String MelkorS;
 	public String ungoliantS;
@@ -93,6 +95,7 @@ public class CStart implements CommandExecutor {
 	public String maedhrosS;
 	public String tulkasS;
 	public String OrcS;// A la creation de l'orc noublie pas de le co register
+	public String finMechantS;
 	
 	public String SVert;
 	public String SBleu;

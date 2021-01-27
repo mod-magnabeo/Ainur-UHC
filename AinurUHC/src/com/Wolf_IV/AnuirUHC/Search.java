@@ -104,6 +104,29 @@ static Random rand =new Random();
    		}
    	return lpl;
 	}
+	
+	public static String[] getLivingPlayers(CStart p/*Mettre a null si tu veut pas enlever de joueur*/) {
+		String[] pl = new String[24+1+1];
+		int pI = -1;
+		for(int i = 1; i<=p.nubPlayer; i++) {
+   			if(p.jouD[i] == true && p.jouS[i] != null) {
+   				pI++;
+   				pl[pI] = p.jouS[i];
+   				
+   			}
+		}
+		String[] lpl = new String[pI+1];
+   		int ii =-1;
+   		for(String player : pl) {
+   			if(player != null){
+   				ii++;
+   				lpl[ii] = player;
+   			}else {
+   				return lpl;
+   			}
+   		}
+   	return lpl;
+	}
 	public static int[] pInvItemSup(Player player, ItemStack item) {
 		PlayerInventory inv = player.getInventory();
 		int s[]= new int[36];
