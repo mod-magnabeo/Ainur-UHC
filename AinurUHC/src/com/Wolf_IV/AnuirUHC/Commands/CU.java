@@ -16,6 +16,7 @@ import com.Wolf_IV.AnuirUHC.Role.Melkor;
 import com.Wolf_IV.AnuirUHC.Role.Namo;
 import com.Wolf_IV.AnuirUHC.Role.Oromé;
 import com.Wolf_IV.AnuirUHC.Role.Saruman;
+import com.Wolf_IV.AnuirUHC.Role.SorcierBleu;
 import com.Wolf_IV.AnuirUHC.Role.Varda;
 import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
 
@@ -56,6 +57,8 @@ public class CU implements CommandExecutor {
 				}else if(Varda.u(p, player, args)==true) {
 					return true;
 				}else if(Maedhros.u(p, player, args)==true) {
+					return true;
+				}else if(SorcierBleu.u(p, player, args)==true) {
 					return true;
 				}
 				player.sendMessage("§4Vous ne pouver pas vous serivir de ctte command");

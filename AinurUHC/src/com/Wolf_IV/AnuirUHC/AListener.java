@@ -276,7 +276,7 @@ public class AListener implements Listener {
     					Search.pInvItemSup(victim, p.SR);
     			}
        			}}
-		      if(Search.getLivingAndConnectedPlayers(p, null).length <= 12) {
+		      if(Search.getLivingPlayers(p).length <= 12) {
 		    	  Fingolfin.j12(p);
 		      }
 		  
