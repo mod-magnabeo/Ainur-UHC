@@ -79,7 +79,6 @@ public class AListener implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 			Player player=event.getPlayer();
 		
-		
 		if(p.MelkorS != null && p.MelkorS.equalsIgnoreCase(player.getName())) {
 		p.Melkor = player;
 		}else if(p.sauronS != null && p.sauronS.equalsIgnoreCase(player.getName())) {
@@ -133,12 +132,14 @@ public class AListener implements Listener {
 			if(p.jouS[i] != null && p.jouS[i].equalsIgnoreCase(player.getName())) {
 				p.jou[i] = player;
 			}
+			
+		}
 			for(i=1;i<=24;i++) {
 				if(p.jouHitS[i] != null && p.jouHitS[i].equalsIgnoreCase(player.getName())) {
 					p.jouHit[i] = player;
 				}
 			}
-		for(i=1;i<=9;i++) {
+		for(i=1;i<=11;i++) {
 			if(p.evilS[i] != null && p.evilS[i].equalsIgnoreCase(player.getName())) {
 				p.evil[i] = player;
 			}
@@ -150,7 +151,6 @@ public class AListener implements Listener {
 			}
 		
 		
-	}
 	}
 	@EventHandler
     public void onTestEntityDamage(EntityDamageByEntityEvent event) {
@@ -261,6 +261,9 @@ public class AListener implements Listener {
        					killer = p.jouHit[i];
        				}
        				
+       			   if(Search.getLivingPlayers(p).length <= 12) {
+     		    	  Fingolfin.j12(p);
+     		      }
        				
        			 //DONER SILMARILS
        			if(p.SBleu.equalsIgnoreCase(victim.getName())) {
@@ -276,8 +279,29 @@ public class AListener implements Listener {
     					Search.pInvItemSup(victim, p.SR);
     			}
        			}}
-		      if(Search.getLivingPlayers(p).length <= 12) {
-		    	  Fingolfin.j12(p);
+		   
+		      if(p.sauron != null &&victim == p.sauron) {
+		    	  if(p.mMort == true) {
+		    		 p.doubleMMort =true; 
+		    	  }else {
+		    		  p.mMort = true;
+		    	  }
+		      }
+		      if(p.Melkor != null &&victim == p.Melkor) {
+		    	  if(p.mMort == true) {
+			    		 p.doubleMMort =true; 
+			    	  }else {
+			    		  p.mMort = true;
+			    	  }
+		    	  Bukkit.broadcastMessage("§cMelkor/Morgoth est mort. Sauron le remplace");
+		    	  if(p.sauron != null) {
+		    		  p.Melkor = p.sauron;
+		    		  p.MelkorS = p.sauronS;
+		    		  p.sauron.sendMessage("§aTu remplace maintenant Melkor/Morgoth tu beneficie de 2 coeur en plus");
+		    		 p.sauron.setMaxHealth(p.sauron.getMaxHealth()+4.0F);
+		    	  }else if(p.sauronS != null) {
+		    		  p.MelkorS = p.sauronS;
+		    	  }
 		      }
 		  
 	}
@@ -335,11 +359,12 @@ public class AListener implements Listener {
 							if(p.evilS[i] == null) {
 								p.evilS[i] = p.OrcS;
 								p.evil[i] = p.Orc;
+								p.Orc.sendMessage("§2Morgoth vous transforme en Orc. Vous faites desormais partie de l'équipe des Balrog. Faite /br");
+								//BROADCAST
+								Bukkit.broadcastMessage("§cMorgoth a transformé une personne en Orc. Cette Orc fait désormais partie de son équipe");
+								return;
 							}
 						}
-						p.Orc.sendMessage("§2Morgoth vous transforme en Orc. Vous faites desormais partie de l'équipe des Balrog. Faite /br");
-						//BROADCAST
-						Bukkit.broadcastMessage("§cMorgoth a transformé une personne en Orc. Cette Orc fait désormais partie de son équipe");
 					}
 				}
 			}

@@ -13,6 +13,9 @@ public class Melkor {
 	static boolean crown = false;
 	
 	public static void crownCheck(CStart p) {
+		if(p.doubleMMort == true) {
+			Bukkit.broadcastMessage("§cLa couronne n'a pas pu etre crafter car melkor et sauron sont mort");
+		}
 		int sil = 0;
 		for(String evil : p.evilS) {
 			if(evil != null) {
@@ -29,8 +32,13 @@ public class Melkor {
 		}
 		
 		if(sil == 3) {
+			if(p.sauronS != null && p.MelkorS != null && p.sauronS.equalsIgnoreCase(p.MelkorS)) {
+				Bukkit.broadcastMessage("§6Les balrogs on obtenu les trois silmarils. Sauron a construit sa couronne de fer. "
+						+ "Sauron peut desormais transformer un joueur en Orc. Ungoliant est révèler");
+			}else {
 			Bukkit.broadcastMessage("§6Les balrogs on obtenu les trois silmarils. Melkor a construit sa couronne de fer. "
 					+ "Et il est maintenant connu sous le nom de Morgoth. Morgoth peut desormais transformer un joueur en Orc. Ungoliant est révèler");
+			}
 			Bukkit.broadcastMessage("hop la");
 			for(Player evil : p.evil) {
 				if(evil != null) {

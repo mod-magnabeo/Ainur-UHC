@@ -34,6 +34,8 @@ public class CStart implements CommandExecutor {
 	public ItemStack SR;
 	public ItemStack P;
 	
+	public boolean mMort = false;
+	public boolean doubleMMort = false;
 	public boolean SGU = true;
 	public boolean SBU = true;
 	public boolean SRU = true;
@@ -329,13 +331,13 @@ public class CStart implements CommandExecutor {
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Melkor");
 											evil[evilnub]=playerO;
 											evilnub++;
-											r.setLien("Valar");
+											rr.setLien("Valar");
 										}else if(args[i].equalsIgnoreCase("sauron")) {
 											sauron=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Sauron");
 											evil[evilnub]=playerO;
 											evilnub++;
-											r.setLien("Maiar");
+											rr.setLien("Maiar");
 										}else if(args[i].equalsIgnoreCase("ungoliant")) {
 											ungoliant=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Ungoliant");
@@ -344,7 +346,7 @@ public class CStart implements CommandExecutor {
 											balrogC[balnub] = playerO;
 											balrog[balnub]=playerO;
 											balnub++;
-											r.setLien("Maiar");
+											rr.setLien("Maiar");
 										}else if(args[i].equalsIgnoreCase("balrog_infiltré")) {
 											balrog_infiltré=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Balrog Infiltré");
@@ -352,7 +354,7 @@ public class CStart implements CommandExecutor {
 											evilnub++;
 											balrog[balnub]=playerO;
 											balnub++;
-											r.setLien("Maiar");
+											rr.setLien("Maiar");
 										}else if(args[i].equalsIgnoreCase("balrog_traceur")) {
 											balrog_traceur=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Balrog Traceur");
@@ -361,7 +363,7 @@ public class CStart implements CommandExecutor {
 											balrogC[balnub] = playerO;
 											balrog[balnub]=playerO;
 											balnub++;
-											r.setLien("Maiar");
+											rr.setLien("Maiar");
 										}else if(args[i].equalsIgnoreCase("balrog")) {
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Balrog");
 											evil[evilnub]=playerO;
@@ -369,39 +371,39 @@ public class CStart implements CommandExecutor {
 											balrogC[balnub] = playerO;
 											balrog[balnub]=playerO;
 											balnub++;
-											r.setLien("Maiar");
+											rr.setLien("Maiar");
 										}else if(args[i].equalsIgnoreCase("feanor")) {
 											Feanor=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Fëanor");
-											r.setLien("Elf");
+											rr.setLien("Elf");
 										}else if(args[i].equalsIgnoreCase("eru_iluvatar")) {
 											Eru_Iluvatar=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Eru Iluvatar");
-											r.setLien("Pas de Type");
+											rr.setLien("Pas de Type");
 										}else if(args[i].equalsIgnoreCase("manwé")) {
 											manwé=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Manwé");
-											r.setLien("Valar");
+											rr.setLien("Valar");
 										}else if(args[i].equalsIgnoreCase("oromé")) {
 											oromé=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Oromé");
-											r.setLien("Valar");
+											rr.setLien("Valar");
 										}else if(args[i].equalsIgnoreCase("namo")) {
 											namo=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Namo");
-											r.setLien("Valar");
+											rr.setLien("Valar");
 										}else if(args[i].equalsIgnoreCase("sauruman")) {
 											sauruman=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Sauruman");
-											r.setLien("Maiar");
+											rr.setLien("Maiar");
 										}else if(args[i].equalsIgnoreCase("gandalf")) {
 											gandalf=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Gandalf");
-											r.setLien("Maiar");
+											rr.setLien("Maiar");
 										}else if(args[i].equalsIgnoreCase("lorien")) {
 											lorien=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Lorien");
-											r.setLien("Valar");
+											rr.setLien("Valar");
 										}else if(args[i].equalsIgnoreCase("scorcier_bleu")) {
 											if(scb==1) {
 											scorcier_bleu_1=playerO;
@@ -409,27 +411,27 @@ public class CStart implements CommandExecutor {
 												scorcier_bleu_2=playerO;
 											}
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Scorcier Bleu");
-											r.setLien("Maiar");
+											rr.setLien("Maiar");
 										}else if(args[i].equalsIgnoreCase("aulé")) {
 											aulé=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Aulé");
-											r.setLien("Valar");
+											rr.setLien("Valar");
 										}else if(args[i].equalsIgnoreCase("fingolfin")) {
 											fingolfin=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Fingolfin");
-											r.setLien("Elf");
+											rr.setLien("Elf");
 										}else if(args[i].equalsIgnoreCase("varda")) {
 											varda=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Varda");
-											r.setLien("Valar");
+											rr.setLien("Valar");
 										}else if(args[i].equalsIgnoreCase("maedhros")) {
 											maedhros=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Maedhros");
-											r.setLien("Elf");
+											rr.setLien("Elf");
 										}else if(args[i].equalsIgnoreCase("tulkas")) {
 											tulkas=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Tulkas");
-											r.setLien("Valar");
+											rr.setLien("Valar");
 										}
 										jou[i+1]=playerO;
 										jouD[i+1] = true;

@@ -1,5 +1,6 @@
 package com.Wolf_IV.AnuirUHC;
 
+import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -81,7 +82,7 @@ public class CBR implements CommandExecutor {
 						player.sendMessage("§4------------");
 						for(String pla : Search.getLivingPlayers(p)) {
 						for(String mechant : p.evilS) {
-							if(mechant.equalsIgnoreCase(pla)) {
+							if(mechant != null && mechant.equalsIgnoreCase(pla)) {
 								player.sendMessage("§3"+mechant);
 							}
 						}

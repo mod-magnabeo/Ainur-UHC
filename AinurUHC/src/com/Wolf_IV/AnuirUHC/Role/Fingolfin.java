@@ -20,7 +20,7 @@ public class Fingolfin {
 	public static boolean gentil = false;
 
 	public static boolean u(CStart p, Player player, String[] args) {
-		if(player != p.Feanor) {
+		if(player != p.fingolfin) {
 		return false;
 		}
 		if(j12 == false) {
@@ -54,14 +54,13 @@ public class Fingolfin {
 		inv.setItem(13, Neutre);
 		inv.setItem(15, Gen);
 		
-		p.Eru_Iluvatar.openInventory(inv);
-		p.Eru_Iluvatar.setGameMode(GameMode.SPECTATOR);
+		p.fingolfin.openInventory(inv);
 		return true;
 	}
 	public static void j12(CStart p) {
 		j12 = true;
-		if(p.Feanor != null) {
-			p.Feanor.sendMessage("§bFeanor le nombre de joueur en vie et decendu a ou moin 12 tu a 5 min pour choisir un camp grace a la commande /u");
+		if(p.fingolfin != null) {
+			p.fingolfin.sendMessage("§bfingolfin le nombre de joueur en vie et decendu a ou moin 12 tu a 5 min pour choisir un camp grace a la commande /u");
 		}
 		
 	}
@@ -69,8 +68,8 @@ public class Fingolfin {
 	public static void done(CStart p) {
 		done = true;
 		if(choix == false) {
-			if(p.Feanor != null) {
-				p.Feanor.sendMessage("§bLe temps et écoulé vous devez desormais etre le dernier survivant de la partie");
+			if(p.fingolfin != null) {
+				p.fingolfin.sendMessage("§bLe temps et écoulé vous devez desormais etre le dernier survivant de la partie");
 				neutre(p);
 				choix=false;
 			}
@@ -85,26 +84,29 @@ public class Fingolfin {
 				evil.sendMessage("§cFingolfin a rejoin votre camp");
 			}
 		}
+		
 		for(int i=1;i<=11;i++) {
 			if(p.evilS[i] == null) {
 				p.evilS[i] = p.fingolfinS;
 				p.evil[i] = p.fingolfin;
+				p.finMechant = p.fingolfin;
+				p.finMechantS = p.fingolfinS;
+				p.fingolfin.sendMessage("§bTu est desormais méchant fais /br pour connaitre les membre de ton camp");
+				return;
 			}
 		}
-		p.finMechant = p.fingolfin;
-		p.finMechantS = p.fingolfinS;
-		p.Feanor.sendMessage("§bTu est desormais méchant fais /br pour connaitre les membre de ton camp");
+
 	}
 	
 	public static void gentil(CStart p) {
 		choix = true;
 		gentil = true;
-		p.Feanor.sendMessage("§bTu est desormais gentil");
+		p.fingolfin.sendMessage("§bTu est desormais gentil");
 	}
 	public static void neutre(CStart p) {
 		choix = true;
 		neutre = true;
-		p.Feanor.sendMessage("§bTu dois desormais gagner seul");
+		p.fingolfin.sendMessage("§bTu dois desormais gagner seul");
 	}
 	
 	
