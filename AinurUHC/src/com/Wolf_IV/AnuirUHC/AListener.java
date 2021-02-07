@@ -34,6 +34,7 @@ import org.bukkit.material.Skull;
 
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Role.EruIluvatar;
+import com.Wolf_IV.AnuirUHC.Role.Feanor;
 import com.Wolf_IV.AnuirUHC.Role.Fingolfin;
 import com.Wolf_IV.AnuirUHC.Role.Namo;
 import com.Wolf_IV.AnuirUHC.Role.Planatir;
@@ -264,7 +265,9 @@ public class AListener implements Listener {
        			   if(Search.getLivingPlayers(p).length <= 12) {
      		    	  Fingolfin.j12(p);
      		      }
-       				
+       				if(p.Feanor != null && p.Feanor == victim) {
+       					Feanor.distribution(p, p.FeanorS, p.Feanor, true, true, true);
+       				}else {
        			 //DONER SILMARILS
        			if(p.SBleu.equalsIgnoreCase(victim.getName())) {
     				//Probleme avec SB
@@ -278,6 +281,7 @@ public class AListener implements Listener {
     				CDON.don(p.SR.getItemMeta(), killer, p, victim.getName());
     					Search.pInvItemSup(victim, p.SR);
     			}
+       				}
        			}}
 		   
 		      if(p.sauron != null &&victim == p.sauron) {

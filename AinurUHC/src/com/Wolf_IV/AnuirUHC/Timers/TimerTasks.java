@@ -185,7 +185,7 @@ public class TimerTasks extends BukkitRunnable {
 				 pvp=true;
 				 //Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "gamerule keepInventory false");
 			 }else if(timeDay==6){
-				 Feanor.distribution(p);
+				 Feanor.distribution(p, p.FeanorS, p.Feanor, true, true, true);
 				 JourSay="§eFin Bordur Jour 7⚙";
 				 /**
 				  * SI TU MODIFIE LA BORDUR OUBLIE PAS DE MODIFIER LE REVIVE
