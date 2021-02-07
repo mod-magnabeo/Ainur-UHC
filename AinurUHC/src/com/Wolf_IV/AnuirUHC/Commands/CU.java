@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 import com.Wolf_IV.AnuirUHC.MainA;
 import com.Wolf_IV.AnuirUHC.Role.BalrogInfiltre;
-import com.Wolf_IV.AnuirUHC.Role.BalrogTraceur;
+import com.Wolf_IV.AnuirUHC.Role.BalrogNoir;
 import com.Wolf_IV.AnuirUHC.Role.EruIluvatar;
 import com.Wolf_IV.AnuirUHC.Role.Fingolfin;
 import com.Wolf_IV.AnuirUHC.Role.Gandalf;
@@ -33,14 +33,14 @@ public class CU implements CommandExecutor {
 		if(sender instanceof Player) {
 			if(cmd.getName().equalsIgnoreCase("u")) {
 				Player player = (Player)sender;
-				if(TimerTasks.Ingame==false) {
-					player.sendMessage("§4La game n'est pas encore lancer");
+				if(TimerTasks.role==false) {
+					player.sendMessage("§4Les role n'on pas encore été donner");
 					return false;
 				}
 				
 				if(BalrogInfiltre.u(p, player, args)==true) {
 					return true;
-				}else if(BalrogTraceur.u(p, player, args)==true) {
+				}else if(BalrogNoir.u(p, player, args)==true) {
 					return true;
 				}else if(EruIluvatar.u(p, player, args)==true) {
 					return true;

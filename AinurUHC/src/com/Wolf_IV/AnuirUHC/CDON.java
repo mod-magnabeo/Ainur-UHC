@@ -48,7 +48,7 @@ public class CDON implements CommandExecutor {
 				for(Player play : pl) {
 					if(play.getName().equalsIgnoreCase(args[0])) {
 						if(p.Eru_Iluvatar != null && p.Eru_Iluvatar == play) {
-							player.sendMessage("§aEru_Iluvatar ne peut posééder de silmarils");
+							player.sendMessage("§aEru_Iluvatar ne peut posééder d'artéfact");
 							return true;
 						}else if(p.Feanor != null && p.Feanor == player) {
 							for(String pS : Feanor.plGive) {

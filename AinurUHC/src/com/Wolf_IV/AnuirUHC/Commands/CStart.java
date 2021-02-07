@@ -53,7 +53,7 @@ public class CStart implements CommandExecutor {
 	public Player balrog[]=new Player[7+1+1];
 	public Player balrogC[]=new Player[6+1+1];
 	public Player balrog_infiltré;
-	public Player balrog_traceur;
+	public Player balrog_noir;
 	public Player sauron;
 	public Player Eru_Iluvatar;
 	public Player manwé;
@@ -80,7 +80,7 @@ public class CStart implements CommandExecutor {
 	public String ungoliantS;
 	public String balrogS[]=new String[7+1+1];
 	public String balrog_infiltréS;
-	public String balrog_traceurS;
+	public String balrog_noirS;
 	public String sauronS;
 	public String Eru_IluvatarS;
 	public String manwéS;
@@ -105,7 +105,7 @@ public class CStart implements CommandExecutor {
 	public String Planatir;
 	
 	
-		private static MainA main;
+		public static MainA main;
 		public CStart(MainA mainA) { 
 			this.main= mainA;
 			
@@ -203,7 +203,7 @@ public class CStart implements CommandExecutor {
 						r.setRole("Balrog Infiltré");
 						r.setLien("Maiar");
 						role[4] =r;
-						balrog_traceur=balrog[2];
+						balrog_noir=balrog[2];
 						r.setRole("Balrog Traceur");
 						r.setLien("Maiar");
 						role[5] =r;
@@ -355,9 +355,9 @@ public class CStart implements CommandExecutor {
 											balrog[balnub]=playerO;
 											balnub++;
 											rr.setLien("Maiar");
-										}else if(args[i].equalsIgnoreCase("balrog_traceur")) {
-											balrog_traceur=playerO;
-											Bukkit.broadcastMessage(""+playerO.getName()+" est Balrog Traceur");
+										}else if(args[i].equalsIgnoreCase("balrog_noir")) {
+											balrog_noir=playerO;
+											Bukkit.broadcastMessage(""+playerO.getName()+" est Balrog Noir");
 											evil[evilnub]=playerO;
 											evilnub++;
 											balrogC[balnub] = playerO;
@@ -491,7 +491,7 @@ public class CStart implements CommandExecutor {
 			
 			
 			if(balrog_infiltré!=null)balrog_infiltréS=balrog_infiltré.getName();
-			if(balrog_traceur!=null)balrog_traceurS=balrog_traceur.getName();
+			if(balrog_noir!=null)balrog_noirS=balrog_noir.getName();
 			
 			
 			if(Feanor!=null)FeanorS=Feanor.getName();

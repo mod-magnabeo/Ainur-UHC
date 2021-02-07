@@ -40,6 +40,7 @@ import com.Wolf_IV.AnuirUHC.Role.Namo;
 import com.Wolf_IV.AnuirUHC.Role.Planatir;
 import com.Wolf_IV.AnuirUHC.Role.SBleu;
 import com.Wolf_IV.AnuirUHC.Role.SRouge;
+import com.Wolf_IV.AnuirUHC.Timers.TimerMort;
 import com.Wolf_IV.AnuirUHC.Timers.TimerProt;
 import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
 
@@ -120,8 +121,8 @@ public class AListener implements Listener {
 		
 		if(p.balrog_infiltréS != null && p.balrog_infiltréS.equalsIgnoreCase(player.getName())) {
 			p.balrog_infiltré = player;
-		}else if(p.balrog_traceurS != null && p.balrog_traceurS.equalsIgnoreCase(player.getName())) {
-			p.balrog_traceur = player;
+		}else if(p.balrog_noirS != null && p.balrog_noirS.equalsIgnoreCase(player.getName())) {
+			p.balrog_noir = player;
 		}
 		if(p.finMechantS != null && p.finMechantS.equalsIgnoreCase(player.getName())) {
 			p.finMechant = player;
@@ -246,6 +247,9 @@ public class AListener implements Listener {
        			if(p.jou[i] != null && victim == p.jou[i]) {
        				p.jouD[i] = false;
        			
+       				TimerMort tasks = new TimerMort(victim, p);
+					tasks.runTaskTimer(p.main, 0, 20);
+					TimerMort.lastMort = tasks;
        				Player killer = victim;
        				if(p.jouHit[i] ==null) {
        					Namo.lastDead = "§a"+victim.getName()+" est mort de PVE";

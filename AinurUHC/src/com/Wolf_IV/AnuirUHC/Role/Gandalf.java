@@ -10,8 +10,8 @@ import com.Wolf_IV.AnuirUHC.Commands.CStart;
 public class Gandalf {
 static Random rand = new Random();
 	public static boolean u(CStart p, Player player, String[] args) {
-		int inspect = 3;
-		int pourcentage = 80;
+		int inspect = 5;
+		int pourcentage = 70;
 		if(player != p.gandalf) {
 			return false;
 		}

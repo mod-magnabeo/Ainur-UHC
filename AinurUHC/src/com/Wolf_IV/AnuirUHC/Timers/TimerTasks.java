@@ -288,8 +288,8 @@ public class TimerTasks extends BukkitRunnable {
 						+ "à connaître ton rôle il sera dit que tu est gentil. Une fois par jour tu peux spec un joueur qui se "
 						+ "trouve à 15 blocs de toi. Mais celui ci prendra un dégât de un demi-coeur.");
 				}
-				if(p.balrog_traceur != null) {
-				p.balrog_traceur.sendMessage("Tu est un Balrog spécial tu est Balrog traceur. A chaque épisode tu peux choisir un "
+				if(p.balrog_noir != null) {
+				p.balrog_noir.sendMessage("Tu est un Balrog spécial tu est Balrog traceur. A chaque épisode tu peux choisir un "
 						+ "joueur que tu va tracer(/u pseudo). La boussole que tu va recevoir te pointera la direction du joueur "
 						+ "choisi(tu pourra l'actualité avec clique droit). La boussole sera reset au prochain épisode. Il ne "
 						+ "sera pas possible de tracer le même joueur 2 fois d’affilé."
