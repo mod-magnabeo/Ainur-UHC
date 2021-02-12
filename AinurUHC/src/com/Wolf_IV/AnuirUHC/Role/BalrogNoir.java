@@ -12,7 +12,7 @@ public class BalrogNoir {
 			return false;
 		}
 		TimerMort.lastMort.stop = true;
-		player.sendMessage("§aLe role de ce joueur ne serat pas dévoiler a tous e monde");
+		player.sendMessage("§aLe role de ce joueur ne serat pas dévoiler a tous le monde");
 		return true;
 	}
 

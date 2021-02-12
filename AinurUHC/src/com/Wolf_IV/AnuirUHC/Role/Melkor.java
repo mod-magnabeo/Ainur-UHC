@@ -8,6 +8,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import com.Wolf_IV.AnuirUHC.Search;
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
+import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
 
 public class Melkor {
 	static boolean crown = false;
@@ -59,6 +60,25 @@ public class Melkor {
 	public static boolean u(CStart p, Player player, String[] args) {
 		if(player != p.Melkor) {
 			return false;
+		}
+		if(crown==false) {
+			if(TimerTasks.jN == true) {
+				StringBuilder bc = new StringBuilder();
+				for(String part : args) {
+					bc.append(part+ " ");
+				}
+				String msg = bc.toString();
+				for(Player evil : p.evil) {
+					if(evil != null) {
+						evil.sendMessage("§2Melkor : §c"+msg);
+					}
+				}
+				p.luthien.sendMessage("§2§kMelkor §r§2: §c"+msg);
+				
+			}else {
+				player.sendMessage("§bParle la nuit");
+			}
+			return true;
 		}
 		if(p.OrcS == null) {
 			Player pl[] = Search.getLivingAndConnectedPlayers(p, p.Eru_Iluvatar);

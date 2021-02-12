@@ -57,7 +57,7 @@ public class CStart implements CommandExecutor {
 	public Player sauron;
 	public Player Eru_Iluvatar;
 	public Player manwé;
-	public Player oromé;
+	public Player luthien;
 	public Player namo;
 	public Player sauruman;
 	public Player gandalf;
@@ -84,7 +84,7 @@ public class CStart implements CommandExecutor {
 	public String sauronS;
 	public String Eru_IluvatarS;
 	public String manwéS;
-	public String oroméS;
+	public String luthienS;
 	public String namoS;
 	public String saurumanS;
 	public String gandalfS;
@@ -233,8 +233,8 @@ public class CStart implements CommandExecutor {
 						r.setRole("Manwë");
 						r.setLien("Valar");
 						role[12] =r;
-						oromé=jou[13];
-						r.setRole("Oromë");
+						luthien=jou[13];
+						r.setRole("Lúthien");
 						r.setLien("Valar");
 						role[13] =r;
 						namo=jou[14];
@@ -384,9 +384,9 @@ public class CStart implements CommandExecutor {
 											manwé=playerO;
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Manwé");
 											rr.setLien("Valar");
-										}else if(args[i].equalsIgnoreCase("oromé")) {
-											oromé=playerO;
-											Bukkit.broadcastMessage(""+playerO.getName()+" est Oromé");
+										}else if(args[i].equalsIgnoreCase("luthien")) {
+											luthien=playerO;
+											Bukkit.broadcastMessage(""+playerO.getName()+" est Lúthien");
 											rr.setLien("Valar");
 										}else if(args[i].equalsIgnoreCase("namo")) {
 											namo=playerO;
@@ -497,7 +497,7 @@ public class CStart implements CommandExecutor {
 			if(Feanor!=null)FeanorS=Feanor.getName();
 			if(Eru_Iluvatar!=null)Eru_IluvatarS=Eru_Iluvatar.getName();
 			if(manwé!=null)manwéS=manwé.getName();
-			if(oromé!=null)oroméS=oromé.getName();
+			if(luthien!=null)luthienS=luthien.getName();
 			if(namo!=null)namoS=namo.getName();
 			if(sauruman!=null)saurumanS=sauruman.getName();
 			if(gandalf!=null)gandalfS=gandalf.getName();
