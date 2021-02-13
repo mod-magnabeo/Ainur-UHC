@@ -38,6 +38,7 @@ import com.Wolf_IV.AnuirUHC.Role.Feanor;
 import com.Wolf_IV.AnuirUHC.Role.Fingolfin;
 import com.Wolf_IV.AnuirUHC.Role.Namo;
 import com.Wolf_IV.AnuirUHC.Role.Planatir;
+import com.Wolf_IV.AnuirUHC.Role.Role;
 import com.Wolf_IV.AnuirUHC.Role.SBleu;
 import com.Wolf_IV.AnuirUHC.Role.SRouge;
 import com.Wolf_IV.AnuirUHC.Timers.TimerMort;
@@ -93,8 +94,8 @@ public class AListener implements Listener {
 			p.Eru_Iluvatar = player;
 		}else if(p.manwéS != null && p.manwéS.equalsIgnoreCase(player.getName())) {
 			p.manwé = player;
-		}else if(p.oroméS != null && p.oroméS.equalsIgnoreCase(player.getName())) {
-			p.oromé = player;
+		}else if(p.luthienS != null && p.luthienS.equalsIgnoreCase(player.getName())) {
+			p.luthien = player;
 		}else if(p.namoS != null && p.namoS.equalsIgnoreCase(player.getName())) {
 			p.namo = player;
 		}else if(p.saurumanS != null && p.saurumanS.equalsIgnoreCase(player.getName())) {
@@ -319,7 +320,36 @@ public class AListener implements Listener {
 		Inventory inv = event.getInventory();
 		Player player =(Player) event.getWhoClicked();
 		ItemStack current= event.getCurrentItem();
-		if(inv.getName().equalsIgnoreCase("§bChoisir:")) {
+		if(inv.getName().substring(0 , 8).equalsIgnoreCase("§cQui est")) {
+			if(Bukkit.getPlayer(inv.getName().substring(8)) == null) {
+				player.sendMessage("§4Joueur Déconnécter");
+				player.closeInventory();
+				return;
+			}
+			Player cible = Bukkit.getPlayer(inv.getName().substring(8));
+			for(String dev : p.deviner) {
+				if(dev != null && dev == cible.getName()) {
+					player.sendMessage("§cCette personne a déjà était deviner aujourd'hui. Vous avez quand mème utilisié votre pouvoir");
+				}
+			}
+			if(current==null) return;
+			if(current.getType() != Material.PAPER) return;
+			for(Role role : p.role) {
+				if(role != null && role.getRole().equalsIgnoreCase(current.getItemMeta().getDisplayName())) {
+					if(role.getPlayer().equalsIgnoreCase(cible.getName())) {
+						cible.sendMessage("§cUn balrog a deviner votre role il vous enlève 2 coeur pendant le reste du jour");
+						cible.setMaxHealth(cible.getMaxHealth()-4.0F);
+						for(String dev : p.deviner) {
+							if(dev == null) {
+								dev = cible.getName();
+							}
+						}
+					}
+					
+				}
+			}
+			player.closeInventory();
+		}else if(inv.getName().equalsIgnoreCase("§bChoisir:")) {
 		if(current==null) return;
 		
 		event.setCancelled(true);

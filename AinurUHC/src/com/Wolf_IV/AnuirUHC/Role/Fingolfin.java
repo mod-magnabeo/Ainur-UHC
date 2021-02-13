@@ -79,9 +79,24 @@ public class Fingolfin {
 	public static void mechant(CStart p) {
 		choix = true;
 		mechant = true;
+		int sil = 0;
+		if(p.SBleu != null && p.SBleu.equalsIgnoreCase(p.fingolfinS))sil++;
+		if(p.SVert != null && p.SVert.equalsIgnoreCase(p.fingolfinS))sil++;
+		if(p.SRouge != null && p.SRouge.equalsIgnoreCase(p.fingolfinS))sil++;
 		for(Player evil : p.evil) {
 			if(evil != null) {
 				evil.sendMessage("§cFingolfin a rejoin votre camp");
+				for(int i = 1; i<=sil; i++) {
+					for(Player bal : p.evil) {
+						if(bal != null) {
+							bal.sendMessage("§cUn membre de votre equipe a recupèrer un silmarils");
+						}
+					}
+					if(p.luthien != null) {
+						p.luthien.sendMessage("§cUn membre de l'equipe adverse a recupèrer un silmarils");
+					}
+					Melkor.crownCheck(p);
+				}
 			}
 		}
 		

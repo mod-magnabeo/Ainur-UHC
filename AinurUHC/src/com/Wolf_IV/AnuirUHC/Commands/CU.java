@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.Wolf_IV.AnuirUHC.MainA;
+import com.Wolf_IV.AnuirUHC.Role.Balrog;
 import com.Wolf_IV.AnuirUHC.Role.BalrogInfiltre;
 import com.Wolf_IV.AnuirUHC.Role.BalrogNoir;
 import com.Wolf_IV.AnuirUHC.Role.EruIluvatar;
@@ -42,6 +43,8 @@ public class CU implements CommandExecutor {
 					return true;
 				}else if(BalrogNoir.u(p, player, args)==true) {
 					return true;
+				}else if(Balrog.u(p, player, args)==true) {
+						return true;
 				}else if(EruIluvatar.u(p, player, args)==true) {
 					return true;
 				}else if(Melkor.u(p, player, args)==true) {

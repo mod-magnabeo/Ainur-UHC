@@ -115,16 +115,31 @@ public class CDON implements CommandExecutor {
 			Feanor.distribution(p, p.Eru_IluvatarS, p.Eru_Iluvatar, V, B, R);
 			return true;
 		}
+		if(Bukkit.getPlayer(player) != null) {
+			Player dead = Bukkit.getPlayer(player);
+			int nbBl = 0;
 		for(Player bl : p.evil) {
+			
 			if(bl != null && bl == play) {
-				for(Player evil : p.evil) {
-					if(evil != null) {
-					evil.sendMessage("§cUn membre de votre equipe a recupèrer un silmarils");
-					}
-				}
-				Melkor.crownCheck(p);
+				nbBl++;
+			}
+			if(bl != null && bl == dead) {
+				nbBl++;
 			}
 		}
+		if(nbBl == 2) {
+		for(Player evil : p.evil) {
+			if(evil != null) {
+			evil.sendMessage("§cUn membre de votre equipe a recupèrer un silmarils");
+			}
+		}
+		if(p.luthien != null) {
+			p.luthien.sendMessage("§cUn membre de l'equipe adverse a recupèrer un silmarils");
+		}
+		Melkor.crownCheck(p);
+		}
+		}
+		
 		return true;
 	}
 }

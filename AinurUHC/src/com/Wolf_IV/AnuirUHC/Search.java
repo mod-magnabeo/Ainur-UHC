@@ -12,6 +12,7 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
+import com.Wolf_IV.AnuirUHC.Role.Balrog;
 import com.Wolf_IV.AnuirUHC.Role.Maedhros;
 import com.Wolf_IV.AnuirUHC.Role.Manwe;
 import com.Wolf_IV.AnuirUHC.Role.Role;
@@ -28,6 +29,7 @@ static Random rand =new Random();
 	Saruman.nDay(p);
 	Manwe.nDay(p);
 	Varda.nDay(p);
+	Balrog.nDay(p);
 	}
 	
 	public static Player[] pNext(Player player, CStart p, int dis){
@@ -158,6 +160,15 @@ static Random rand =new Random();
 			s[choose]=container;
 			}
 		return s;
+	}
+	
+	public static Balrog balFinder(CStart p, String balrog) {
+		for(Balrog bal : p.balrogD) {
+			if(bal != null && bal.player.equalsIgnoreCase(balrog)) {
+				return bal;
+			}
+		}
+		return null;
 	}
 	
 

@@ -330,8 +330,8 @@ public class TimerTasks extends BukkitRunnable {
 						+ "donner aléatoirement a un joueur. Tu doit maintenant choisir entre deux chanson. Elle sont expliquer "
 						+ "en dessous.");
 				}
-				if(p.oromé != null) {
-				p.oromé.sendMessage("Une fois par épisode pendant 5 minutes tu peut te transformer en mouton Gandalf te voit dans "
+				if(p.luthien != null) {
+				p.luthien.sendMessage("Une fois par épisode pendant 5 minutes tu peut te transformer en mouton Gandalf te voit dans "
 						+ "ta vrai forme");
 				}
 				if(p.namo != null) {

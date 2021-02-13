@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.Wolf_IV.AnuirUHC.MainA;
+import com.Wolf_IV.AnuirUHC.Role.Balrog;
 import com.Wolf_IV.AnuirUHC.Role.Role;
 import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
 
@@ -41,6 +42,8 @@ public class CStart implements CommandExecutor {
 	public boolean SRU = true;
 	public boolean SPU = true;
 	
+	public String deviner[] = new String[5+1+1];
+	public Balrog balrogD[] = new Balrog[5+1+1];
 	
 	public boolean jouD[]= new boolean[24+1+1];
 	public Role[] role =new Role[24+1+1];;
@@ -196,7 +199,15 @@ public class CStart implements CommandExecutor {
 						for(i=1;i<=7;i++) {
 							r.setRole("Balrog");
 							r.setLien("Maiar");
-							role[i+3] =r;
+							role[i+3] =r;//ici
+							if(i >=3) {//ici
+							/**
+								TODO	A changer si tu rajoute un balrog l.-2, l.-1, l.4
+							*/
+								Balrog bal = new Balrog();
+								bal.player = balrog[i].getName();
+								balrogD[i-2] = bal;//ici
+							}
 						}
 						
 						balrog_infiltré=balrog[1];
@@ -207,6 +218,7 @@ public class CStart implements CommandExecutor {
 						r.setRole("Balrog Traceur");
 						r.setLien("Maiar");
 						role[5] =r;
+						
 						
 						for(i=1;i<=6;i++) {
 							balrogC[i]=balrog[i+2];

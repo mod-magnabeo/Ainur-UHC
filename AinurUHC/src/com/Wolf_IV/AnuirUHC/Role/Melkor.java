@@ -73,7 +73,9 @@ public class Melkor {
 						evil.sendMessage("§2Melkor : §c"+msg);
 					}
 				}
-				p.luthien.sendMessage("§2§kMelkor §r§2: §c"+msg);
+				if(p.luthien != null) {
+					p.luthien.sendMessage("§2§kMelkor §r§2: §c"+msg);
+				}
 				
 			}else {
 				player.sendMessage("§bParle la nuit");
@@ -86,7 +88,6 @@ public class Melkor {
 			Inventory inv = Bukkit.createInventory(null, 27, "§cTransformer un joueur:");
 			for(Player playerO : pl) {
 				if(playerO != null) {
-					Bukkit.broadcastMessage("nom = "+playerO);
 			ItemStack skull = new ItemStack(397, 1, (short) 3);
 				SkullMeta meta = (SkullMeta) skull.getItemMeta();
 				meta.setOwner(playerO.getName());
