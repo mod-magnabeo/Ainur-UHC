@@ -27,20 +27,27 @@ public class Balrog {
 		if(!balrogI) {
 			return false;
 		}
+		if(args.length == 0) {
+			player.sendMessage("§b/u [player]");
+			return true;
+		}
 		if(Search.balFinder(p, player.getName()).dernierJ == TimerTasks.timeDay) {
 			player.sendMessage("§4Vous avez déjà utilisé votre pouvoir aujourd'hui");
 			return true;
 		}
 		for(String cible : Search.balFinder(p, player.getName()).dev) {
-			if(cible.equalsIgnoreCase(args[0])) {
+			if(cible != null && cible.equalsIgnoreCase(args[0])) {
 				player.sendMessage("§4Vous avez déjà choisi cette personne");
 				return true;
 			}
 		}
-		if(args.length == 0) {
-			player.sendMessage("§b/u [player]");
-			return true;
+		for(String cible : p.deviner) {
+			if(cible != null && cible.equalsIgnoreCase(args[0])) {
+				player.sendMessage("§4Cette personne a déjà été atteint aujourd'hui");
+				return true;
+			}
 		}
+		
 		Inventory inv = Bukkit.createInventory(null, 27, "§cQui est "+args[0]);
 		int pi =0;
 		for(Role role : p.role) {
@@ -61,11 +68,12 @@ public class Balrog {
 	}
 	
 	public static void nDay(CStart p) {
-		for(String playerS : p.deviner) {
-			if(playerS != null && Bukkit.getPlayer(playerS) != null) {
-				Player player = Bukkit.getPlayer(playerS);
-				playerS = null;
+		for(int i=1;i<=5;i++) {
+			if(p.deviner[i] != null && Bukkit.getPlayer(p.deviner[i]) != null) {
+				Player player = Bukkit.getPlayer(p.deviner[i]);
+				p.deviner[i] = null;
 				player.setHealth(player.getHealth()+4.0F);
+				
 			}
 		}
 		

@@ -320,13 +320,13 @@ public class AListener implements Listener {
 		Inventory inv = event.getInventory();
 		Player player =(Player) event.getWhoClicked();
 		ItemStack current= event.getCurrentItem();
-		if(inv.getName().substring(0 , 8).equalsIgnoreCase("§cQui est")) {
-			if(Bukkit.getPlayer(inv.getName().substring(8)) == null) {
+		if(inv.getName().substring(0 , 9).equalsIgnoreCase("§cQui est")) {
+			if(Bukkit.getPlayer(inv.getName().substring(10)) == null) {
 				player.sendMessage("§4Joueur Déconnécter");
 				player.closeInventory();
 				return;
 			}
-			Player cible = Bukkit.getPlayer(inv.getName().substring(8));
+			Player cible = Bukkit.getPlayer(inv.getName().substring(10));
 			for(String dev : p.deviner) {
 				if(dev != null && dev == cible.getName()) {
 					player.sendMessage("§cCette personne a déjà était deviner aujourd'hui. Vous avez quand mème utilisié votre pouvoir");
@@ -339,11 +339,31 @@ public class AListener implements Listener {
 					if(role.getPlayer().equalsIgnoreCase(cible.getName())) {
 						cible.sendMessage("§cUn balrog a deviner votre role il vous enlève 2 coeur pendant le reste du jour");
 						cible.setMaxHealth(cible.getMaxHealth()-4.0F);
-						for(String dev : p.deviner) {
-							if(dev == null) {
-								dev = cible.getName();
+						Search.balFinder(p, player.getName()).dernierJ = TimerTasks.timeDay;
+						/*boolean doneAnCible = false;
+						for(String anCible : Search.balFinder(p, player.getName()).dev) {
+							if(anCible == null && doneAnCible == false) {
+								anCible = cible.getName();
+								doneAnCible = true;
+							}
+						}*/
+						String anCible[] =  Search.balFinder(p, player.getName()).dev;
+						boolean doneAnCible = false;
+						for(i=1;i<=24;i++) {
+							if(anCible[i] == null && doneAnCible == false) {
+								anCible[i] = cible.getName();
+								doneAnCible = true;
 							}
 						}
+						
+						boolean doneDev = false;
+						for(i=1;i<=5;i++) {
+							if(p.deviner[i] == null && doneDev == false) {
+								p.deviner[i] = cible.getName();
+								doneDev = true;
+							}
+						}
+						
 					}
 					
 				}

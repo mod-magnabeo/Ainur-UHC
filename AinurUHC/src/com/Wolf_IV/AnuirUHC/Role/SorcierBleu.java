@@ -28,7 +28,7 @@ public class SorcierBleu {
 		
 		if(args.length>0) {
 			
-			if(Bukkit.getPlayer(args[0]) != null) {
+			if(Bukkit.getPlayer(args[0]) == null) {
 				player.sendMessage("§cJoueur hors ligne");
 				return true;
 			}else if(player == p.scorcier_bleu_1) {

@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 
 import com.Wolf_IV.AnuirUHC.MainA;
 import com.Wolf_IV.AnuirUHC.Role.Balrog;
+import com.Wolf_IV.AnuirUHC.Role.BalrogBrouilleur;
 import com.Wolf_IV.AnuirUHC.Role.BalrogInfiltre;
 import com.Wolf_IV.AnuirUHC.Role.BalrogNoir;
 import com.Wolf_IV.AnuirUHC.Role.EruIluvatar;
@@ -38,10 +39,16 @@ public class CU implements CommandExecutor {
 					player.sendMessage("§4Les role n'on pas encore été donner");
 					return false;
 				}
+				if(BalrogBrouilleur.cible != null && BalrogBrouilleur.cible == player) {
+					player.sendMessage("§5Vous vous etes fait brouillé");
+					return false;
+				}
 				
 				if(BalrogInfiltre.u(p, player, args)==true) {
 					return true;
 				}else if(BalrogNoir.u(p, player, args)==true) {
+					return true;
+				}else if(BalrogBrouilleur.u(p, player, args)==true) {
 					return true;
 				}else if(Balrog.u(p, player, args)==true) {
 						return true;
@@ -64,6 +71,7 @@ public class CU implements CommandExecutor {
 				}else if(SorcierBleu.u(p, player, args)==true) {
 					return true;
 				}
+				
 				player.sendMessage("§4Vous ne pouver pas vous serivir de ctte command");
 				return true;
 			}

@@ -13,6 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Role.Balrog;
+import com.Wolf_IV.AnuirUHC.Role.BalrogBrouilleur;
 import com.Wolf_IV.AnuirUHC.Role.Maedhros;
 import com.Wolf_IV.AnuirUHC.Role.Manwe;
 import com.Wolf_IV.AnuirUHC.Role.Role;
@@ -30,6 +31,7 @@ static Random rand =new Random();
 	Manwe.nDay(p);
 	Varda.nDay(p);
 	Balrog.nDay(p);
+	BalrogBrouilleur.nDay(p);
 	}
 	
 	public static Player[] pNext(Player player, CStart p, int dis){
@@ -109,7 +111,7 @@ static Random rand =new Random();
    	return lpl;
 	}
 	
-	public static String[] getLivingPlayers(CStart p/*Mettre a null si tu veut pas enlever de joueur*/) {
+	public static String[] getLivingPlayers(CStart p) {
 		String[] pl = new String[24+1+1];
 		int pI = -1;
 		for(int i = 1; i<=p.nubPlayer; i++) {

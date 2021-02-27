@@ -57,6 +57,7 @@ public class CStart implements CommandExecutor {
 	public Player balrogC[]=new Player[6+1+1];
 	public Player balrog_infiltré;
 	public Player balrog_noir;
+	public Player balrog_brouilleur;
 	public Player sauron;
 	public Player Eru_Iluvatar;
 	public Player manwé;
@@ -84,6 +85,7 @@ public class CStart implements CommandExecutor {
 	public String balrogS[]=new String[7+1+1];
 	public String balrog_infiltréS;
 	public String balrog_noirS;
+	public String balrog_brouilleurS;
 	public String sauronS;
 	public String Eru_IluvatarS;
 	public String manwéS;
@@ -199,14 +201,14 @@ public class CStart implements CommandExecutor {
 						for(i=1;i<=7;i++) {
 							r.setRole("Balrog");
 							r.setLien("Maiar");
-							role[i+3] =r;//ici
-							if(i >=3) {//ici
+							role[i+4] =r;//ici
+							if(i >=4) {//ici
 							/**
 								TODO	A changer si tu rajoute un balrog l.-2, l.-1, l.4
 							*/
 								Balrog bal = new Balrog();
 								bal.player = balrog[i].getName();
-								balrogD[i-2] = bal;//ici
+								balrogD[i-3] = bal;//ici
 							}
 						}
 						
@@ -215,9 +217,13 @@ public class CStart implements CommandExecutor {
 						r.setLien("Maiar");
 						role[4] =r;
 						balrog_noir=balrog[2];
-						r.setRole("Balrog Traceur");
+						r.setRole("Balrog Noir");
 						r.setLien("Maiar");
 						role[5] =r;
+						balrog_brouilleur=balrog[3];
+						r.setRole("Balrog Brouilleur");
+						r.setLien("Maiar");
+						role[6] =r;
 						
 						
 						for(i=1;i<=6;i++) {
@@ -336,7 +342,7 @@ public class CStart implements CommandExecutor {
 										Bukkit.broadcastMessage("args: "+args[0]);
 										int balnub=1;
 										int evilnub=1;
-										int scb=1;
+										boolean scb= false;
 										Role rr =new Role();
 										if(args[i].equalsIgnoreCase("melkor")) {
 											Melkor=playerO;
@@ -376,10 +382,22 @@ public class CStart implements CommandExecutor {
 											balrog[balnub]=playerO;
 											balnub++;
 											rr.setLien("Maiar");
+										}else if(args[i].equalsIgnoreCase("balrog_brouilleur")) {
+											balrog_brouilleur=playerO;
+											Bukkit.broadcastMessage(""+playerO.getName()+" est Balrog Brouilleur");
+											evil[evilnub]=playerO;
+											evilnub++;
+											balrogC[balnub] = playerO;
+											balrog[balnub]=playerO;
+											balnub++;
+											rr.setLien("Maiar");
 										}else if(args[i].equalsIgnoreCase("balrog")) {
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Balrog");
 											evil[evilnub]=playerO;
 											evilnub++;
+											Balrog inBal = new Balrog();
+											inBal.player = playerO.getName();
+											balrogD[balnub] = inBal;
 											balrogC[balnub] = playerO;
 											balrog[balnub]=playerO;
 											balnub++;
@@ -417,8 +435,9 @@ public class CStart implements CommandExecutor {
 											Bukkit.broadcastMessage(""+playerO.getName()+" est Lorien");
 											rr.setLien("Valar");
 										}else if(args[i].equalsIgnoreCase("scorcier_bleu")) {
-											if(scb==1) {
+											if(scb==false) {
 											scorcier_bleu_1=playerO;
+											scb = true;
 											}else {
 												scorcier_bleu_2=playerO;
 											}
@@ -504,6 +523,7 @@ public class CStart implements CommandExecutor {
 			
 			if(balrog_infiltré!=null)balrog_infiltréS=balrog_infiltré.getName();
 			if(balrog_noir!=null)balrog_noirS=balrog_noir.getName();
+			if(balrog_brouilleur!=null)balrog_brouilleurS=balrog_brouilleur.getName();
 			
 			
 			if(Feanor!=null)FeanorS=Feanor.getName();
