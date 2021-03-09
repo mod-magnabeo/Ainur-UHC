@@ -319,10 +319,11 @@ public class TimerTasks extends BukkitRunnable {
 				        .create();
 				BaseComponent[] page2 = new ComponentBuilder("§d[§bChanson de Soul§d]")
 						.event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/u soul"))
-				        .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§aSi tu meurt d'un joueur tu peut entre qu'il perds 5 coeurs ou que tu reprenne vie").create()))
+				        .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§aSi tu meurt d'un joueur tu peut entre qu'il perds 5 coeurs ou que tu reprenne vie en perdant 1 coeur tout les jour").create()))
 				        .create();
 				p.Eru_Iluvatar.spigot().sendMessage(page);
 				p.Eru_Iluvatar.spigot().sendMessage(page2);
+				Bukkit.broadcastMessage("§e"+p.Eru_Iluvatar.getDisplayName()+" est Eru Iluvatar");
 				}
 				if(p.manwé != null) {
 				p.manwé.sendMessage("Tout les joueur les joueur connaisent ton role. Tu ne peut pas avoir les effet des silmarils "

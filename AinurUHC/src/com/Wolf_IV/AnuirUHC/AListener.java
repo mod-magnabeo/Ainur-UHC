@@ -41,6 +41,7 @@ import com.Wolf_IV.AnuirUHC.Role.Planatir;
 import com.Wolf_IV.AnuirUHC.Role.Role;
 import com.Wolf_IV.AnuirUHC.Role.SBleu;
 import com.Wolf_IV.AnuirUHC.Role.SRouge;
+import com.Wolf_IV.AnuirUHC.Role.SorcierBleu;
 import com.Wolf_IV.AnuirUHC.Timers.TimerMort;
 import com.Wolf_IV.AnuirUHC.Timers.TimerProt;
 import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
@@ -224,9 +225,18 @@ public class AListener implements Listener {
 	       				}
 	       			
 	       			
-	       			if(p.Eru_Iluvatar != null &&p.Eru_Iluvatar == player && EruIluvatar.raise == true) {
+	       			if(p.Eru_Iluvatar != null && p.Eru_Iluvatar == player && EruIluvatar.raise == true) {
 	       				event.setCancelled(true);
-	       				EruIluvatar.onDead(p.jouHit[i], p);
+	       				SorcierBleu.pouvoir = false;
+	       				player.setHealth(player.getMaxHealth());
+	       				Search.Revive(player, p);
+	       			}else if(p.scorcier_bleu_1 != null && p.scorcier_bleu_1 == player && SorcierBleu.pouvoir == true) {
+	       				event.setCancelled(true);
+	       				SorcierBleu.pouvoir = false;
+	       				player.setHealth(player.getMaxHealth());
+	       				Search.Revive(player, p);
+	       			}else if(p.scorcier_bleu_2 != null && p.scorcier_bleu_2 == player && SorcierBleu.pouvoir == true) {
+	       				
 	       			}
 	       			 
 	       			}}

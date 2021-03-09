@@ -18,6 +18,7 @@ public class EruIluvatar {
 	public static boolean revel = false;
 	public static boolean raise = false;
 	public static boolean choice = false;
+	public static boolean revi = false;
 
 	public static boolean u(CStart p, Player player, String[] args) {
 		if(player != p.Eru_Iluvatar) {
@@ -71,6 +72,7 @@ public class EruIluvatar {
 	public static void onDead(Player killer, CStart p) {
 		if(raise == true) {
 			raise = false;
+			revi = true;
 			p.Eru_Iluvatar.closeInventory();
 			Inventory inv = Bukkit.createInventory(null, 27, "§bChoisir:");
 			
@@ -89,6 +91,12 @@ public class EruIluvatar {
 			
 			p.Eru_Iluvatar.openInventory(inv);
 			p.Eru_Iluvatar.setGameMode(GameMode.SPECTATOR);
+		}
+	}
+	
+	public static void nDay(CStart p) {
+		if(revi == true && p.Eru_Iluvatar != null) {
+			p.Eru_Iluvatar.setMaxHealth(p.Eru_Iluvatar.getMaxHealth()-2.0F);
 		}
 	}
 
