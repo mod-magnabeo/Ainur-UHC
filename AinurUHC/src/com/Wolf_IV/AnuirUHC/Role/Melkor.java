@@ -1,16 +1,21 @@
 package com.Wolf_IV.AnuirUHC.Role;
 
+import java.util.Random;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import com.Wolf_IV.AnuirUHC.Search;
 import com.Wolf_IV.AnuirUHC.Commands.CStart;
 import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
 
 public class Melkor {
+	static Random rand = new Random();
 	static boolean crown = false;
 	
 	public static void crownCheck(CStart p) {
@@ -43,6 +48,14 @@ public class Melkor {
 			Bukkit.broadcastMessage("hop la");
 			for(Player evil : p.evil) {
 				if(evil != null) {
+					int SFR = rand.nextInt(2);
+					if(SFR == 0) {
+						evil.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1200*20*15/*15 jours*/, 0, false, false));
+					}else if(SFR == 1) {
+						evil.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 1200*20*15/*15 jours*/, 0, false, false));
+					}else {
+						evil.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 1200*20*15/*15 jours*/, 0, false, false));
+					}
 					Search.pInvItemSup(evil, p.SB);
 					Search.pInvItemSup(evil, p.SG);
 					Search.pInvItemSup(evil, p.SR);
