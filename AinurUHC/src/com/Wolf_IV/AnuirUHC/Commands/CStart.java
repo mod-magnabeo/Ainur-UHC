@@ -489,7 +489,9 @@ public class CStart implements CommandExecutor {
 						  }
 						
 						
-						
+						/**A RETIRER Si PB |
+						 * 				   V
+						 */
 						rando=rand.nextInt(250)+50;
 						for(i=0;i<=rando;i++) {
 							choose=rand.nextInt(nubPlayer)+1;

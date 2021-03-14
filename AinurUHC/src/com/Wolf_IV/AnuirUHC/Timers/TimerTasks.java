@@ -180,25 +180,27 @@ public class TimerTasks extends BukkitRunnable {
 				 Bukkit.broadcastMessage("§eJour 2⚙  Role dans 10s"); 
 				 timerR=10;
 			 }else if(timeDay==4) {
-				 JourSay="§eBordur Jour 6⚙";
+				 JourSay="§eBordur Jour 7⚙";
 				 Bukkit.broadcastMessage("§eJour 4⚙ PVP Activé"); 
 				 pvp=true;
 				 //Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "gamerule keepInventory false");
 			 }else if(timeDay==6){
 				 Feanor.distribution(p, p.FeanorS, p.Feanor, true, true, true);
-				 JourSay="§eFin Bordur Jour 7⚙";
+				 Bukkit.broadcastMessage("§eJour 6⚙ Distribution des silmarils"); 
+			 }else if(timeDay==7){
+				 JourSay="§eFin Bordur Jour 8⚙";
 				 /**
 				  * SI TU MODIFIE LA BORDUR OUBLIE PAS DE MODIFIER LE REVIVE
 				  */
 				//SI TU MODIFIE LA BORDUR OUBLIE PAS DE MODIFIER LE REVIVE
-				 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "worldborder set 6000");
-				 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "worldborder set 200 1200");
+				 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "worldborder set 2000");
+				 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "worldborder set 600 1200");
 				 //SI TU MODIFIE LA BORDUR OUBLIE PAS DE MODIFIER LE REVIVE
 				 /**
 				  * SI TU MODIFIE LA BORDUR OUBLIE PAS DE MODIFIER LE REVIVE
 				  */
-				 Bukkit.broadcastMessage("§eJour 6⚙ Bordur 3000 block elle serat a 100 block d'ici Jour 7⚙"); 
-			 }else if(timeDay==7){
+				 Bukkit.broadcastMessage("§eJour 7⚙ Bordur 3000 block elle serat a 100 block d'ici Jour 8⚙"); 
+			 }else if(timeDay==8){
 				 JourSay="§eBonne chance a tous";
 				 Bukkit.broadcastMessage("§eJour 7⚙ La Bordur c'est aréter a 100blocks"); 
 			 }else {
@@ -206,9 +208,7 @@ public class TimerTasks extends BukkitRunnable {
 				 Bukkit.broadcastMessage("§eJour "+timeDay+"⚙"); 
 			 }
 			 Search search =new Search();
-			 if(timeDay==7){
-				 Ungoliant.trans(p);
-			 }else if(timeDay==5){
+			 if(timeDay==5){
 				 Planatir.lorienAcces(p);
 			 }else if(timeDay==6){
 				 Planatir.eAcces(p);
@@ -227,12 +227,23 @@ public class TimerTasks extends BukkitRunnable {
 				for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
 					playerO.playSound(playerO.getLocation(), Sound.CLICK, 10.0F, 5.0F);
 					}
-				//Bug quand melkor n'existe pas
-				p.Melkor.sendMessage("§eValar");
+				for(int i = 1; i<=p.nubPlayer; i++) {
+					if(Bukkit.getPlayer(p.role[i].getPlayer()) != null) {
+						Player player = Bukkit.getPlayer(p.role[i].getPlayer());
+						player.sendMessage("§e"+p.role[i].getLien());
+					}
+				}
+				
 			}else if(timerR==2) {
 				for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
 					playerO.playSound(playerO.getLocation(), Sound.LEVEL_UP, 10.0F, 0.0F);
 					}
+				for(int i = 1; i<=p.nubPlayer; i++) {
+					if(Bukkit.getPlayer(p.role[i].getPlayer()) != null) {
+						Player player = Bukkit.getPlayer(p.role[i].getPlayer());
+						player.sendMessage("§eVous etes "+p.role[i].getRole());
+					}
+				}
 			}else if(timerR==0) {
 				role = true;
 				 
@@ -433,6 +444,7 @@ public class TimerTasks extends BukkitRunnable {
 				playerO.setHealth(20);
 				playerO.setFoodLevel(20);
 				playerO.setGameMode(GameMode.SURVIVAL);
+				Search.Revive(playerO, p);
 			}
 			Random rand=new Random();
 		

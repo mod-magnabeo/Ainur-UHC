@@ -29,49 +29,7 @@ public class CBR implements CommandExecutor {
 			if(cmd.getName().equalsIgnoreCase("br")) {
 				Player player = (Player)sender;
 				
-				player.getInventory().setHeldItemSlot(0);
-				 ItemStack G = new ItemStack(Material.INK_SACK, 1, (short)0, DyeColor.MAGENTA/*Green*/.getData());
-				ItemMeta customG = G.getItemMeta();
-				customG.setDisplayName("§aSilmaril Vert");
-				customG.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
-				customG.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-				G.setItemMeta(customG);
-				p.SG = G;
-				p.SVert = player.getDisplayName();
-				player.getInventory().setItemInHand(G);
-				
-				player.getInventory().setHeldItemSlot(0);								//ORANGE A ENLEVé
-				 ItemStack Planatir = new ItemStack(Material.STAINED_GLASS, 1, (short)0, DyeColor.WHITE/*White*/.getData());
-				ItemMeta customPlanatir = Planatir.getItemMeta();
-				customPlanatir.setDisplayName("§7Plantir");
-				customPlanatir.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
-				customPlanatir.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-				Planatir.setItemMeta(customPlanatir);
-				p.P = Planatir;
-				p.Planatir = player.getDisplayName();
-				player.getInventory().setItemInHand(Planatir);
-				
-				player.getInventory().setHeldItemSlot(1);
-				ItemStack R = new ItemStack(Material.INK_SACK, 1, (short)0, DyeColor.ORANGE/*RED*/.getData());
-				ItemMeta customR = R.getItemMeta();
-				customR.setDisplayName("§cSilmaril Rouge");
-				customR.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
-				customR.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-				R.setItemMeta(customR);
-				p.SR = R;
-				p.SRouge = player.getDisplayName();
-				player.getInventory().setItemInHand(R);
-				
-				player.getInventory().setHeldItemSlot(2);
-				ItemStack B = new ItemStack(Material.INK_SACK, 1, (short)0, DyeColor.PINK/*CYAN*/.getData());
-				ItemMeta customB = B.getItemMeta();
-				customB.setDisplayName("§bSilmaril Bleu");
-				customB.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
-				customB.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-				B.setItemMeta(customB);
-				p.SB = B;
-				p.SBleu = player.getDisplayName();
-				player.getInventory().setItemInHand(B);
+			
 				if(TimerTasks.role==false) {
 					player.sendMessage("§4Les role n'ont pas été donné");
 					return false;

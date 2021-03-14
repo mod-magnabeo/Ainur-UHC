@@ -12,6 +12,7 @@ public class Ungoliant {
 		if(p.ungoliant == null) {
 			return;
 		}
+		
 		p.ungoliant.sendMessage("§cVous etes ungoliant maintenant votre but et de etre le dernier survivant trahisser les balrogs");
 		p.ungoliant.setMaxHealth(p.ungoliant.getMaxHealth()+10.0F);
 		p.ungoliant.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 9999999, 1 /*infini*/, false, false));

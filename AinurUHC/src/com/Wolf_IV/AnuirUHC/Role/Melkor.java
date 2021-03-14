@@ -45,7 +45,7 @@ public class Melkor {
 			Bukkit.broadcastMessage("§6Les balrogs on obtenu les trois silmarils. Melkor a construit sa couronne de fer. "
 					+ "Et il est maintenant connu sous le nom de Morgoth. Morgoth peut desormais transformer un joueur en Orc. Ungoliant est révèler");
 			}
-			Bukkit.broadcastMessage("hop la");
+
 			for(Player evil : p.evil) {
 				if(evil != null) {
 					int SFR = rand.nextInt(2);
@@ -61,13 +61,13 @@ public class Melkor {
 					Search.pInvItemSup(evil, p.SR);
 				}
 			}
-			Bukkit.broadcastMessage("hop la la");
+
 			p.SVert = null;
 			p.SBleu = null;
 			p.SRouge = null;
-			Bukkit.broadcastMessage("hop la la la");
+
 			crown = true;
-			Bukkit.broadcastMessage("hop la la la la");
+			Ungoliant.trans(p);
 		}
 	}
 	public static boolean u(CStart p, Player player, String[] args) {

@@ -65,8 +65,8 @@ static Random rand =new Random();
 			if(p.jou[i] != null && player == p.jou[i]) {
 				p.jouD[i] = true;
 				int dist = 1000;
-				if(TimerTasks.timeDay>=6) {
-					dist = 100;
+				if(TimerTasks.timeDay>=7) {
+					dist = 300;
 				}
 				int x =rand.nextInt(dist*2)-dist;
 				int z =rand.nextInt(dist*2)-dist;
