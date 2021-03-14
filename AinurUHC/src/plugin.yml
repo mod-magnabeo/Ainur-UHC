@@ -12,6 +12,9 @@ commands:
   daypass:
     description: Pass the day
     permission: daypass.use
+  arevive:
+    description: Revive
+    permission: arevive.use
   u:
     description: use power
   br:
