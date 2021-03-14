@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.Wolf_IV.AnuirUHC.MainA;
+import com.Wolf_IV.AnuirUHC.Search;
 import com.Wolf_IV.AnuirUHC.Role.Balrog;
 import com.Wolf_IV.AnuirUHC.Role.Role;
 import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
@@ -147,7 +148,7 @@ public class CStart implements CommandExecutor {
 						playerO.setMaxHealth(20.0F);
 						nubPlayer++;
 					}
-					if(nubPlayer==24) {
+					if(nubPlayer >= 10) {	
 						for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
 							nubjou++;
 							jou[nubjou]=playerO;
@@ -155,150 +156,330 @@ public class CStart implements CommandExecutor {
 						}
 						rando=rand.nextInt(250)+50;
 						for(i=0;i<=rando;i++) {
-							choose=rand.nextInt(24)+1;
-							choose2=rand.nextInt(24)+1;
+							choose=rand.nextInt(nubPlayer)+1;
+							choose2=rand.nextInt(nubPlayer)+1;
 							container=jou[choose2];
 							jou[choose2]=jou[choose];
 							jou[choose]=container;
 							}
 						
-						r.setPlayer(jou[1].getDisplayName());
-						Melkor=jou[1];
+						
+						int bi = 0;
+						int ei = 0;
+						int pi = 0;
+						
+						pi++;
+						Melkor=jou[pi];
+						ei++;
+						evil[ei] = jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
 						r.setRole("Melkor");
 						r.setLien("Valar");
-						role[1] = r;
-						sauron=jou[2];
-						r.setRole("Sauron");
-						r.setLien("Maiar");
-						role[2] =r;
-						ungoliant=jou[3];
-						r.setRole("Ungoliant");
-						r.setLien("Maiar");
-						role[3] =r;
+						role[pi] = r;
 						
-						for(i=1;i<=6;i++) {
-							balrog[i]=jou[i+3];
-							}
-						
-						balrog[7]=ungoliant;
-						r.setRole("Balrog");
-						r.setLien("Maiar");
-						role[7] =r;
-						for(i=1;i<=9;i++) {
-							evil[i]=jou[i];
-						}
-						
-						
-						rando=rand.nextInt(50)+10;
-						for(i=0;i<=rando;i++) {
-							choose=rand.nextInt(7)+1;
-							choose2=rand.nextInt(7)+1;
-							container=balrog[choose2];
-							balrog[choose2]=balrog[choose];
-							balrog[choose]=container;
-							}
-						
-						for(i=1;i<=7;i++) {
-							r.setRole("Balrog");
-							r.setLien("Maiar");
-							role[i+4] =r;//ici
-							if(i >=4) {//ici
-							/**
-								TODO	A changer si tu rajoute un balrog l.-2, l.-1, l.4
-							*/
-								Balrog bal = new Balrog();
-								bal.player = balrog[i].getName();
-								balrogD[i-3] = bal;//ici
-							}
-						}
-						
-						balrog_infiltré=balrog[1];
-						r.setRole("Balrog Infiltré");
-						r.setLien("Maiar");
-						role[4] =r;
-						balrog_noir=balrog[2];
-						r.setRole("Balrog Noir");
-						r.setLien("Maiar");
-						role[5] =r;
-						balrog_brouilleur=balrog[3];
-						r.setRole("Balrog Brouilleur");
-						r.setLien("Maiar");
-						role[6] =r;
-						
-						
-						for(i=1;i<=6;i++) {
-							balrogC[i]=balrog[i+2];
-						}
-						rando=rand.nextInt(50)+10;
-						for(i=0;i<=rando;i++) {
-							choose=rand.nextInt(7)+1;
-							choose2=rand.nextInt(7)+1;
-							container=balrog[choose2];
-							balrog[choose2]=balrog[choose];
-							balrog[choose]=container;
-							}
-						
-						
-						Feanor=jou[10];
+						pi++;
+						Feanor=jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
 						r.setRole("Fëanor");
 						r.setLien("Elf");
-						role[10] =r;
-						Eru_Iluvatar=jou[11];
+						role[pi] =r;
+						
+						pi++;
+						Eru_Iluvatar=jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
 						r.setRole("Eru Iluvatar");
 						r.setLien("Pas de Type");
-						role[11] =r;
-						manwé=jou[12];
-						r.setRole("Manwë");
-						r.setLien("Valar");
-						role[12] =r;
-						luthien=jou[13];
-						r.setRole("Lúthien");
-						r.setLien("Valar");
-						role[13] =r;
-						namo=jou[14];
-						r.setRole("Namo");
-						r.setLien("Valar");
-						role[14] =r;
-						sauruman=jou[15];
-						r.setRole("Saruman");
+						role[pi] =r;
+						
+						pi++;
+						bi++;
+						balrog[bi] = jou[pi];
+						ei++;
+						evil[ei] = jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
+						r.setRole("Balrog");
 						r.setLien("Maiar");
-						role[15] =r;
-						gandalf=jou[16];
-						r.setRole("Gandalf");
-						r.setLien("Maiar");
-						role[16] =r;
-						lorien=jou[17];
+						role[pi] =r;
+						
+						pi++;
+						lorien=jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
 						r.setRole("Lorien");
 						r.setLien("Valar");
-						role[17] =r;
-						scorcier_bleu_1=jou[18];
+						role[pi] =r;
+						
+						pi++;
+						scorcier_bleu_1=jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
+						r.setRole("Scorcier Bleu");	
+						r.setLien("Maiar");
+						role[pi] =r;
+						
+						pi++;
+						scorcier_bleu_2=jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
 						r.setRole("Scorcier Bleu");
 						r.setLien("Maiar");
-						role[18] =r;
-						scorcier_bleu_2=jou[19];
-						r.setRole("Scorcier Bleu");
-						r.setLien("Maiar");
-						role[19] =r;
-						aulé=jou[20];
-						r.setRole("Aulë");
-						r.setLien("Valar");
-						role[20] =r;
-						fingolfin=jou[21];
-						r.setRole("Fingolfin");
-						r.setLien("Elf");
-						role[21] =r;
-						varda=jou[22];
-						r.setRole("Varda");
-						r.setLien("Valar");
-						role[22]=r;
-						maedhros=jou[23];
+						role[pi] =r;
+						
+						pi++;
+						maedhros=jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
 						r.setRole("Maedhros");
 						r.setLien("Elf");
-						role[23]=r;
-						tulkas=jou[24];
-						r.setRole("Tulkas");
+						role[pi]=r;
+						
+						pi++;
+						bi++;
+						ungoliant=jou[pi];
+						ei++;
+						evil[ei] = jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
+						r.setRole("Balrog");
+						r.setLien("Maiar");
+						role[pi] =r;
+						balrog[bi]=ungoliant;
+						
+						pi++;
+						bi++;
+						balrog[bi] = jou[pi];
+						ei++;
+						evil[ei] = jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
+						r.setRole("Balrog");
+						r.setLien("Maiar");
+						role[pi] =r;
+						
+						pi++;
+						if(nubPlayer >= pi) {
+							sauruman=jou[pi];
+							r.setPlayer(jou[pi].getDisplayName());
+							r.setRole("Saruman");
+							r.setLien("Maiar");
+							role[pi] =r;	
+						}
+						
+						pi++;
+						if(nubPlayer >= pi) {
+						ei++;
+						sauron=jou[pi];
+						evil[ei] = jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
+						r.setRole("Sauron");
+						r.setLien("Maiar");
+						role[pi] =r;
+						}
+						
+						pi++;
+						if(nubPlayer >= pi) {
+						gandalf=jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
+						r.setRole("Gandalf");
+						r.setLien("Maiar");
+						role[pi] =r;
+						}
+						
+						pi++;
+						if(nubPlayer >= pi) {
+							fingolfin=jou[pi];
+							r.setPlayer(jou[pi].getDisplayName());
+							r.setRole("Fingolfin");
+							r.setLien("Elf");
+							role[pi] =r;
+						}
+						
+						pi++;
+						if(nubPlayer >= pi) {
+						manwé=jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
+						r.setRole("Manwë");
 						r.setLien("Valar");
-						role[24]=r;
+						role[pi] =r;
+						}
+						
+						pi++;
+						if(nubPlayer >= pi) {
+						bi++;
+						balrog[bi] = jou[pi];
+						ei++;
+						evil[ei] = jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
+						r.setRole("Balrog");
+						r.setLien("Maiar");
+						role[pi] =r;
+						}
+						
+						pi++;
+						if(nubPlayer >= pi) {
+							varda=jou[pi];
+							r.setPlayer(jou[pi].getDisplayName());
+							r.setRole("Varda");
+							r.setLien("Valar");
+							role[pi]=r;
+						}
+						
+						pi++;
+						if(nubPlayer >= pi) {
+						luthien=jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
+						r.setRole("Lúthien");
+						r.setLien("Valar");
+						role[pi] =r;
+						}
+						
+						pi++;
+						if(nubPlayer >= pi) {
+						bi++;
+						balrog[bi] = jou[pi];
+						ei++;
+						evil[ei] = jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
+						r.setRole("Balrog");
+						r.setLien("Maiar");
+						role[pi] =r;
+						}
+						
+						pi++;
+						if(nubPlayer >= pi) {
+							tulkas=jou[pi];
+							r.setPlayer(jou[pi].getDisplayName());
+							r.setRole("Tulkas");
+							r.setLien("Valar");
+							role[pi]=r;
+						}
+						
+						pi++;
+						if(nubPlayer >= pi) {
+						bi++;
+						balrog[bi] = jou[pi];
+						ei++;
+						evil[ei] = jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
+						r.setRole("Balrog");
+						r.setLien("Maiar");
+						role[pi] =r;
+						}
+						
+						pi++;
+						if(nubPlayer >= pi) {
+							namo=jou[pi];
+							r.setPlayer(jou[pi].getDisplayName());
+							r.setRole("Namo");
+							r.setLien("Valar");
+							role[pi] =r;
+						}
+						
+						pi++;
+						if(nubPlayer >= pi) {
+						bi++;
+						balrog[bi] = jou[pi];
+						ei++;
+						evil[ei] = jou[pi];
+						r.setPlayer(jou[pi].getDisplayName());
+						r.setRole("Balrog");
+						r.setLien("Maiar");
+						role[pi] =r;
+						}
+						
+						pi++;
+						if(nubPlayer >= pi) {
+							aulé=jou[pi];
+							r.setPlayer(jou[pi].getDisplayName());
+							r.setRole("Aulë");
+							r.setLien("Valar");
+							role[pi] =r;
+						}
+						/*ungoliant=jou[3];
+						r.setRole("Ungoliant");
+						r.setLien("Maiar");
+						role[3] =r;*/
+						/**Bizare
+						 * TODO
+						 */
+						
+						
+						
+						rando=rand.nextInt(50)+10;
+						for(i=0;i<=rando;i++) {
+							choose=rand.nextInt(bi)+1;
+							choose2=rand.nextInt(bi)+1;
+							container=balrog[choose2];
+							balrog[choose2]=balrog[choose];
+							balrog[choose]=container;
+							}
+						
+						int bDi = 0;
+						for(i=1;i<=bi;i++) {
+							if(i==1) {
+								balrog_brouilleur=balrog[i];
+								r.setPlayer(balrog[i].getDisplayName());
+								r.setRole("Balrog Brouilleur");
+								r.setLien("Maiar");
+								for(int i = 1; i<=nubPlayer; i++) {
+									  if(role[i].getPlayer().equalsIgnoreCase(balrog[i].getName())) {
+										  role[i] = r;
+									  }
+								  }
+								
+							}else if(i==2) {
+								balrog_noir=balrog[i];
+								r.setPlayer(balrog[i].getDisplayName());
+								r.setRole("Balrog Noir");
+								r.setLien("Maiar");
+								for(int i = 1; i<=nubPlayer; i++) {
+									  if(role[i].getPlayer().equalsIgnoreCase(balrog[i].getName())) {
+										  role[i] = r;
+									  }
+								  }
+								
+							}else if(i==3 && nubPlayer >=16) {
+								balrog_infiltré=balrog[i];
+								r.setPlayer(balrog[i].getDisplayName());
+								r.setRole("Balrog Infiltré");
+								r.setLien("Maiar");
+								for(int i = 1; i<=nubPlayer; i++) {
+									  if(role[i].getPlayer().equalsIgnoreCase(balrog[i].getName())) {
+										  role[i] = r;
+									  }
+								  }
+								
+							}else {
+							bDi++;
+							Balrog bal = new Balrog();
+							bal.player = balrog[i].getName();
+							balrogD[bDi] = bal;//ici
+							}
+							
+						}
+						
+						
+						
+						
+						
+						rando=rand.nextInt(50)+10;
+						for(i=0;i<=rando;i++) {
+							choose=rand.nextInt(bi)+1;
+							choose2=rand.nextInt(bi)+1;
+							container=balrog[choose2];
+							balrog[choose2]=balrog[choose];
+							balrog[choose]=container;
+							}
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 						
 						for(i = 1; i<=nubPlayer; i++) {
 							  r.setPlayer(jou[i].getDisplayName());
@@ -307,19 +488,12 @@ public class CStart implements CommandExecutor {
 							  role[i] =r;
 						  }
 						
-						rando=rand.nextInt(50)+10;
-						for(i=0;i<=rando;i++) {
-							choose=rand.nextInt(7)+1;
-							choose2=rand.nextInt(7)+1;
-							container=balrog[choose2];
-							balrog[choose2]=balrog[choose];
-							balrog[choose]=container;
-							}
+						
 						
 						rando=rand.nextInt(250)+50;
 						for(i=0;i<=rando;i++) {
-							choose=rand.nextInt(24)+1;
-							choose2=rand.nextInt(24)+1;
+							choose=rand.nextInt(nubPlayer)+1;
+							choose2=rand.nextInt(nubPlayer)+1;
 							container=jou[choose2];
 							jou[choose2]=jou[choose];
 							jou[choose]=container;
@@ -542,7 +716,7 @@ public class CStart implements CommandExecutor {
 			if(maedhros!=null)maedhrosS=maedhros.getName();
 			if(tulkas!=null)tulkasS=tulkas.getName();
 			
-			for(i=1;i<=24;i++) {
+			for(i=1;i<=nubPlayer;i++) {
 				if(jou[i]!=null) {
 				jouS[i]=jou[i].getName();
 				}
