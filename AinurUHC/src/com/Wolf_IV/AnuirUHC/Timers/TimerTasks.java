@@ -32,6 +32,7 @@ import com.Wolf_IV.AnuirUHC.Role.Feanor;
 import com.Wolf_IV.AnuirUHC.Role.Fingolfin;
 import com.Wolf_IV.AnuirUHC.Role.Maedhros;
 import com.Wolf_IV.AnuirUHC.Role.Planatir;
+import com.Wolf_IV.AnuirUHC.Role.Role;
 import com.Wolf_IV.AnuirUHC.Role.Ungoliant;
 
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -256,74 +257,57 @@ public class TimerTasks extends BukkitRunnable {
 						" sur sa tête il obtient ( Ungoliant doit gagner seul, tout les balrog et sauron obtiennent l’effet force 1 la\r\n" +
 						"nuit, et melkor obtient force 1 et speed 1 la nuit et il peut infecter un joueur sauf eru . méchant");*/
 				 if(p.Melkor != null) {
-				p.Melkor.sendMessage("§3 Ton rôle est très important ta mission est simple. Récupérer les trois silmarils.\r\n" + 
-						"§3 Après les avoir récupérer tu gagne en étant le dernier vivant avec ton équipe.\r\n" + 
-						"§3 Les balrog et sauron sont avec toi, tu peut les identifier avec la command /team\r\n" + 
-						"§3 Dès qu'un de tes fidèle balrog ou bien sauron récupère un silmarils, il est directement\r\n" + 
-						"§3 envoyer dans ton inventaire. Tu ne peux pas te servir des silmarils. Quand tu a les trois\r\n" +
-						"§3 qu’il doit trahir son équipe c’est Ungoliant(sauf si il est déjà mort). Tous les balrogs et\r\n" + 
-						"§3 sauron obtienne force 1 la nuit tu obtiens force 1 et speed 1.Ton pseudo est révéler Et tu pourra "
-						+ "infecter un joueur\r\n" + 
-						"§3 gentil apart Eru Iluvatar. Si ton équipe obtient le planatìr elle peut s'en servir pour traquer\r\n" + 
-						"§3 les silmarils A ta mort sauron récupère tes silmarils et ton planatìr ou couronne.");
+				p.Melkor.sendMessage("§3vous êtes melkor, votre objectif est d'éliminé l'ainur ainsi que les rôles solo. Vous êtes le chef des balrogs. Vous obtenez trois cœur en plus a l'annonce des rôles ainsi que la possibilité de parler a vos serviteurs, mais luthien verra aussi vos messages. Lorsque les silmarils seront dans les main des balrogs ils vous seront directement envoyé et les effets de la couronne s’activeront pour tous les balrogs, vous obtiendrai en plus force la nuit ainsi que la possibilité d'infecter un joueur avec la commande /u.\r\n" + 
+						"");
 				p.Melkor.setMaxHealth(p.Melkor.getMaxHealth()+6.0F);
 				 }
 				 if(p.Feanor != null) {	
-	p.Feanor.sendMessage("§3 Tu est le protagonist de la partie. En début de game tu dois crafté trois" + 
-						"§3 silmarils vide. Tu doit les remplir de la lumière des arbres du" + 
-						"§3 valinor en 0 0. Tu devra alors distribuer tes silmarils a des"+ 
-						"§3 joueurs grâce à la commande /donner <pseudo> et l’item dans la main." + 
-						"§3 Si tu ne les a pas distribuer ou craft avant le jour 5 (quand les" +
-						"§3 arbres seront détruis) ils seront distribuées aléatoirement a des" + 
-						"§3 joueur. Tu peux pas te servir d’un silmarils avant de l’avoir donnés."
+	p.Feanor.sendMessage("§3 vous êtes feanor, votre objectif est d'éliminé tous les balrogs ainsi que les roles solo. Vous avez une rôle majeur pour la victoire de l'ainur, votre but est de distribuer les trois silmarils a des joueurs a moins de 20 block de vous avant l'épisode 6 avec la commande /don « pseudo ». si vous ne donner pas vos silmarils a temps ils seront distribué aléatoirement a des joueurs. Les silmarils n'auront aucun effet sur vous.\r\n" + 
+			""
 						);
 				Feanor.giveF(p.Feanor, p);
 				 }
 				for(int i=1;i<=7;i++) {
 					if(p.balrog[i] != null) {
-					p.balrog[i].sendMessage("§3Ton rôle est simple. Avec ton équipe récupérer les trois silmarils(qui " + 
-							" arriveront directement dans l’inventaire de Melkor)." + 
-							" Après les avoir récupérer tu gagne en étant le dernier vivant avec ton équipe." + 
-							" Les autres balrog sauron et Melkor sont avec toi, tu peut les identifier avec la command /br" + 
-							" Quand vous avez les trois silmarils il se transformeront en couronne de fer, une fois porter par Melkor un "
-							+ "balrog sera informé qu’il doit trahir son équipe c’est Ungoliant(sauf si il est déjà mort). Tu obtiens force 1 "
-							+ "la nuit comme tous les autre balrogs et sauron. Un joueur choisi par Melkor rejoindra ton équipe. Si ton équipe obtient "
-							+ "le planatìr elle peut s'en servir pour traquer les silmarils. Tu a 1 chance sur 7 d’étre Ungoliant sa te sera rèvèler a "
-							+ "la construction de la couronne" 
+					p.balrog[i].sendMessage("§3 vous êtes balrog, votre objectif est d'éliminé l'ainur ainsi que les rôles solo. Pour cela vous avez la possibilté d 'enlever 2 cœur pendant 20 min en utilisant la commande /u «pseudo» et en devinant le rôle de la personne vous pourrez utiliser votre pouvoir toutes les 20 minutes mais vous ne pourrez pas choisir deux fois la même personne dans la partie. Une fois la couronne de fer craft vous obtiendrai en plus force la nuit.\r\n" + 
+							"" 
 							);
 					}
 				}
 				if(p.balrog_infiltré != null) {
-				p.balrog_infiltré.sendMessage("Tu est un Balrog spécial tu est Balrog infiltré contrairement à ce qu’on dit "
+				p.balrog_infiltré.sendMessage("§3Tu est un Balrog spécial tu est Balrog infiltré contrairement à ce qu’on dit "
 						+ "ci-dessus tu ne connais pas ton équipe(tu ne peut pas faire /team). Mais si un role info cherche "
 						+ "à connaître ton rôle il sera dit que tu est gentil. Une fois par jour tu peux spec un joueur qui se "
 						+ "trouve à 15 blocs de toi. Mais celui ci prendra un dégât de un demi-coeur.");
+				/*Role r = new Role();
+				r.setPlayer(p.balrog_infiltré.getDisplayName());
+				r.setRole("§kBalrog Infiltré");
+				r.setLien("Maiar");
+				for(int i = 1; i<=p.nubPlayer; i++) {
+					  if(p.role[i].getPlayer().equalsIgnoreCase(p.balrog_infiltré.getName())) {
+						  p.role[i] = r;
+					  }
+				  }*/
 				}
+				
 				if(p.balrog_noir != null) {
-				p.balrog_noir.sendMessage("Tu est un Balrog spécial tu est Balrog traceur. A chaque épisode tu peux choisir un "
-						+ "joueur que tu va tracer(/u pseudo). La boussole que tu va recevoir te pointera la direction du joueur "
-						+ "choisi(tu pourra l'actualité avec clique droit). La boussole sera reset au prochain épisode. Il ne "
-						+ "sera pas possible de tracer le même joueur 2 fois d’affilé."
+				p.balrog_noir.sendMessage("§3vous êtes balrog brouilleur, votre objectif est d'éliminé l'ainur ainsi que les rôles solo. Pour cela vous avez la possibilté de masquer une fois dans la partie la mort d'une personne avec la commande /u après sa mort. Une fois la couronne de fer craft vous obtiendrai en plus force la nuit.\r\n" + 
+						""
 						);
 				}
+				if(p.balrog_brouilleur != null) {
+					p.balrog_brouilleur.sendMessage("§3vous êtes balrog sablier, votre objectif est d'éliminé l'ainur ainsi que les roles solo. Pour cela toute les 10 minutes vous avez la possibilité d'enlever tous les pouvoirs d'une personne (pouvoir, effet) pendant 10 minutes avec la commande /u. Une fois la couronne crafté vous aurez en plus force la nuit.\r\n" + 
+							"" + 
+							""
+							);
+					}
 				if(p.sauron != null) {
-				p.sauron.sendMessage("Ton rôle est simple. Avec ton équipe récupérer les trois silmarils(qui " + 
-						"arriveront directement dans l’inventaire de Melkor). " + 
-						"Après les avoir récupérer tu gagne en étant le dernier vivant avec ton équipe. " + 
-						"Les autres balrog et Melkor sont avec toi, tu peut les identifier avec la command /team " + 
-						"Quand vous avez les trois silmarils il se transformeront en couronne de fer, une fois porter "
-						+ "par Melkor un balrog sera informé qu’il doit trahir son équipe c’est Ungoliant(sauf si il est déjà mort)."
-						+ " Tu obtiens force 1 la nuit comme tous les balrogs. Un joueur choisi par Melkor rejoindra ton équipe. "
-						+ "Si ton équipe obtient le planatìr elle peut s'en servir pour traquer les silmarils. Tu bénéficie de 1 "
-						+ "coeur en plus. Si Melkor vient à mourir tu récupèrera tous ses objet spécial(Couronne,silmarils,planatir)."
-						+ " Tu passera a 13 coeur. Et ton pseudo est révélé dans le chat si Melkor avait obtenu la couronne. "
-						+ "Tu devra accomplir la mission abandonné par Melkor.");
+				p.sauron.sendMessage("§3vous êtes sauron, votre objectif est d'éliminé l'ainur et tous les roles solo. Vous êtes un simple balrog mais si melkor meurt vous prenez sa place et obtenez tous ses pouvoirs. Une fois la couronne crafté vous aurez en plus force la nuit\r\n" + 
+						"");
 				}
 				if(p.Eru_Iluvatar != null) {
-				p.Eru_Iluvatar.sendMessage("Tout les joueur les joueur connaisent ton role. Tu ne peut pas avoir les effet des "
-						+ "silmarils et si tu en gagne un tu doit le donner avec la commande /donner pseudo dans les 3 min sinon "
-						+ "il sera donner aléatoirement a un joueur. Tu doit maintenant choisir entre deux chanson. Elle sont "
-						+ "expliquer en dessous.");
+				p.Eru_Iluvatar.sendMessage("§3vous êtes eru ilvatar, votre objectif est d'éliminé touts les balrogs ainsi que les roles solos. Pour cela vous avez entre vos mains deux chansons mais vous ne pourrez en utiliser qu'une seule avec la commande /u, vous devrez choisir votre chanson avant 25 minutes, l'ainur connaît votre identité.\r\n" + 
+						"");
 				BaseComponent[] page = new ComponentBuilder("§d[§bChanson de Revelation§d]")
 						.event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/u revelation"))
 				        .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§aTu peut dévoiler a tous le monde le role d'un joueur situé a 10 blocks de toi avec /u [joueur]").create()))
@@ -337,19 +321,15 @@ public class TimerTasks extends BukkitRunnable {
 				Bukkit.broadcastMessage("§e"+p.Eru_Iluvatar.getDisplayName()+" est Eru Iluvatar");
 				}
 				if(p.manwé != null) {
-				p.manwé.sendMessage("Tout les joueur les joueur connaisent ton role. Tu ne peut pas avoir les effet des silmarils "
-						+ "et si tu en gagne un tu doit le donner avec la commande /donner pseudo dans les 3 min sinon il sera "
-						+ "donner aléatoirement a un joueur. Tu doit maintenant choisir entre deux chanson. Elle sont expliquer "
-						+ "en dessous.");
+				p.manwé.sendMessage("Tu fait parti de l'Ainur. Tu est insensible a l'effet passif du silmarils bleu. Tu fais parti de l'Ainur. A Chaque debut de jour tu sera si au debut du jour d'avant tu était a 50 blocks ou moins de Melkor. Tu posséder un effet speed permanent");
 				}
 				if(p.luthien != null) {
-				p.luthien.sendMessage("Une fois par épisode pendant 5 minutes tu peut te transformer en mouton Gandalf te voit dans "
-						+ "ta vrai forme");
+				p.luthien.sendMessage("Tu fait parti de l'Ainur. Tu aperçois les message que reçoit les balrog");
 				}
 				if(p.namo != null) {
-				p.namo.sendMessage("2 fois dans la game avec /u pseudo tu peut connaitre la raison de la mort d’un joueur dans "
-						+ "les 30s après sa mort. Tu peut savoir qui la tué si il est mort pvp. Mais quand tu t’en sert tu va "
-						+ "perdre 1 coeur permanent par utilisation. Si le tueur et le Balrog Infiltré tu vera le message en "
+				p.namo.sendMessage("Tu fais parti de l'Ainur.2 fois dans la game avec /u pseudo tu peut connaitre la raison de la mort d’un joueur "
+				+"Tu peut savoir qui la tué si il est mort pvp. Mais quand tu t’en sert tu va "
+						+ "perdre 2 coeur permanent par utilisation. Si le tueur et le Balrog Infiltré tu vera le message en "
 						+ "brouiller.");
 				}
 				if(p.sauruman != null) {
@@ -357,31 +337,31 @@ public class TimerTasks extends BukkitRunnable {
 						+ "envoyé a tout le monde le debut du jour suivant. Tu restera anonyme.");
 				}
 				if(p.gandalf != null) {
-				p.gandalf.sendMessage(" trois fois dans la game tu peut inspecter 3 personnes a 10 block de toi. "
+				p.gandalf.sendMessage("Tu fait parti de l'Ainur. Cinq fois dans la game tu peut inspecter 5 personnes a 10 block de toi. "
 						+ "il y a deux résultat possible au flaire: " + 
-						"suspect: 87,5%(7/8) méchant 12,5%(1/8) gentils" + 
-						"innocentés: 87,5%(7/8) gentils 12,5%(1/8) méchant" + 
-						"tu peut flairer plusieur fois la même personne." + 
-						"tu peut voir oromé même en forme de mouton.");
+						"suspect: 80%(4/5) méchant 20%(1/5) gentils" + 
+						"innocentés: 80%(4/5) gentils 20%(1/5) méchant" + 
+						"tu peut flairer plusieur fois la même personne.");
 				}
 				if(p.lorien != null) {
-				p.lorien.sendMessage("A l’épisode 2 tu aura le x de l’emplacement du planatir, a l’épisode 3 tu aura le y "
-						+ "du planatir et à l’épisode 4 tu aura le z du planatir");
+				p.lorien.sendMessage("Tu fais parti de l'Ainur. A partir de l'episode 4 tes compas pointeront vers le planatir");
 				 //p.lorien.setCompassTarget(new Location(p.lorien.getWorld(), 50, 100, 50));
 				}
 				if(p.scorcier_bleu_1 != null) {
-				p.scorcier_bleu_1.sendMessage("Tu a un scorcier bleu d’ont tu connais le non. Tu peut lui parler avec /u msg. "
-						+ "Si il vient a mourir tu recupérera tous ses objet sépcial (planatir, silmarils) et tu connaitra la raison "
-						+ "de sa mort.");
+				p.scorcier_bleu_1.sendMessage("Tu fait parti de l'Ainur. Tu a un scorcier bleu d’ont tu ne connais pas le nom. "
+						+ "Tu a la commande /u pseudo a une seul utilisation que vous partager, pour tenter de trouver ton confrère. "
+						+ "Si tu réussi si l'un de vous meurt a moin de 20 blocks de l'autre il sera réssuisiter. Si tu rate tu resevra "
+						+ "son vrai nom mais tu ne ressevra pas de pouvoir. Si ta cible est en realité un balrog, il recevera 2 coeur permanent");
 				
 				}
 				if(p.scorcier_bleu_2 != null) {
-				p.scorcier_bleu_2.sendMessage("Tu a un scorcier bleu d’ont tu connais le non. Tu peut lui parler avec /u msg. "
-						+ "Si il vient a mourir tu recupérera tous ses objet sépcial (planatir, silmarils) et tu connaitra la raison "
-						+ "de sa mort.");
+				p.scorcier_bleu_2.sendMessage("Tu fait parti de l'Ainur. Tu a un scorcier bleu d’ont tu ne connais pas le nom. "
+						+ "Tu a la commande /u pseudo a une seul utilisation que vous partager, pour tenter de trouver ton confrère. "
+						+ "Si tu réussi si l'un de vous meurt a moin de 20 blocks de l'autre il sera réssuisiter. Si tu rate tu resevra "
+						+ "son vrai nom mais tu ne ressevra pas de pouvoir. Si ta cible est en realité un balrog, il recevera 2 coeur permanent");
 				}
 				if(p.aulé != null) {
-				p.aulé.sendMessage("Tu a un livre sharp 3 et un livre prot 3");
+				p.aulé.sendMessage("Tu fait parti de l'Ainur. Tu a un livre sharp 3 et un livre prot 3");
 				 ItemStack Book = new ItemStack(Material.ENCHANTED_BOOK);
 				ItemMeta customBook = Book.getItemMeta();
 				customBook.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
@@ -392,23 +372,22 @@ public class TimerTasks extends BukkitRunnable {
 				p.aulé.getInventory().addItem(Book);
 				}
 				if(p.fingolfin != null) {
-				p.fingolfin.sendMessage("Tu lorsque la moitié des joueur sont mort tu a 30s pour choisir un camps(balrog/valar).");
+				p.fingolfin.sendMessage("Tu fait parti de l'Ainur. Tu lorsque la moitié des joueur sont mort tu a 2min pour choisir un camps(balrog/Ainur/Neutre).");
 				
 				}
 				if(p.varda != null) {
-				p.varda.sendMessage("A chaque début d’episode avec /u pseudo1 pseudo2 tu peut savoir si deux joueur vivant ont "
-						+ "le même lien. Liens:Connaitre les liens avec la commande /lien");
+				p.varda.sendMessage("Tu fait parti de l'Ainur. A chaque début d’episode avec /u pseudo tu peut découvrir le Type d'un joueur");
 				
 				}
 				if(p.maedhros != null) {
 					
 				
-				p.maedhros.sendMessage("Tu peut protéger une personne par épisode en lui donnant l’effet resistance avec /u pseudo. "
-						+ "Tu a droit de se protéger toi même que 2 fois dans la partie.");
+				p.maedhros.sendMessage("Tu fait parti de l'Ainur. Tu peut cacher une personne par épisode en lui donnant l’effet invisibilité avec /u pseudo. "
+						+ "Tu a droit de te cacher toi même que 2 fois dans la partie.");
 				
 				}
 				if(p.tulkas != null) {
-				p.tulkas.sendMessage("Tu a un effet de force le jour et tu a deux coeur en plus.");
+				p.tulkas.sendMessage("Tu fait parti de l'Ainur. Tu a un effet de force le jour et tu a deux coeur en plus.");
 				p.tulkas.setMaxHealth(p.tulkas.getMaxHealth()+4.0F);
 				}
 	

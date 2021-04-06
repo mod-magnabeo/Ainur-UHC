@@ -21,8 +21,8 @@ public class MainA extends JavaPlugin implements Listener{
 	getCommand("u").setExecutor(new CU(cstart));
 	getCommand("br").setExecutor(new CBR(cstart));
 	getCommand("don").setExecutor(new CDON(cstart));
-	getCommand("claim").setExecutor(new CRevive(cstart));
-	getCommand("arevive").setExecutor(new CClaim(cstart));
+	getCommand("claim").setExecutor(new CClaim(cstart));
+	getCommand("arevive").setExecutor(new CRevive(cstart));
 	getServer().getPluginManager().registerEvents(new AListener(cstart), this);
 	}
 	@Override

@@ -26,6 +26,7 @@ public class CRevive implements CommandExecutor {
 				}
 				if(Bukkit.getPlayer(args[0]) != null) {
 					Search.Revive(Bukkit.getPlayer(args[0]), p);
+					player.sendMessage("§bJoueur revive");
 				}else {
 					player.sendMessage("§bJoueur déconnecté");
 				}

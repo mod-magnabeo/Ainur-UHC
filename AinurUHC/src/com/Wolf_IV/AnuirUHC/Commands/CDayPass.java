@@ -17,12 +17,12 @@ private TimerTasks timer;
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
-		if(sender instanceof Player) {
+		
 			if(cmd.getName().equalsIgnoreCase("daypass")) {
 		timer.timeSDay=1197;
 		return true;
 			}
-		}
+		
 		return false;
 	}
 

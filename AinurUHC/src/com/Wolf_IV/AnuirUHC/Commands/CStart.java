@@ -142,6 +142,7 @@ public class CStart implements CommandExecutor {
 					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "gamerule naturalRegeneration false");
 					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "difficulty easy");
 					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "gamerule showDeathMessages false");
+					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "worldborder set 2000");
 					
 					
 					for (Player playerO : Bukkit.getServer().getOnlinePlayers()) {
@@ -413,7 +414,7 @@ public class CStart implements CommandExecutor {
 							if(i==1) {
 								balrog_brouilleur=balrog[i];
 								r.setPlayer(balrog[i].getDisplayName());
-								r.setRole("Balrog Brouilleur");
+								r.setRole("Balrog Sablier");
 								r.setLien("Maiar");
 								for(int i = 1; i<=nubPlayer; i++) {
 									  if(role[i].getPlayer().equalsIgnoreCase(balrog[i].getName())) {
@@ -424,7 +425,7 @@ public class CStart implements CommandExecutor {
 							}else if(i==2) {
 								balrog_noir=balrog[i];
 								r.setPlayer(balrog[i].getDisplayName());
-								r.setRole("Balrog Noir");
+								r.setRole("Balrog Brouilleur");
 								r.setLien("Maiar");
 								for(int i = 1; i<=nubPlayer; i++) {
 									  if(role[i].getPlayer().equalsIgnoreCase(balrog[i].getName())) {
