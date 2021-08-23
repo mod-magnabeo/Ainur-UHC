@@ -11,6 +11,7 @@ import com.Wolf_IV.AnuirUHC.Commands.CU;
 import com.Wolf_IV.AnuirUHC.Timers.TimerTasks;
 
 public class MainA extends JavaPlugin implements Listener{
+	public static MainA main;
 	public CStart cstart =new CStart(this);
 	public TimerTasks timert =new TimerTasks(this, cstart);
 	@Override

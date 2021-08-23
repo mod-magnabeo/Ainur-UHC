@@ -74,6 +74,7 @@ public class EruIluvatar {
 			raise = false;
 			revi = true;
 			p.Eru_Iluvatar.closeInventory();
+			//1er pour joueur
 			Inventory inv = Bukkit.createInventory(null, 27, "§bChoisir:");
 			
 			ItemStack Kill =new Wool(DyeColor.RED).toItemStack();
